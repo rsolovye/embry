@@ -1,6 +1,6 @@
 package com.mvn.app.daos;
 
-import com.mvn.app.FolliclePuncture;
+import com.mvn.app.protocol.FolliclePuncture;
 import com.mvn.app.services.DataBaseService;
 
 import java.util.ArrayList;

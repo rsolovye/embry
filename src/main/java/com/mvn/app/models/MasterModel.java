@@ -1,6 +1,6 @@
 package com.mvn.app.models;
 
-import com.mvn.app.LabProtocol;
+import com.mvn.app.protocol.LabProtocol;
 import com.mvn.app.daos.MasterDAOImpl;
 
 /**

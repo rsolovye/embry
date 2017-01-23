@@ -1,10 +1,11 @@
 package com.mvn.app;
 
+import com.mvn.app.protocol.*;
+
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
-import java.util.Date;
 
 public class App
 {
@@ -51,7 +52,7 @@ public class App
         System.out.println(mgs2.toString());
 
 
-        FolliclePuncture  fol_punc= new FolliclePuncture.Builder()
+        FolliclePuncture fol_punc= new FolliclePuncture.Builder()
             .embryologist("Solovyev R.S.")
             .nurse("Shefer O.D.")
             .eggCount(11)

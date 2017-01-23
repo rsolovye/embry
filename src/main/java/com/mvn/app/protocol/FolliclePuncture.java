@@ -1,4 +1,4 @@
-package com.mvn.app;
+package com.mvn.app.protocol;
 
 public class FolliclePuncture{
 

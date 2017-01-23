@@ -1,6 +1,6 @@
 package com.mvn.app.models;
 
-import com.mvn.app.FolliclePuncture;
+import com.mvn.app.protocol.FolliclePuncture;
 import com.mvn.app.daos.FolliclePunctureDAO;
 
 /**
