@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3ac870d-7b3b-41bc-8033-9d8999416730" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/lib/miglayout-core-5.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/lib/miglayout-swing-5.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/miglayout_core_5_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/controllers/Controller.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/protocol/CheckPoints.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/protocol/LabProtocol.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/protocol/ProtocolHeader.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/views/ProtocolHeaderView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/views/Utils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/views/View.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/CheckPoints.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/LabProtocol.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/Pizza.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/CultivationTable.java" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/protocol/CultivationTable.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/FemaleGameteSource.java" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/protocol/FemaleGameteSource.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/Fertilization.java" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/protocol/Fertilization.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/FolliclePuncture.java" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/protocol/FolliclePuncture.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/MaleGameteSource.java" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/protocol/MaleGameteSource.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/PgsCryoEt.java" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/protocol/PgsCryoEt.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/Spermiogramm.java" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/protocol/Spermiogramm.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/App.java" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/App.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/controllers/MasterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/controllers/MasterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/daos/FolliclePunctureDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/daos/FolliclePunctureDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/models/FolliclePunctureModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/models/FolliclePunctureModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/models/MasterModel.java" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/models/MasterModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mvn/app/views/MasterView.java" afterPath="$PROJECT_DIR$/src/main/java/com/mvn/app/views/MasterView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/main.iml" afterPath="$PROJECT_DIR$/src/main/main.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -577,7 +550,14 @@
       <option name="project" value="LOCAL" />
       <updated>1484814054489</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="2123">
+      <created>1485182016057</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1485182016057</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
