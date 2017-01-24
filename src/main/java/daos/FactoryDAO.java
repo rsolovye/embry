@@ -16,7 +16,7 @@ public class FactoryDAO extends DataModelFactory{
 
 
         accessObjectMap.put(Model.DEFAULT_VALUES, new DefaultValuesDAO());
-        accessObjectMap.put(Model.DEFAULT_VALUES, new ProtocolHeaderDAO());
+        accessObjectMap.put(Model.PROTOCOL_HEADER, new ProtocolHeaderDAO());
         accessObjectMap.put(Model.FOLLICLE_PUNCTURE, new FolliclePunctureDAO());
         accessObjectMap.put(Model.FERTILIZATION, new FertilizationDAO());
         accessObjectMap.put(Model.PGS_CRYO_ET, new PgsCryoEtDAO());

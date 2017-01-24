@@ -4,7 +4,9 @@ import daos.AccessObject;
 import daos.DataModelFactory;
 import daos.FactoryDAO;
 import daos.MasterDAOImpl;
+import services.DefaultValuesGateway;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,15 +16,13 @@ import java.util.HashMap;
 public class MasterModel {
 
     private HashMap<String, AccessObject> dao;
+    private HashMap<String, Model> models;
 
-   // private LabProtocol.LabProtocolBuilder labProtocolBuilder;
-
-
-    ArrayList<Model> models = new ArrayList<>();
     public MasterModel() {
         this.dao = new HashMap<>();
-        this.dao.put("DEFAULT_VALUES", new FactoryDAO().getAccessObject(Model.DEFAULT_VALUES));
-
+        models = new HashMap<>();
+        this.dao.put(Model.DEFAULT_VALUES, new FactoryDAO().getAccessObject(Model.DEFAULT_VALUES));
+        this.models.put(Model.DEFAULT_VALUES, dao.get(Model.DEFAULT_VALUES).getModel());
 
 
 
@@ -31,9 +31,11 @@ public class MasterModel {
     public Model getModel(String modelName){
         return this.dao.get(modelName).getModel();
     }
-    public HashMap<String, String[]> getDefaultControlValuesMap(){
-        DefaultValuesModel model = (DefaultValuesModel) getModel(Model.DEFAULT_VALUES);
+
+    public HashMap<String, ArrayList<String>> getDefaultControlValuesMap(){
+        DefaultValuesModel model = (DefaultValuesModel)  models.get(Model.DEFAULT_VALUES);
+
         //IMUTABLE?
-        return new HashMap<>(model.getValuesMap());
+        return    model.getValuesMap();
     }
 }

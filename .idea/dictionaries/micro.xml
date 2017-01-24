@@ -2,7 +2,10 @@
   <dictionary name="micro">
     <words>
       <w>cryo</w>
+      <w>guid</w>
+      <w>jdbc</w>
       <w>spermiogramm</w>
+      <w>sqlite</w>
     </words>
   </dictionary>
 </component>

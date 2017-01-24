@@ -4,6 +4,8 @@ import models.DefaultValuesModel;
 import models.Model;
 import models.ModelFactory;
 import services.DataBaseService;
+import services.DefaultValuesGateway;
+import services.DefaultValuesGatewayExecption;
 
 import java.sql.Array;
 import java.sql.ResultSet;
@@ -15,35 +17,24 @@ import java.util.ArrayList;
  */
 public class DefaultValuesDAO implements AccessObject {
 
-    DataBaseService dataBaseService;
     DefaultValuesModel model;
+
 
     public DefaultValuesDAO() {
         model = (DefaultValuesModel) getModel();
-        query("SELECT * FROM default_list_values");
+        try {
+            model.setDefaultValuesMap(DefaultValuesGateway.findListNames().getDefaultValuesMap());
+        } catch (DefaultValuesGatewayExecption defaultValuesGatewayExecption) {
+            defaultValuesGatewayExecption.printStackTrace();
+        }
     }
 
-    public void fillModel(ResultSet rs){
-       try {
-           while (rs.next()){
 
-             String listID =  rs.getString("listID");
-             Object listValues =  rs.getArray("listValues");
-
-             model.mapDefaultValues(listID, (String[]) listValues);
-           }
-
-       } catch (SQLException e) {
-           e.printStackTrace();
-       }
-   }
 
 
     @Override
     public void query(String sql) {
-        dataBaseService = new DataBaseService();
 
-        fillModel(dataBaseService.executeQuery(sql));
     }
 
     @Override
