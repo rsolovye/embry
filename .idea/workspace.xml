@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3ac870d-7b3b-41bc-8033-9d8999416730" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/services/DataMapperException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/services/DefaultValuesDataMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/services/DefaultValuesGateway.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/services/DefaultValuesGatewayExecption.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/services/RecordSet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/services/RecordSetException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/services/SQLmodelVisitor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/services/Visitable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/services/Visitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/micro.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/micro.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/TestMain.java" afterPath="$PROJECT_DIR$/src/main/java/TestMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/MasterController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/MasterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/daos/DefaultValuesDAO.java" afterPath="$PROJECT_DIR$/src/main/java/daos/DefaultValuesDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/daos/FactoryDAO.java" afterPath="$PROJECT_DIR$/src/main/java/daos/FactoryDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/models/DefaultValuesModel.java" afterPath="$PROJECT_DIR$/src/main/java/models/DefaultValuesModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/models/MasterModel.java" afterPath="$PROJECT_DIR$/src/main/java/models/MasterModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/DataBaseService.java" afterPath="$PROJECT_DIR$/src/main/java/services/DataBaseService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -594,7 +577,14 @@
       <option name="project" value="LOCAL" />
       <updated>1485247256112</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="2123">
+      <created>1485266445483</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1485266445483</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
