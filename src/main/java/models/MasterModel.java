@@ -1,6 +1,7 @@
 package models;
 
 import daos.AccessObject;
+import daos.DataModelFactory;
 import daos.FactoryDAO;
 import daos.MasterDAOImpl;
 
@@ -11,25 +12,28 @@ import java.util.HashMap;
  * Created by bobsol on 19.01.17.
  */
 public class MasterModel {
-    private MasterDAOImpl masterDAO;
-    public FactoryDAO factoryDAO;
+
+    private HashMap<String, AccessObject> dao;
+
    // private LabProtocol.LabProtocolBuilder labProtocolBuilder;
-    HashMap<String, String[]> defaultControlValuesMap;
-    DefaultValuesModel defaultValuesModel = new DefaultValuesModel();
 
 
     ArrayList<Model> models = new ArrayList<>();
     public MasterModel() {
+        this.dao = new HashMap<>();
+        this.dao.put("DEFAULT_VALUES", new FactoryDAO().getAccessObject(Model.DEFAULT_VALUES));
 
-        models.add(defaultValuesModel);
-        defaultValuesModel.mapDefaultValues();
 
-        defaultControlValuesMap = defaultValuesModel.getValuesMap();
+
 
     }
 
-    public HashMap<String, String[]> getDefaultControlValuesMap() {
-
-        return  defaultControlValuesMap;
+    public Model getModel(String modelName){
+        return this.dao.get(modelName).getModel();
+    }
+    public HashMap<String, String[]> getDefaultControlValuesMap(){
+        DefaultValuesModel model = (DefaultValuesModel) getModel(Model.DEFAULT_VALUES);
+        //IMUTABLE?
+        return new HashMap<>(model.getValuesMap());
     }
 }

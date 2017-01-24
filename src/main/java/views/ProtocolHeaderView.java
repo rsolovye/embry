@@ -1,7 +1,8 @@
 package views;
 
+import views.Utils.Utils;
+
 import javax.swing.*;
-import javax.swing.text.html.HTMLDocument;
 import java.util.ArrayList;
 import java.util.HashMap;
 

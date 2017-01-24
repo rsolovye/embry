@@ -29,7 +29,7 @@ public class DataBaseService {
 
                 stmt = c.createStatement();
                 stmt.execute(sql);
-                 rs = stmt.getResultSet();
+                rs = stmt.getResultSet();
 
                         stmt.close();
                 c.commit();
