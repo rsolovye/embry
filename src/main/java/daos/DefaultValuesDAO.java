@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by bobsol on 23.01.17.
  */
-public class DefaultValuesDAO implements AccessObject {
+public class DefaultValuesDAO extends AccessObject {
 
     DefaultValuesModel model;
 
@@ -30,14 +30,15 @@ public class DefaultValuesDAO implements AccessObject {
     }
 
 
-
-
     @Override
+    public void query() {
+
+    }
+
     public void query(String sql) {
 
     }
 
-    @Override
     public Model getModel() {
         return new ModelFactory().getModel(Model.DEFAULT_VALUES);
     }

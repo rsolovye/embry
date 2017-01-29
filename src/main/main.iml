@@ -8,6 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="miglayout-core-5.0" level="project" />
-    <orderEntry type="library" name="sqlite-jdbc-3.16.1" level="project" />
+    <orderEntry type="library" exported="" name="sqlite-jdbc-3.16.1" level="application" />
   </component>
 </module>

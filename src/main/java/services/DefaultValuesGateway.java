@@ -41,6 +41,7 @@ public class DefaultValuesGateway {
 
             stmt = c.createStatement();
 
+            //RecordSet rs = (RecordSet) stmt.executeQuery(sql);
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {

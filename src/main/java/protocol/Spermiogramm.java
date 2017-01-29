@@ -1,10 +1,12 @@
 package protocol;
 
+import gwtest.RowObectImpl;
+
 import java.sql.Time;
 
 public class Spermiogramm{
 
-    private Time time1, time2, time3;
+    private String time1, time2, time3;
     private String concentration, volume, viscosity, morphology, ab1, c1, d1, ab2, c2, d2, concentration2, volume07, volume10, method, embryologist, comment;
 
     private Spermiogramm(Builder b){ this.time1 = b.time1;
@@ -30,11 +32,34 @@ public class Spermiogramm{
 
     public static class Builder{
 
-        private Time time1, time2, time3;
+        private String time1, time2, time3;
         private String concentration, volume, viscosity, morphology, ab1, c1, d1, ab2, c2, d2, concentration2, volume07, volume10, method, embryologist, comment;
-
+        String guid;
         public Builder() {}
+        public Builder buildFromRowSet(RowObectImpl row){
+            this.guid = row.get("guid");
+            this.time1 = row.get("time_!");
+            this.time2 = row.get("time_2");
+            this.time3 = row.get("time_3");
 
+            this.concentration = row.get("concentration");
+            this.volume = row.get("volume");
+         this.viscosity = row.get("viscosity");
+//
+//            Name-SPERMIOGRAMM:morphology
+//            Name-SPERMIOGRAMM:ab_native
+//            Name-SPERMIOGRAMM:c_native
+//            Name-SPERMIOGRAMM:d_native
+//            Name-SPERMIOGRAMM:method
+//            Name-SPERMIOGRAMM:ab_postprep
+//            Name-SPERMIOGRAMM:c_postprep
+//            Name-SPERMIOGRAMM:d_postprep
+//            Name-SPERMIOGRAMM:concentration_postprep
+//            Name-SPERMIOGRAMM:add_to_700
+//            Name-SPERMIOGRAMM:add_to_1000
+//            Name-SPERMIOGRAMM:embryologist
+//            Name-SPERMIOGRAMM:sperm_note
+        return this;}
         public Builder concentration(String s){this.concentration = s; return this;}
         public Builder volume(String s){this.volume= s; return this;}
         public Builder morphology(String s){this.morphology= s; return this;}
@@ -53,9 +78,9 @@ public class Spermiogramm{
 
         public Builder embryologist(String s){this.embryologist = s; return this;}
         public Builder comment(String s){this.comment = s; return this;}
-        public Builder time1(Time s){this.time1 = s; return this;}
-        public Builder time2(Time s){this.time2 = s; return this;}
-        public Builder time3(Time s){this.time3 = s; return this;}
+        public Builder time1(String s){this.time1 = s; return this;}
+        public Builder time2(String s){this.time2 = s; return this;}
+        public Builder time3(String s){this.time3 = s; return this;}
         public Spermiogramm build(){
             Spermiogramm sp = new Spermiogramm(this);
             return sp;
@@ -87,15 +112,15 @@ public class Spermiogramm{
             "}";
     }
 
-    public Time getTime1() {
+    public String getTime1() {
         return time1;
     }
 
-    public Time getTime2() {
+    public String getTime2() {
         return time2;
     }
 
-    public Time getTime3() {
+    public String getTime3() {
         return time3;
     }
 

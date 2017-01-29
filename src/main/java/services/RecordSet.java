@@ -23,7 +23,7 @@ public interface RecordSet {
         public java.math.BigDecimal getBigDecimal(java.lang.String arg0) throws RecordSetException;
         public boolean first() throws RecordSetException;
         public boolean last() throws RecordSetException;
-        public boolean previous() throws RecordSetException;;
+        public boolean previous() throws RecordSetException;
 
 
 }

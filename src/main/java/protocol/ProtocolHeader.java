@@ -1,30 +1,35 @@
 package protocol;
 
-import java.sql.Time;
+import gwtest.FormatRus;
+import gwtest.ProtocolHeaderRow;
+
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.UUID;
 
 /**
  * Created by micro on 19.01.2017.
  */
 public class ProtocolHeader {
-
-    private final LocalDate pfDate;
-    private final Time pfTime;
-    private final boolean isOms;
-    private final String pfDiagnosis;
-    private final String pfHeaderNotes;
-    private final String pfVRT;
-    private final String pfDoctor;
-    private final String fName;
-    private final LocalDate fDOB;
-    private final int fCode;
-    private final String mName;
-    private final LocalDate mDOB;
-    private int mCode;
+    private  UUID guid;
+    private  LocalDate pfDate;
+    private  LocalTime pfTime;
+    private  boolean isOms;
+    private  String pfDiagnosis;
+    private  String pfHeaderNotes;
+    private  String pfVRT;
+    private  String pfDoctor;
+    private  String fName;
+    private  LocalDate fDOB;
+    private  String fCode;
+    private  String mName;
+    private  LocalDate mDOB;
+    private  String mCode;
+    private  String ivfAttempt;
 
 
     private ProtocolHeader(ProtocolHeaderBuilder builder) {
-
+        this.guid = builder.guid;
         this.pfDate = builder.pfDate;
         this.pfTime = builder.pfTime;
         this.pfDiagnosis = builder.pfDiagnosis;
@@ -41,14 +46,18 @@ public class ProtocolHeader {
         this.mName = builder.mName;
         this.mDOB = builder.mDOB;
         this.mCode = builder.mCode;
+        this.ivfAttempt = builder.ivfAttempt;
 
     }
 
+    public UUID testNewGuid(){ this.guid = UUID.randomUUID(); return this.guid;}
+    public void testNewDoc() {this.pfDoctor = "Шарфи Ю.Н.";}
+    public UUID getGuid() {return this.guid;}
     public LocalDate getPfDate() {
         return pfDate;
     }
-
-    public Time getPfTime() {
+    public String getIvfAttempt() {return ivfAttempt;}
+    public LocalTime getPfTime() {
         return pfTime;
     }
 
@@ -68,8 +77,14 @@ public class ProtocolHeader {
         return fDOB;
     }
 
-    public boolean getIsOms() {
-        return isOms;
+    public String getIsOms() {
+        if (isOms)
+        {
+            return "1";
+        }
+        else {
+            return "0";
+        }
     }
 
     public String getMName() {
@@ -80,11 +95,11 @@ public class ProtocolHeader {
         return mDOB;
     }
 
-    public int getMCode() {
+    public String getMCode() {
         return mCode;
     }
 
-    public int getFCode() {
+    public String getFCode() {
         return fCode;
     }
 
@@ -98,11 +113,11 @@ public class ProtocolHeader {
 
 
     public static class ProtocolHeaderBuilder {
-
+        private UUID guid;
         private String pfDiagnosis;
         private String pfHeaderNotes;
         private LocalDate pfDate;
-        private Time pfTime;
+        private LocalTime pfTime;
 
         private boolean isOms;
         private String pfVRT;
@@ -110,76 +125,128 @@ public class ProtocolHeader {
 
         private String fName;
         private LocalDate fDOB;
-        private int fCode;
+        private String fCode;
 
 
         private String mName;
         private LocalDate mDOB;
-        private int mCode;
+        private String mCode;
+         private String ivfAttempt;
 
-        private ProtocolHeaderBuilder pfDiagnosis(String pfDiagnosis) {
+        public ProtocolHeaderBuilder(UUID id){
+            this.guid = id;
+        }
+        public ProtocolHeaderBuilder(){
+        }
+        public ProtocolHeaderBuilder(ProtocolHeaderRow resultSet){
+
+                    buildFromRecordSet(resultSet);
+
+        }
+
+        public ProtocolHeaderBuilder buildFromRecordSet(ProtocolHeaderRow rs){
+
+
+                guid = UUID.fromString(rs.getString("guid"));
+                pfDate = FormatRus.rusDate(rs.getString("pfDate"));
+                pfTime = FormatRus.rusTime(rs.getString("pfTime"));
+                pfVRT = rs.getString("pfVRT");
+                ivfAttempt = rs.getString("ivfAttempt");
+                pfDoctor = rs.getString("pfDoctor");
+                pfDiagnosis = rs.getString("pfDiagnosis");
+                isOms = rs.getBoolean("isOms");
+                pfHeaderNotes = rs.getString("pfHeaderNotes");
+
+                fName = rs.getString("fName");
+                fDOB = FormatRus.rusDate(rs.getString("fDOB"));
+                fCode = rs.getString("fCode");
+
+                mName = rs.getString("mName");
+                mDOB = FormatRus.rusDate(rs.getString("mDOB"));
+                mCode = rs.getString("mCode");
+
+                return this;
+
+
+        }
+        public ProtocolHeaderBuilder guid(UUID guid) {
+            this.guid = guid;
+            return this;
+        }
+        public ProtocolHeaderBuilder ivfAttempt(String ivfAttempt) {
+            this.ivfAttempt = ivfAttempt;
+            return this;
+        }
+        public  ProtocolHeaderBuilder pfDiagnosis(String pfDiagnosis) {
             this.pfDiagnosis = pfDiagnosis;
             return this;
         }
 
-        private ProtocolHeaderBuilder pfHeaderNotes(String pfHeaderNotes) {
+        public ProtocolHeaderBuilder pfHeaderNotes(String pfHeaderNotes) {
             this.pfHeaderNotes = pfHeaderNotes;
             return this;
         }
 
-        private ProtocolHeaderBuilder pfDate(LocalDate pfDate) {
+        public ProtocolHeaderBuilder pfDate(LocalDate pfDate) {
             this.pfDate = pfDate;
             return this;
         }
 
-        private ProtocolHeaderBuilder pfTime(Time pfTime) {
+        public ProtocolHeaderBuilder pfTime(LocalTime pfTime) {
             this.pfTime = pfTime;
             return this;
         }
 
-        private ProtocolHeaderBuilder isOms(boolean isOms) {
+        public ProtocolHeaderBuilder isOms(boolean isOms) {
             this.isOms = isOms;
             return this;
         }
 
-        private ProtocolHeaderBuilder pfVRT(String pfVRT) {
+        public ProtocolHeaderBuilder pfVRT(String pfVRT) {
             this.pfVRT = pfVRT;
             return this;
         }
 
-        private ProtocolHeaderBuilder pfDoctor(String pfDoctor) {
+        public ProtocolHeaderBuilder pfDoctor(String pfDoctor) {
             this.pfDoctor = pfDoctor;
             return this;
         }
 
-        private ProtocolHeaderBuilder fName(String fName) {
+        public ProtocolHeaderBuilder fName(String fName) {
             this.fName = fName;
             return this;
         }
 
-        private ProtocolHeaderBuilder fDOB(LocalDate fDOB) {
+        public ProtocolHeaderBuilder fDOB(LocalDate fDOB) {
             this.fDOB = fDOB;
             return this;
         }
 
-        private ProtocolHeaderBuilder fCode(int fCode) {
+        public ProtocolHeaderBuilder fCode(String fCode) {
             this.fCode = fCode;
             return this;
         }
 
-        private ProtocolHeaderBuilder mName(String mName) {
+        public ProtocolHeaderBuilder mName(String mName) {
             this.mName = mName;
             return this;
         }
 
-        private ProtocolHeaderBuilder mDOB(LocalDate mDOB) {
+        public ProtocolHeaderBuilder mDOB(LocalDate mDOB) {
             this.mDOB = mDOB;
             return this;
         }
 
-        private ProtocolHeaderBuilder mCode(int mCode) {
+
+
+        public ProtocolHeaderBuilder mCode(String mCode) {
             this.mCode = mCode;
             return this;
+        }
+        public ProtocolHeader build(){
+            ProtocolHeader ph = new ProtocolHeader(this);
+
+            return ph;
         }
 
     }
@@ -187,9 +254,11 @@ public class ProtocolHeader {
     @Override
     public String toString() {
         return "LabProtocol{" +
+                "guid = " + getGuid().toString() + "\n" +
                 "pfDate = " + getPfDate() + "\n" +
                 ", pfTime = " + getPfTime() + "\n" +
                 ", pfVRT = " + getPfVRT() + "\n" +
+                ", ivfAttampt = " + getIvfAttempt() + "\n" +
                 ", pfDoctor = " + getPfDoctor() + "\n" +
                 ", isOms = " + getIsOms() + "\n" +
                 ", pfDiagnosis = " + getPfDiagnosis() + "\n" +
@@ -199,7 +268,7 @@ public class ProtocolHeader {
                 ", fCode = " + getFCode() + "\n" +
                 ", mName = " + getMName() + "\n" +
                 ", mDOB = " + getMDOB() + "\n" +
-                ", mCode = " + getMCode() +
+                ", mCode = " + getMCode() + "\n" +
                 "}";
     }
 }

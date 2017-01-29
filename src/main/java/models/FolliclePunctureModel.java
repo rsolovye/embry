@@ -17,9 +17,7 @@ public class FolliclePunctureModel implements Model {
         folliclePunctureDAO = new FolliclePunctureDAO();
     }
 
-    public void setLabProtocolID(int labProtocolID){
-        folliclePunctureBuilder.labProtocolID(labProtocolID);
-    }
+
     public void setEmbriologist(String embryologistName){
         folliclePunctureBuilder.embryologist(embryologistName);
     }
@@ -29,9 +27,6 @@ public class FolliclePunctureModel implements Model {
     }
 
 
-    public void setEggCount(int eggCount){
-        folliclePunctureBuilder.eggCount(eggCount);
-    }
 
     public void buildFolliclePuncture(){
         folliclePuncture = folliclePunctureBuilder.build();

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by bobsol on 19.01.17.
  */
-public class FolliclePunctureDAO implements AccessObject{
+public class FolliclePunctureDAO extends AccessObject {
 
     DataBaseService dbs = new DataBaseService();
     ArrayList<FolliclePuncture> folliclePunctureList;
@@ -26,6 +26,11 @@ public class FolliclePunctureDAO implements AccessObject{
       //              folliclePuncture.getEgg_count() + "\');");
     }
 
+
+    @Override
+    public void query() {
+
+    }
 
     @Override
     public void query(String sql) {
