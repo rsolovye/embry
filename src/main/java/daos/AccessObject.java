@@ -1,10 +1,6 @@
 package daos;
 
 import models.Model;
-import protocol.DomainObject;
-
-import java.sql.ResultSet;
-import java.util.UUID;
 
 /**
  * Created by bobsol on 23.01.17.

@@ -1,10 +1,9 @@
 package services;
 
 import models.*;
-import protocol.PgsCryoEt;
-import protocol.Spermiogramm;
+import protocol.old.pojos.PgsCryoEt;
+import protocol.old.pojos.Spermiogramm;
 
-import java.util.ArrayList;
 import java.util.Set;
 
 /**

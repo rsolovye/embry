@@ -1,10 +1,9 @@
 package daos;
 
 import models.Model;
-import protocol.FolliclePuncture;
+import protocol.old.pojos.FolliclePuncture;
 import services.DataBaseService;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**

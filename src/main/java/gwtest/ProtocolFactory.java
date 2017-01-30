@@ -1,6 +1,6 @@
 package gwtest;
 
-import protocol.*;
+import protocol.maps.*;
 
 import java.util.HashMap;
 

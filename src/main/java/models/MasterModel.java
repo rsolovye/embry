@@ -1,14 +1,9 @@
 package models;
 
 import daos.AccessObject;
-import daos.DataModelFactory;
-import daos.FactoryDAO;
-import daos.MasterDAOImpl;
 import gwtest.*;
-import protocol.ProtocolHeader;
-import services.DefaultValuesGateway;
+import protocol.old.pojos.ProtocolHeader;
 
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;

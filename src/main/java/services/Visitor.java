@@ -1,10 +1,8 @@
 package services;
 
 import models.*;
-import protocol.Fertilization;
-import protocol.FolliclePuncture;
-import protocol.PgsCryoEt;
-import protocol.Spermiogramm;
+import protocol.old.pojos.PgsCryoEt;
+import protocol.old.pojos.Spermiogramm;
 
 /**
  * Created by micro on 24.01.2017.

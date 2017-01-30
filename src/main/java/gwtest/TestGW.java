@@ -1,6 +1,6 @@
 package gwtest;
 
-import protocol.Protocol;
+import protocol.maps.Protocol;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,7 +1,7 @@
 package daos;
 
 import models.Model;
-import protocol.ProtocolHeader;
+import protocol.old.pojos.ProtocolHeader;
 
 import java.sql.*;
 import java.util.UUID;

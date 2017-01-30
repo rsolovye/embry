@@ -1,6 +1,6 @@
 package models;
 
-import protocol.FolliclePuncture;
+import protocol.old.pojos.FolliclePuncture;
 import daos.FolliclePunctureDAO;
 
 /**
