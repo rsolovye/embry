@@ -1,5 +1,7 @@
 package gwtest;
 
+import protocol.Protocol;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -42,13 +44,21 @@ public class TestGW {
         //  ProtocolHeaderGateway.findByGUID(UUID.fromString(
             //        "61c7628a-2551-4ce5-b134-efd00289da2a"));
 
-       RowObjectMapper.rowObjectsFromDB();
+      // RowObjectMapper.rowObjectsFromDB();
 //       for (RowObectImpl r: RowObjectMapper.rowArray) {
 //           for (String k : r.getKeySet()) {
 //               System.out.println("Name-" + r.getName() + ":" + k);
 //           }
 //       }
-       MasterMapper.findByGuid(UUID.fromString("61c7628a-2551-4ce5-b134-efd00289d72a"));
+       for (Protocol l: MasterMapper.findByGuid(UUID.fromString("61c7628a-2551-4ce5-b134-efd00289da2a")))
+          // System.out.print(l.keySet().size());
+       {
+           if (l == null) System.out.print("NULLL PROTOCOL");
+
+           for (String k : l.keySet()) {
+               System.out.println("l.get(k) " + l.get(k));// + " - " + s + "-" + l.get(s));
+           }
+       }
     }
 
     private static HashMap<String, String> mapedInput(){

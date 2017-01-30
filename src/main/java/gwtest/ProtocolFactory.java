@@ -11,6 +11,7 @@ public class ProtocolFactory {
     private static SpermiogrammMap sm = null;
 
     public static Protocol get(String name, HashMap<String, String> map) {
+        System.out.println("Protocol get " + name);
         if (name.compareTo("SPERMIOGRAMM") == 0) return new SpermiogrammMap(map);
         if (name.compareTo("PROTOCOL_HEADER") == 0) return new ProtocolHeaderMap(map);
         if (name.compareTo("FOLLICLE_PUNCTURE") == 0) return new FolliclePunctureMap(map);

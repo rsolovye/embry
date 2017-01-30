@@ -13,7 +13,11 @@ public class MasterMapper {
 
         ArrayList<RowObectImpl> protocolAsLists = MasterGateway.findByGuid(guid);
         ArrayList<Protocol> protocols = new ArrayList<>();
+
         for (RowObectImpl roi : protocolAsLists){
+
+            System.out.print("MasMapper " + roi.getKeySet().length);
+                if (roi.getMap().size() > 0)
                  protocols.add(ProtocolFactory.get(roi.className, roi.getMap()));
                 }
                 return protocols;

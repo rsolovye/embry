@@ -8,7 +8,7 @@ import java.util.Map;
  */
 public class Protocol extends HashMap<String, String> {
     public Protocol(HashMap<String, String> m) {
-        super(m);
+        this.putAll(m);
     }
 
     public void setMap(HashMap<String, String> map){

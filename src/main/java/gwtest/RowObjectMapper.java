@@ -26,6 +26,7 @@ public static void rowObjectsFromDB(){
 
                         String className = DB.rs.getString("class_name");
                         String[] keys = DB.rs.getString("keyset").split(",");
+                        System.out.println(className +" + " + keys.length);
                         rowArray.add(new RowObectImpl(className, keys));
                 }
                 DB.con.commit();

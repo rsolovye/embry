@@ -184,9 +184,150 @@ INSERT INTO pojo_keysets VALUES
 INSERT INTO pojo_keysets VALUES
 ('d952cb20-b353-4c52-b9ba-f7470c0823d4', 'MALE_SOURCE', 'guid,source,material_type,cryo_date,biopsy_type');
 INSERT INTO pojo_keysets VALUES
-('620b1289-c8cc-4b6f-94c5-d31c9a199f6a', 'SPERMIOGRAMM', 'guid,time_!,time_2,time_3,concentration,volume,viscosity,morphology,ab_native,c_native,d_native,method,ab_postprep,c_postprep,d_postprep,concentration_postprep,add_to_700,add_to_1000,embryologist,sperm_note');
+('620b1289-c8cc-4b6f-94c5-d31c9a199f6a', 'SPERMIOGRAMM', 'guid,time_1,time_2,time_3,concentration,volume,viscosity,morphology,ab_native,c_native,d_native,method,ab_postprep,c_postprep,d_postprep,concentration_postprep,add_to_700,add_to_1000,embryologist,sperm_note');
 INSERT INTO pojo_keysets VALUES
 ('486cab69-e832-4639-a1f6-11099471e9ef', 'EMBRYO_TRANSFER', 'guid,etDay,etTime,etDpf,etCount,etDoctor,etNurse,etEmbryologist,catheter,catheter_hard,catheter_replacement,mucus,blood,etRepeat,visible,no_ultra_sound,surogate_mother');
+UPDATE pojo_keysets SET keyset='guid,time_1,time_2,time_3,concentration,volume,viscosity,morphology,ab_native,c_native,d_native,method,ab_postprep,c_postprep,d_postprep,concentration_postprep,add_to_700,add_to_1000,embryologist,sperm_note'
+ WHERE guid='620b1289-c8cc-4b6f-94c5-d31c9a199f6a'; 'guid,time_1,time_2,time_3,concentration,volume,viscosity,morphology,ab_native,c_native,d_native,method,ab_postprep,c_postprep,d_postprep,concentration_postprep,add_to_700,add_to_1000,embryologist,sperm_note');
+CREATE TABLE VITRIFIED_EMBRYO()
+CREATE TABLE FOLLICLE_PUNCTURE(
+guid STRING PRIMARY KEY NOT NULL,
+embryologist STRING,
+nurse STRING,
+harvested_count STRING
+);
+
+
+CREATE TABLE FERTILIZATION(
+guid STRING PRIMARY KEY NOT NULL,
+procedure_type STRING,
+embryologist STRING,
+time_1 STRING,
+witness_1 STRING,
+time_2 STRING,
+witness_2 STRING
+);
+
+CREATE TABLE FEMALE_SOURCE(
+guid STRING,
+source STRING,
+material_type STRING,
+cryo_date STRING,
+expected_follicle_count STRING
+);
+
+
+CREATE TABLE  CHECK_POINTS(
+guid STRING PRIMARY KEY NOT NULL,
+fertilization_check_by STRING,
+media_changed_by STRING,
+vitrified_by,utilized_by STRING
+);
+
+CREATE TABLE CONDITIONS(
+guid STRING PRIMARY KEY NOT NULL,
+cleavage_lot STRING,
+blastocyst_lot STRING,
+sps_lot STRING,
+hepes_lot STRING,
+ovoil_lot STRING,
+incubator STRING,
+special_case_note STRING
+);
+
+
+CREATE TABLE ET_CRYO_PGS(
+guid  STRING PRIMARY KEY NOT NULL,
+et_day STRING,
+et_note STRING
+Vitrification_decision STRING,
+max_embryos_cryo STRING,
+max_straws_cryo STRING,
+pgs_type STRING,
+pgs_note STRING
+);
+
+CREATE TABLE  CONCLUSION(
+guid  STRING PRIMARY KEY NOT NULL,
+okk STRING,
+m2 STRING,
+m1 STRING,
+gv STRING,
+abn STRING,
+atr STRING,
+used_for_fertilization STRING,
+fertilized STRING,
+transfered STRING,
+vitrified,pregnancy  STRING
+);
+
+CREATE TABLE VITRIFICATION(
+guid STRING PRIMARY KEY NOT NULL,
+vitDate STRING,
+fName STRING,
+fDOB STRING,
+vitVRT STRING,
+fCode STRING,
+mName STRING,
+mDOB STRING,
+media_date STRING,
+dewar STRING,
+canister STRING,
+color STRING,
+embryo_count STRING,
+straw_count,sections_count  STRING
+);
+
+CREATE TABLE MALE_SOURCE(
+ guid STRING,
+ source STRING,
+ material_type STRING,
+ cryo_date,biopsy_type STRING
+ );
+
+CREATE TABLE EMBRYO_TRANSFER(
+guid STRING PRIMARY KEY NOT NULL,
+etDay STRING,
+etTime STRING,
+etDpf STRING,
+etCount STRING,
+etDoctor STRING,
+etNurse STRING,
+etEmbryologist STRING,
+catheter STRING,
+catheter_hard STRING,
+catheter_replacement STRING,
+mucus STRING,
+blood STRING,
+etRepeat STRING,
+visible STRING,
+no_ultra_sound STRING,
+surogate_mother STRING
+);
+
+CREATE TABLE SPERMIOGRAMM(
+guid STRING PRIMARY KEY NOT NULL,
+time_1 STRING,
+time_2 STRING,
+time_3 STRING,
+concentration STRING,
+volume STRING,
+viscosity STRING,
+morphology STRING,
+ab_native STRING,
+c_native STRING,
+d_native STRING,
+method STRING,
+ab_postprep STRING,
+c_postprep STRING,
+d_postprep STRING,
+concentration_postprep STRING,
+add_to_700 STRING,
+add_to_1000 STRING,
+embryologist STRING,
+sperm_note STRING
+);
+
 
 String sqk=
 "INSERT INTO pojo_keysets VALUES('\n"

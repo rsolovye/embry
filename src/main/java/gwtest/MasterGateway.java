@@ -11,7 +11,7 @@ public class MasterGateway {
 
     public synchronized static ArrayList<RowObectImpl> findByGuid(UUID guid){
         ArrayList<String> tableNames = new ArrayList<>();
-        //RowObjectMapper.rowObjectsFromDB();
+        RowObjectMapper.rowObjectsFromDB();
 
         try {
             if (DB.con.isClosed()) DB.init();
@@ -25,7 +25,10 @@ public class MasterGateway {
             try {
                 while (DB.rs.next()) {
                     for (String k : r.getKeySet()) {
-                        r.put(k, DB.rs.getString(k));
+                        System.out.print(k);
+                        String temp =  DB.rs.getString(k);
+                        System.out.println("temp" + temp);
+                            r.getMap().put(k, temp);
                     }
                 }
              //DB.commit();

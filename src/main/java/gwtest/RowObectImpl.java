@@ -15,9 +15,12 @@ public class RowObectImpl {
         this.className = className;
         this.keySet = keySet;
         mapedValues = new HashMap<>();
+        for (String k : keySet)
+            put(k, "");
     }
 
     public void put(String k, String v){
+        System.out.println(v);
         boolean canBeMapped = false;
         for (String ks : keySet)
         {
@@ -27,6 +30,7 @@ public class RowObectImpl {
         }
 
         if (canBeMapped) {
+            System.out.println(v + canBeMapped);
             mapedValues.put(k, v);
         }
     }
