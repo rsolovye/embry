@@ -9,4 +9,5 @@ public class ProtocolHeaderMap extends Protocol {
     public ProtocolHeaderMap(HashMap<String, String> map) {
         super(map);
     }
+
 }

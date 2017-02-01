@@ -187,8 +187,38 @@ INSERT INTO pojo_keysets VALUES
 ('620b1289-c8cc-4b6f-94c5-d31c9a199f6a', 'SPERMIOGRAMM', 'guid,time_1,time_2,time_3,concentration,volume,viscosity,morphology,ab_native,c_native,d_native,method,ab_postprep,c_postprep,d_postprep,concentration_postprep,add_to_700,add_to_1000,embryologist,sperm_note');
 INSERT INTO pojo_keysets VALUES
 ('486cab69-e832-4639-a1f6-11099471e9ef', 'EMBRYO_TRANSFER', 'guid,etDay,etTime,etDpf,etCount,etDoctor,etNurse,etEmbryologist,catheter,catheter_hard,catheter_replacement,mucus,blood,etRepeat,visible,no_ultra_sound,surogate_mother');
+
 UPDATE pojo_keysets SET keyset='guid,time_1,time_2,time_3,concentration,volume,viscosity,morphology,ab_native,c_native,d_native,method,ab_postprep,c_postprep,d_postprep,concentration_postprep,add_to_700,add_to_1000,embryologist,sperm_note'
  WHERE guid='620b1289-c8cc-4b6f-94c5-d31c9a199f6a'; 'guid,time_1,time_2,time_3,concentration,volume,viscosity,morphology,ab_native,c_native,d_native,method,ab_postprep,c_postprep,d_postprep,concentration_postprep,add_to_700,add_to_1000,embryologist,sperm_note');
+String sql="INSERT INTO FERTILIZATION VALUES('61c7628a-2551-4ce5-b134-efd00289d72a', 'ИКСИ', 'Хандога А.О.', '14:10', 'Мурза Г.В.', '', '');";
+ procedure_type STRING,
+ embryologist STRING,
+ time_1 STRING,
+ witness_1 STRING,
+ time_2 STRING,
+ witness_2 STRING
+ );
+ CREATE TABLE FOLLICLE_PUNCTURE(
+ guid STRING PRIMARY KEY NOT NULL,
+ embryologist STRING,
+ nurse STRING,
+ harvested_count STRING
+ );'
+procedure_type STRING,
+embryologist STRING,
+time_1 STRING,
+witness_1 STRING,
+time_2 STRING,
+witness_2 STRING
+);
+CREATE TABLE FOLLICLE_PUNCTURE(
+guid STRING PRIMARY KEY NOT NULL,
+embryologist STRING,
+nurse STRING,
+harvested_count STRING
+);
+
+
 CREATE TABLE VITRIFIED_EMBRYO()
 CREATE TABLE FOLLICLE_PUNCTURE(
 guid STRING PRIMARY KEY NOT NULL,

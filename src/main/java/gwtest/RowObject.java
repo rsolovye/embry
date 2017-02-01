@@ -1,5 +1,7 @@
 package gwtest;
 
+import protocol.maps.Protocol;
+
 import java.util.HashMap;
 
 /**
@@ -19,18 +21,18 @@ public class RowObject {
             put(k, "");
     }
 
+
     public void put(String k, String v){
-        System.out.println(v);
-        boolean canBeMapped = false;
+                boolean canBeMapped = false;
         for (String ks : keySet)
         {
-            if (ks.compareTo("k") == 0) {
+            if (ks.equalsIgnoreCase(k) && v.length()>0) {
                 canBeMapped = true;
             }
         }
 
         if (canBeMapped) {
-            System.out.println(v + canBeMapped);
+        //    System.out.println("RowObject mapping(" +k + "," + v + ")");
             mapedValues.put(k, v);
         }
     }

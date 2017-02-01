@@ -2,6 +2,7 @@ package models;
 
 import daos.AccessObject;
 import gwtest.*;
+import protocol.maps.Protocol;
 import protocol.old.pojos.ProtocolHeader;
 
 import java.util.ArrayList;
@@ -16,39 +17,33 @@ public class MasterModel {
     private HashMap<String, AccessObject> dao;
     private HashMap<String, Model> models;
 
-    public ProtocolHeader getHeader(UUID guid){
-        ProtocolHeaderRow rds = ProtocolHeaderGateway.findByGUID(guid);
-        ProtocolHeader ph = new ProtocolHeader.ProtocolHeaderBuilder(rds).build();
-        return ph;
-    }
+//    public ProtocolHeader getHeader(UUID guid){
+//        ProtocolHeaderRow rds = ProtocolHeaderGateway.findByGUID(guid);
+//        ProtocolHeader ph = new ProtocolHeader.ProtocolHeaderBuilder(rds).build();
+//        return ph;
+//    }
+//
+//
+    public void saveProtocol(String protocolType, HashMap<String, String> map){
+        Protocol protocol = ProtocolFactory.get(protocolType, map);
 
-
-    public void saveProtocolHeader(HashMap<String, String> map){
-        ProtocolHeader ph = buildProtocolHeader(map);
-
-        if (Registry.containsGuid(ph.getGuid()))
-        {
-            ProtocolHeaderMapper.updateByGuid(ph);
-        }
-        else {
-            ProtocolHeaderMapper.insert(ph);
-        }
+        MasterMapper.mapForSaving(protocol);
 
     }
+//
+//    private ProtocolHeader buildProtocolHeader(HashMap<String, String> map){
+//        ProtocolHeaderRow rds = new ProtocolHeaderRow();
+//
+//
+//        for (String k: rds.getKeys())
+//        {
+//            System.out.print(k);
+//            rds.set(k, map.get(k));
+//        }
+//        return new ProtocolHeader.ProtocolHeaderBuilder(rds).build();
 
-    private ProtocolHeader buildProtocolHeader(HashMap<String, String> map){
-        ProtocolHeaderRow rds = new ProtocolHeaderRow();
 
-
-        for (String k: rds.getKeys())
-        {
-            System.out.print(k);
-            rds.set(k, map.get(k));
-        }
-        return new ProtocolHeader.ProtocolHeaderBuilder(rds).build();
-
-
-    }
+ //   }
     SQLRegistry sqlRegistry;
     public MasterModel() {
         SQLRegistry.initialize();

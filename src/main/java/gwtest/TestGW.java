@@ -2,6 +2,7 @@ package gwtest;
 
 import protocol.maps.Protocol;
 
+import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -30,35 +31,56 @@ public class TestGW {
 
 
         // /System.out.println(ph.testNewGuid().toString());
-       //ProtocolHeader.ProtocolHeaderBuilder().build();
-       // ph.testNewDoc();
-      // ProtocolHeaderMapper.updateByGuid(ph);
+        //ProtocolHeader.ProtocolHeaderBuilder().build();
+        // ph.testNewDoc();
+        // ProtocolHeaderMapper.updateByGuid(ph);
         //ProtocolHeaderMapper.insert(ph);
         //SQLRegistry.getSQL().getSqlRegistry();
         //.getSQL("control_list_names");
-      //  DefaultValues.getDefaultList("DOCTORS");//printMap(); //.getDefaultList("DOCTORS");
-     //MasterModel m = new MasterModel();
-    //m.getHeader(UUID.fromString((mapedInput().get("guid"))));
+        //  DefaultValues.getDefaultList("DOCTORS");//printMap(); //.getDefaultList("DOCTORS");
+        //MasterModel m = new MasterModel();
+        //m.getHeader(UUID.fromString((mapedInput().get("guid"))));
         //m.saveProtocolHeader(mapedInput());
 
         //  ProtocolHeaderGateway.findByGUID(UUID.fromString(
-            //        "61c7628a-2551-4ce5-b134-efd00289da2a"));
+        //        "61c7628a-2551-4ce5-b134-efd00289da2a"));
 
-      // RowObjectMapper.rowObjectsFromDB();
+        // RowObjectMapper.rowObjectsFromDB();
 //       for (RowObectImpl r: RowObjectMapper.rowArray) {
 //           for (String k : r.getKeySet()) {
 //               System.out.println("Name-" + r.getName() + ":" + k);
 //           }
 //       }
-       for (Protocol l: MasterMapper.findByGuid(UUID.fromString("61c7628a-2551-4ce5-b134-efd00289da2a")))
-          // System.out.print(l.keySet().size());
-       {
-           if (l == null) System.out.print("NULLL PROTOCOL");
+//       for (Protocol l: MasterMapper.findByGuid(UUID.fromString("61c7628a-2551-4ce5-b134-efd00289da2a")))
+//          // System.out.print(l.keySet().size());
+//       {
+//           if (l == null) System.out.print("NULLL PROTOCOL");
+//
+//           for (String k : l.keySet()) {
+//               System.out.println("l.get(k) " + l.get(k));// + " - " + s + "-" + l.get(s));
+//           }
+//       }
+//
+//        for (Protocol p : DataBaseCopy.findProtocol("61c7628a-2551-4ce5-b134-efd00289d72a")){
+//            System.out.print("DataBaseCopy.findProtocol(guid) TEST\n");
+//
+//            System.out.print(p.getClass().getSimpleName() + " : " + p.get("fName") + " guid:" + p.get("guid"));
+//
+//
+//        }
+        for (Protocol p : DataBaseCopy.findProtocol("61c7628a-2551-4ce5-b134-efd00289d72a")){
+            for (String key: p.keySet())
+                System.out.println(p.getClass().getSimpleName() + " key:" + key + "=" + p.get(key));
+        }
 
-           for (String k : l.keySet()) {
-               System.out.println("l.get(k) " + l.get(k));// + " - " + s + "-" + l.get(s));
-           }
-       }
+//        for (String guid : DataBaseCopy.getProtocolMap().keySet()) {
+//            for (Protocol p: DataBaseCopy.getProtocolMap().get(guid)){
+//                System.out.println("guid:\n'" + guid + "'");
+//                System.out.println(p.getClass().getSimpleName() + " " + p.get("fName"));
+//            }
+//        }
+//        String sql="INSERT INTO FERTILIZATION VALUES('61c7628a-2551-4ce5-b134-efd00289d72a', 'ИКСИ', 'Хандога А.О.', '14:10', 'Мурза Г.В.', '', '');";
+//        insertSQL(sql);
     }
 
     private static HashMap<String, String> mapedInput(){

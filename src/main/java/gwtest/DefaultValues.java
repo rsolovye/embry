@@ -59,6 +59,7 @@ public class DefaultValues {
 
                 while (rs2.next()){
                     list.add(rs2.getString("CONTROL_VALUE"));
+                    System.out.println("CONTROL_VALUE LISTED");
                 }
                 mapValueLists.put(q, list);
                 rs2.close();

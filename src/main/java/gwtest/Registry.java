@@ -1,5 +1,7 @@
 package gwtest;
 
+import protocol.maps.Protocol;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
@@ -8,16 +10,22 @@ import java.util.UUID;
  * Created by bobsol on 29.01.17.
  */
 public class Registry {
-    private static HashMap<UUID, ProtocolHeaderRow> guidSet = ProtocolHeaderGateway.findAll();
+   // private static HashMap<UUID, Protocol> guidSet = ProtocolHeaderGateway.findAll();
     private static HashMap<String, String[]> rowKeys = new HashMap<>();
+    private static HashMap<String, String> typeNames = new HashMap<>();
 
-    public static boolean containsGuid(UUID guid){
-        for (UUID u : guidSet.keySet()){
-            if (u.compareTo(guid)==0){
-                return true;
+    public static boolean containsGuid(Protocol protocol){
+        boolean matchesType = false;
+        for (Protocol p : DataBaseCopy.findProtocol(protocol.get("guid"))){
+            matchesType = p.isTypeOf(protocol.getClass().getSimpleName());
             }
+        return matchesType;
         }
-        return false;
+
+
+    public static String getTypeSimpleName(String protocolType){
+        typeNames.put("PROTOCOL_HEADER", "ProtocolHeader");
+        return typeNames.get(protocolType);
     }
 
     public static String[] getRowKeys(String rowObjectName){

@@ -25,20 +25,49 @@ public class MasterGateway {
             try {
                 while (DB.rs.next()) {
                     for (String k : r.getKeySet()) {
-                        System.out.print(k);
                         String temp =  DB.rs.getString(k);
-                        System.out.println("temp" + temp);
-                            r.getMap().put(k, temp);
+                        r.getMap().put(k, temp);
                     }
                 }
              //DB.commit();
             }catch (SQLException e) {     e.printStackTrace();}
         }
             DB.destroy();
-            return RowObjectMapper.rowArray;
+            return rowObjectList;
         }
 
+    public synchronized static ArrayList<RowObject> findAll(){
 
+        ArrayList<RowObject> rowObjectList = RowObjects.getList();
+        ArrayList<RowObject> allRows = new ArrayList<>();
+        try {
+            if (DB.con.isClosed()) DB.init();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        for (RowObject r: rowObjectList) {
+            DB.setResult("SELECT * FROM "+ r.getName() + ";");
+
+            try {
+                while (DB.rs.next()) {
+                    RowObject tempRow = new RowObject(r.getName(), r.getKeySet());
+
+                    for (String k : tempRow.getKeySet()) {
+                        String value =  DB.rs.getString(k);
+                        tempRow.put(k, value);
+                    }
+                    System.out.println("MGW findAll, tempRow.get(guid) :" + tempRow.get("guid"));
+                    allRows.add(tempRow);
+                    System.out.println("RowObjectList.size MAsterGateway.findAll(): " + allRows.size());
+
+                }
+                //DB.commit();
+            }catch (SQLException e) {     e.printStackTrace();}
+        }
+        DB.destroy();
+        return allRows;
+    }
 
     public synchronized static void insert(ArrayList<RowObject> protocolPackage){
 

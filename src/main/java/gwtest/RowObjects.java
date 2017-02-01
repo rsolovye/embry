@@ -6,12 +6,13 @@ import java.util.ArrayList;
 /**
  * Created by micro on 30.01.2017.
  */
-public class RowObjects extends ArrayList<RowObject> {
+public class RowObjects  {
     private static ArrayList<RowObject> list = null;
     public static ArrayList<RowObject> getList(){
         if (list == null) {
             initialize();
         }
+        System.out.print("RowObjects.getList list.size = " + list.size());
         return list;
     }
 
@@ -27,6 +28,7 @@ public class RowObjects extends ArrayList<RowObject> {
     }
 
     private static void initialize(){
+        System.out.print("RowObjects.initialize()");
         DB.init();
         DB.setResult("SELECT * FROM pojo_keysets;");
 
@@ -35,9 +37,10 @@ public class RowObjects extends ArrayList<RowObject> {
 
             while (DB.rs.next())
             {
+
                 String className = DB.rs.getString("class_name");
                 String[] keys = DB.rs.getString("keyset").split(",");
-                //System.out.println(className +" + " + keys.length);
+                System.out.print(className +" + " + keys.length);
                 list.add(new RowObject(className, keys));
             }
             DB.con.commit();
