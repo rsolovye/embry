@@ -82,4 +82,25 @@ public class Registry {
         return sqlInsert;
 
     }
+
+    private  static HashMap<String, String> mp = new HashMap<>();
+    private static void initConversionMap() {
+        mp.put("ProtocolHeaderMap", "PROTOCOL_HEADER");
+        mp.put("FemaleGameteSourceMap", "FEMALE_SOURCE");
+        mp.put("MaleGameteSourceMap", "MALE_SOURCE");
+        mp.put("FolliclePunctureMap", "FOLLICLE_PUNCTURE");
+        mp.put("FertilizationMap", "FERTILIZATION");
+        mp.put("PgsCryoEtMap", "ET_CRYO_PGS");
+        mp.put("CheckPointsMap", "CHECK_POINTS");
+        mp.put("SpermiogrammMap", "SPERMIOGRAMM");
+        mp.put("ConditionsMap", "CONDITIONS");
+        mp.put("EmbryoTransferMap", "EMBRYO_TRANSFER");
+        mp.put("ConclusionMap","CONCLUSION");
+        mp.put("VitrificationMap", "VITRIFICATION");
+    }
+    public static String convertProtocolType(String simpleName) {
+       if (mp.size() == 0) initConversionMap();
+
+       return mp.get(simpleName);
+    }
 }

@@ -69,21 +69,43 @@ public class MasterGateway {
         return allRows;
     }
 
-    public synchronized static void insert(ArrayList<RowObject> protocolPackage){
+    public synchronized static void insert(ArrayList<RowObject> protocolPackage) {
 
-        for (RowObject rowObject: protocolPackage){
+        for (RowObject rowObject : protocolPackage) {
             String sql = mapToInsertQuery(rowObject);
             if (DB.con == null) DB.init();
 
-                DB.execute(sql);
-                DB.commit();
-                DB.destroy();
+            DB.execute(sql);
+            DB.commit();
+            DB.destroy();
 
         }
 
+
     }
+public synchronized static void update(ArrayList<RowObject> ar){
+    for (RowObject rowObject : ar) {
+        String sql = mapToInsertQuery(rowObject);
+        if (DB.con == null) DB.init();
 
+        DB.execute(sql);
+        DB.commit();
+        DB.destroy();
 
+    }
+}
+
+    public static void update(RowObject row){
+        ArrayList<RowObject> r = new ArrayList<>();
+        r.add(row);
+        update(r);
+    };
+
+    public static void insert(RowObject row){
+        ArrayList<RowObject> r = new ArrayList<>();
+        r.add(row);
+        update(r);
+    };
 
     private static String mapToInsertQuery(RowObject row){
         String sql = "INSERT INTO " + row.getName() + " \n(";
