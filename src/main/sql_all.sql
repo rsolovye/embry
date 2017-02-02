@@ -198,6 +198,31 @@ String sql="INSERT INTO FERTILIZATION VALUES('61c7628a-2551-4ce5-b134-efd00289d7
  time_2 STRING,
  witness_2 STRING
  );
+
+   String sql =       "CREATE TABLE VITRIFICATION_TABLE(
+          "guid STRING NOT NULL," +
+         "strawCol STRING NOT NULL" +
+         "embCol STRING NOT NULL"+
+           "dpfCol STRING NOT NULL"+
+           "devStage STRING NOT NULL" +
+           "vitNotes  STRING NOT NULL" +
+         "vitSignature STRING NOT NULL" +
+         "defrostDate STRING"+
+         "defrostEmb STRING"+
+         "defrostSignature STRING" +
+         "defrostSurvival STRING );"
+         PRIMARY KEY(guid, strawCol, embCol"
+         strawCol.setCellValueFactory(new PropertyValueFactory<VitrificationTable, String>(""));
+
+         strawCol.setCellValueFactory(new PropertyValueFactory<VitrificationTable, String>("));
+
+         strawCol.setCellValueFactory(new PropertyValueFactory<VitrificationTable, String>("));
+
+         strawCol.setCellValueFactory(new PropertyValueFactory<VitrificationTable, String>("));
+         strawCol.setCellValueFactory(new PropertyValueFactory<VitrificationTable, String>(""));
+         strawCol.setCellValueFactory(new PropertyValueFactory<VitrificationTable, String>(" "));
+         strawCol.setCellValueFactory(new PropertyValueFactory<VitrificationTable, String>(""));
+         strawCol.setCellValueFactory(new PropertyValueFactory<VitrificationTable, String>(""));
  CREATE TABLE FOLLICLE_PUNCTURE(
  guid STRING PRIMARY KEY NOT NULL,
  embryologist STRING,

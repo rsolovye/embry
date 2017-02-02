@@ -1,71 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.40963855421686746" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="207.0" prefWidth="798.0" stylesheets="@../../../../dark-theme.css">
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="228.0" prefWidth="798.0" stylesheets="@flatterfx.css">
          <children>
-            <TextField fx:id="mName" layoutX="90.0" layoutY="56.0" prefHeight="26.0" prefWidth="349.0" text="Соловьев Роберт Сергеевич" />
+            <TextField fx:id="mName" layoutX="90.0" layoutY="56.0" prefHeight="16.0" prefWidth="349.0" text="Соловьев Роберт Сергеевич" />
             <TextField fx:id="fName" layoutX="90.0" layoutY="14.0" prefHeight="26.0" prefWidth="349.0" text="Соловьев Роберт Сергеевич" />
             <TextField fx:id="mDOB" layoutX="449.0" layoutY="56.0" prefHeight="26.0" prefWidth="91.0" text="10.01.1987" />
             <TextField fx:id="fDOB" layoutX="449.0" layoutY="14.0" prefHeight="26.0" prefWidth="91.0" text="10.01.1987" />
-            <TextField layoutX="31.0" layoutY="105.0" prefHeight="26.0" prefWidth="91.0" text="10.01.1987" />
-            <TextField alignment="CENTER" layoutX="147.0" layoutY="105.0" prefHeight="26.0" prefWidth="151.0" text="с0010/010101/2010" />
-            <TextField alignment="CENTER" layoutX="308.0" layoutY="105.0" prefHeight="26.0" prefWidth="144.0" text="витрификация" />
-            <TextField layoutX="31.0" layoutY="159.0" prefHeight="26.0" prefWidth="32.0" text="14" />
-            <TextField layoutX="90.0" layoutY="159.0" prefHeight="26.0" prefWidth="32.0" text="14" />
-            <ComboBox layoutX="148.0" layoutY="159.0" prefWidth="150.0" promptText="фиролетовый" />
-            <TextField alignment="CENTER" layoutX="308.0" layoutY="159.0" prefHeight="26.0" prefWidth="144.0" text="Ин хауз от 10.02" />
-            <TextField layoutX="480.0" layoutY="146.0" prefHeight="26.0" prefWidth="32.0" text="14" />
-            <TextField layoutX="545.0" layoutY="146.0" prefHeight="26.0" prefWidth="32.0" text="14" />
-            <Label layoutX="7.0" layoutY="9.0" prefHeight="36.0" prefWidth="76.0" text="ФИО пациентки" textAlignment="CENTER" wrapText="true" />
-            <Label layoutX="7.0" layoutY="51.0" prefHeight="36.0" prefWidth="76.0" text="ФИО пациента" textAlignment="CENTER" wrapText="true" />
-            <Label layoutX="28.0" layoutY="141.0" text="Дюар" />
-            <Label layoutX="41.0" layoutY="87.0" text="Дата Крио" textAlignment="CENTER" wrapText="true" />
-            <Label layoutX="192.0" layoutY="87.0" text="№ Карты" textAlignment="CENTER" wrapText="true" />
-            <Label layoutX="340.0" layoutY="87.0" text="Метод крио" textAlignment="CENTER" wrapText="true" />
-            <Label layoutX="359.0" layoutY="141.0" text="Среда" textAlignment="CENTER" wrapText="true" />
-            <Label layoutX="180.0" layoutY="141.0" text="Цвет секции" textAlignment="CENTER" wrapText="true" />
-            <Label layoutX="73.0" layoutY="141.0" text="Канистра" />
-            <Label layoutX="471.0" layoutY="120.0" text="секций" textAlignment="CENTER" wrapText="true" />
-            <Label layoutX="531.0" layoutY="120.0" text="соломин" textAlignment="CENTER" wrapText="true" />
-            <TextField layoutX="611.0" layoutY="146.0" prefHeight="26.0" prefWidth="32.0" text="14" />
-            <Label layoutX="598.0" layoutY="120.0" text="эмбрионов" textAlignment="CENTER" wrapText="true" />
-            <Label layoutX="521.0" layoutY="98.0" text="Количество" textAlignment="CENTER" wrapText="true" />
-            <CheckBox alignment="CENTER" contentDisplay="RIGHT" layoutX="611.0" layoutY="18.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="ОМС" />
-            <CheckBox alignment="CENTER" contentDisplay="RIGHT" layoutX="556.0" layoutY="38.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="57.0" prefWidth="110.0" text="Отсроченый криоПЭ" textAlignment="CENTER" wrapText="true" />
+            <TextField fx:id="vitDate" alignment="CENTER" layoutX="31.0" layoutY="119.0" prefHeight="39.0" prefWidth="98.0" text="10.01.1987" />
+            <TextField fx:id="vitVRT" alignment="CENTER" layoutX="147.0" layoutY="119.0" prefHeight="26.0" prefWidth="151.0" text="с0010/010101/2010" />
+            <TextField alignment="CENTER" layoutX="308.0" layoutY="119.0" prefHeight="26.0" prefWidth="144.0" text="витрификация" />
+            <TextField fx:id="dewar" layoutX="31.0" layoutY="178.0" prefHeight="39.0" prefWidth="37.0" text="14" />
+            <TextField fx:id="canister" layoutX="90.0" layoutY="178.0" prefHeight="39.0" prefWidth="37.0" text="14" />
+            <ComboBox fx:id="color" layoutX="148.0" layoutY="178.0" prefWidth="150.0" promptText="фиролетовый" />
+            <TextField fx:id="media_date" alignment="CENTER" layoutX="308.0" layoutY="178.0" prefHeight="26.0" prefWidth="144.0" text="Ин хауз от 10.02" />
+            <TextField fx:id="section_count" layoutX="480.0" layoutY="161.0" prefHeight="39.0" prefWidth="37.0" text="14" />
+            <TextField fx:id="straw_count" layoutX="545.0" layoutY="161.0" prefHeight="39.0" prefWidth="37.0" text="14" />
+            <Label layoutX="28.0" layoutY="160.0" text="Дюар" />
+            <Label layoutX="41.0" layoutY="101.0" text="Дата Крио" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="192.0" layoutY="101.0" text="№ Карты" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="340.0" layoutY="101.0" text="Метод крио" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="359.0" layoutY="160.0" text="Среда" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="180.0" layoutY="160.0" text="Цвет секции" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="73.0" layoutY="160.0" text="Канистра" />
+            <Label layoutX="471.0" layoutY="135.0" text="секций" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="531.0" layoutY="135.0" text="соломин" textAlignment="CENTER" wrapText="true" />
+            <TextField fx:id="embryo_count" layoutX="611.0" layoutY="161.0" prefHeight="39.0" prefWidth="37.0" text="14" />
+            <Label layoutX="598.0" layoutY="135.0" text="эмбрионов" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="521.0" layoutY="113.0" text="Количество" textAlignment="CENTER" wrapText="true" />
+            <CheckBox fx:id="isOms" alignment="CENTER" contentDisplay="RIGHT" layoutX="729.0" layoutY="20.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" text="ОМС" />
+            <CheckBox fx:id="isPostponedET" alignment="CENTER" contentDisplay="RIGHT" layoutX="674.0" layoutY="40.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="57.0" prefWidth="110.0" text="Отсроченый криоПЭ" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="9.0" layoutY="6.0" prefHeight="50.0" prefWidth="84.0" text="ФИО пациентки" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="5.0" layoutY="51.0" prefHeight="50.0" prefWidth="84.0" text="ФИО пациента" textAlignment="CENTER" wrapText="true" />
+            <ListView layoutX="550.0" layoutY="14.0" prefHeight="81.0" prefWidth="122.0" stylesheets="@flatterfx.css">
+               <styleClass>
+                  <String fx:value="content" />
+                  <String fx:value="text-area" />
+               </styleClass>
+            </ListView>
          </children>
          <styleClass>
             <String fx:value="my-gridpane" />
-            <String fx:value="split-pane-divider" />
+            <String fx:value="label" />
+            <String fx:value="root" />
             <String fx:value="table-view" />
          </styleClass></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="210.0" prefWidth="798.0">
          <children>
-            <TableView editable="true" layoutX="335.0" layoutY="36.0" prefHeight="290.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="vitrificationTableView" editable="true" prefHeight="264.0" prefWidth="798.0" stylesheets="@flatterfx.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                  <TableColumn maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Соломина №" />
-                  <TableColumn maxWidth="-1.0" minWidth="-1.0" prefWidth="-1.0" text="Column X" />
-                <TableColumn prefWidth="86.0" sortable="false" text="      № &#10;Соломины" />
-                <TableColumn prefWidth="86.0" text="       № &#10;Эмбриона" />
-                  <TableColumn prefWidth="53.0" text="Column X" />
-                  <TableColumn prefWidth="75.0" text="Column X" />
-                  <TableColumn prefWidth="75.0" text="Column X" />
-                  <TableColumn prefWidth="75.0" text="Column X" />
-                  <TableColumn prefWidth="75.0" text="Column X" />
-                  <TableColumn prefWidth="75.0" text="Column X" />
-                  <TableColumn prefWidth="75.0" text="Column X" />
-                  <TableColumn prefWidth="86.0" sortable="false" text="      № &#10;Соломины" />
+                <TableColumn fx:id="strawCol" prefWidth="71.0" sortable="false" text="       № &#10;cоломины " />
+                <TableColumn fx:id="embCol" prefWidth="70.0" sortable="false" text="       № &#10;эмбриона" />
+                  <TableColumn fx:id="dpfCol" prefWidth="61.0" text="   День &#10;развития" />
+                  <TableColumn fx:id="devStage" prefWidth="122.0" text="  Стадия развития &#10;и кач-во эмбриона" />
+                  <TableColumn fx:id="vitNotes" minWidth="0.0" text="Прим." />
+                  <TableColumn fx:id="vitSignature" prefWidth="84.0" text="Подпись" />
+                  <TableColumn fx:id="defrostDate" text="      Дата &#10;разморозки" />
+                  <TableColumn fx:id="defrostEmb" prefWidth="78.0" text=" Качество&#10;эмбриона" />
+                  <TableColumn fx:id="defrostignature" prefWidth="79.0" text="Подпись" />
+                  <TableColumn fx:id="defrostSurvival" prefWidth="72.0" sortable="false" text="  Выжи-&#10;ваемость" />
               </columns>
+               <cursor>
+                  <Cursor fx:constant="N_RESIZE" />
+               </cursor>
             </TableView>
          </children></AnchorPane>
   </items>

@@ -67,11 +67,11 @@ public class TestGW {
 //            System.out.print(p.getClass().getSimpleName() + " : " + p.get("fName") + " guid:" + p.get("guid"));
 //
 //
+////        }
+//        for (Protocol p : DataBaseCopy.findProtocol("61c7628a-2551-4ce5-b134-efd00289d72a")){
+//            for (String key: p.keySet())
+//                System.out.println(p.getClass().getSimpleName() + " key:" + key + "=" + p.get(key));
 //        }
-        for (Protocol p : DataBaseCopy.findProtocol("61c7628a-2551-4ce5-b134-efd00289d72a")){
-            for (String key: p.keySet())
-                System.out.println(p.getClass().getSimpleName() + " key:" + key + "=" + p.get(key));
-        }
 
 //        for (String guid : DataBaseCopy.getProtocolMap().keySet()) {
 //            for (Protocol p: DataBaseCopy.getProtocolMap().get(guid)){
@@ -81,6 +81,19 @@ public class TestGW {
 //        }
 //        String sql="INSERT INTO FERTILIZATION VALUES('61c7628a-2551-4ce5-b134-efd00289d72a', 'ИКСИ', 'Хандога А.О.', '14:10', 'Мурза Г.В.', '', '');";
 //        insertSQL(sql);
+        String sql =    "CREATE TABLE VITRIFICATION_TABLE( "+
+        "guid STRING NOT NULL," +
+                "strawCol STRING NOT NULL," +
+                "embCol STRING NOT NULL,"+
+                "dpfCol STRING NOT NULL,"+
+                "devStage STRING NOT NULL," +
+                "vitNotes  STRING NOT NULL," +
+                "vitSignature STRING NOT NULL," +
+                "defrostDate STRING,"+
+                "defrostEmb STRING,"+
+                "defrostSignature STRING," +
+                "defrostSurvival STRING );";
+        insertSQL(sql);
     }
 
     private static HashMap<String, String> mapedInput(){
