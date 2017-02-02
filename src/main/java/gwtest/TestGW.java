@@ -81,19 +81,21 @@ public class TestGW {
 //        }
 //        String sql="INSERT INTO FERTILIZATION VALUES('61c7628a-2551-4ce5-b134-efd00289d72a', 'ИКСИ', 'Хандога А.О.', '14:10', 'Мурза Г.В.', '', '');";
 //        insertSQL(sql);
-        String sql =    "CREATE TABLE VITRIFICATION_TABLE( "+
-        "guid STRING NOT NULL," +
-                "strawCol STRING NOT NULL," +
-                "embCol STRING NOT NULL,"+
-                "dpfCol STRING NOT NULL,"+
-                "devStage STRING NOT NULL," +
-                "vitNotes  STRING NOT NULL," +
-                "vitSignature STRING NOT NULL," +
-                "defrostDate STRING,"+
-                "defrostEmb STRING,"+
-                "defrostSignature STRING," +
-                "defrostSurvival STRING );";
-        insertSQL(sql);
+//        String sql =    "CREATE TABLE VITRIFICATION_TABLE( "+
+//        "guid STRING NOT NULL," +
+//                "strawCol STRING NOT NULL," +
+//                "embCol STRING NOT NULL,"+
+//                "dpfCol STRING NOT NULL,"+
+//                "devStage STRING NOT NULL," +
+//                "vitNotes  STRING NOT NULL," +
+//                "vitSignature STRING NOT NULL," +
+//                "defrostDate STRING,"+
+//                "defrostEmb STRING,"+
+//                "defrostSignature STRING," +
+//                "defrostSurvival STRING );";
+        String s1ql = "INSERT INTO VitrifiedEmbryo VALUES\n" +
+                "('61c7628a-2551-4ce5-b134-efd00289d72a', '2', '4', '5', 'BL3BA', '', 'Хандога А.О.', '', '', '', '');";
+        insertSQL(s1ql);
     }
 
     private static HashMap<String, String> mapedInput(){

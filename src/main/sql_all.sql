@@ -199,6 +199,25 @@ String sql="INSERT INTO FERTILIZATION VALUES('61c7628a-2551-4ce5-b134-efd00289d7
  witness_2 STRING
  );
 
+CREATE TABLE VitrifiedEmbryo (
+    guid        STRING NOT NULL,
+    strawNumber STRING NOT NULL,
+    embryoNumber STRING NOT NULL,
+    cryoDpf     STRING,
+    cryoStage   STRING,
+    cryoNotes   STRING,
+    cryoEmbryologist  STRING,
+    defrostDate  STRING,
+    defrostEmbryoQuality STRING,
+    defrostEmbryologist STRING,
+    defrostSurvival STRING,
+PRIMARY KEY(GUID, strawNumber, embryoNumber)
+);
+
+INSERT INTO VitrifiedEmbryo VALUES
+('61c7628a-2551-4ce5-b134-efd00289d72a', '1', '1', '5', 'BL5AB', '', 'Хандога А.О.', '', '', '', '');,
+
+)
    String sql =       "CREATE TABLE VITRIFICATION_TABLE(
           "guid STRING NOT NULL," +
          "strawCol STRING NOT NULL" +

@@ -20,11 +20,12 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            SplitPane page = (SplitPane) FXMLLoader.load(App.class.getResource("vitrificationfx.fxml"));
+            SplitPane page =  FXMLLoader.load(App.class.getResource("vitrificationfx.fxml"));
             Scene scene = new Scene(page);
             primaryStage.setScene(scene);
             primaryStage.setTitle("FXML Vitrification");
             primaryStage.show();
+
         } catch (Exception ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }

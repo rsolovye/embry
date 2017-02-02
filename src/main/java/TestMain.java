@@ -38,10 +38,10 @@ public static void main(String args[]){
 //        System.exit(0);
 //    }
        // JFrame frame = new JFrame();
-    MasterView v = new MasterView();
-    MasterModel m = new MasterModel();
-    MasterController controller=new MasterController(v, m);
-    controller.getDefaultControlValuesMap();
+    //MasterView v = new MasterView();
+   // MasterModel m = new MasterModel();
+   // MasterController controller=new MasterController(v, m);
+   // controller.getDefaultControlValuesMap();
 
    // frame.add(v.getUI());
    // frame.pack();
