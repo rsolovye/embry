@@ -19,18 +19,13 @@ import java.util.logging.Logger;
  * Created by micro on 02.02.2017.
  */
 public class VitrifiedEmbryoService {
+
     private static final Logger logger = Logger.getLogger(VitrifiedEmbryoService.class.getName());
-    // executes database operations concurrent to JavaFX operations.
-    private ExecutorService databaseExecutor;
+
 
 
 
     public ObservableList<VitrifiedEmbryo> getVitrifiedEmbryosList(){
-//        databaseExecutor = Executors.newFixedThreadPool(
-//                1,
-//                new DatabaseThreadFactory());
-
-
         ObservableList<VitrifiedEmbryo> vitrifiedEmbryos = FXCollections.observableArrayList();
 
         FetchVitrifiedEmbryosTask fetchVitrified = new FetchVitrifiedEmbryosTask();
@@ -49,16 +44,7 @@ public class VitrifiedEmbryoService {
         return DriverManager.getConnection("jdbc:sqlite:embry-test.db");
     }
 
-    static class DatabaseThreadFactory implements ThreadFactory {
-        static final AtomicInteger poolNumber = new AtomicInteger(1);
 
-        @Override public Thread newThread(Runnable runnable) {
-            Thread thread = new Thread(runnable, "Database-Connection-" + poolNumber.getAndIncrement() + "-thread");
-            thread.setDaemon(true);
-
-            return thread;
-        }
-    }
 
     abstract class DBTask<T> extends Task<T> {
         DBTask() {
@@ -106,15 +92,14 @@ public class VitrifiedEmbryoService {
                         .cryoEmbryologist(rs.getString("cryoEmbryologist"))
                         .defrostDate(rs.getString("defrostDate"))
                         .defrostEmbryoQuality(rs.getString("defrostEmbryoQuality"))
+                        .defrostMedia(rs.getString("defrostMedia"))
                         .defrostEmbryologist(rs.getString("defrostEmbryologist"))
                         .defrostSurvival(rs.getString("defrostSurvival"))
                         .build();
-
                 names.add(ve);
             }
             logger.info("Found " + names.size() + " names");
             return names;
-            //return names;
         }
     }
 

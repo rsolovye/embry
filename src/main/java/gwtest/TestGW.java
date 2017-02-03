@@ -1,5 +1,6 @@
 package gwtest;
 
+import lists.GUI_Lists;
 import protocol.maps.Protocol;
 
 import javax.xml.crypto.Data;
@@ -91,11 +92,29 @@ public class TestGW {
 //                "vitSignature STRING NOT NULL," +
 //                "defrostDate STRING,"+
 //                "defrostEmb STRING,"+
+        //         "defrostMedia S
 //                "defrostSignature STRING," +
 //                "defrostSurvival STRING );";
-        String s1ql = "INSERT INTO VitrifiedEmbryo VALUES\n" +
-                "('61c7628a-2551-4ce5-b134-efd00289d72a', '2', '4', '5', 'BL3BA', '', 'Хандога А.О.', '', '', '', '');";
-        insertSQL(s1ql);
+//        String s1ql = "INSERT INTO VitrifiedEmbryo VALUES\n" +
+//                "('61c7628a-2551-4ce5-b134-efd00289d72a', '1', '1', '5', 'BL3BA', '', 'Хандога А.О.', '10.10.14', 'BL3BB', 'ИНХАУЗ 08.10.15', 'Лямина И.В.', '+')," +
+//                "('61c7628a-2551-4ce5-b134-efd00289d72a', '1', '2', '5', 'BL3BA', '', 'Хандога А.О.',  '10.10.14', 'BL3BB', 'ИНХАУЗ 08.10.15', 'Лямина И.В.', '+')," +
+//                "('61c7628a-2551-4ce5-b134-efd00289d72a', '2', '3', '5', 'BL3BA', '', 'Хандога А.О.', '', '', '', '', '')," +
+//                "('61c7628a-2551-4ce5-b134-efd00289d72a', '2', '4', '5', 'BL3BA', '', 'Хандога А.О.', '', '', '', '', '');";
+
+        //String sql = "INSERT INTO pojo_keysets VALUES\n"+
+         //       "('" + UUID.randomUUID().toString() + "', 'VITRIFICATION', 'guid,vitDate,vitVRT,fName,fDOB,fCode,mName,mDOB,mCode,vitMedia,dewar,canister,sectionColor,embryoCount,strawCount,sectionCount,isOms,isPostponed,fromAnotherClinic');";
+
+//
+//        String sql1 = "INSERT INTO VITRIFICATION (" +
+//                "guid,vitDate,vitVRT,fName,fDOB,fCode,mName,mDOB,mCode,vitMedia,dewar,canister,sectionColor,embryoCount,strawCount,sectionCount,isOms,isPostponed,fromAnotherClinic) " +
+//
+//                "VALUES \n"+
+//                "('61c7628a-2551-4ce5-b134-efd00289d72a', '10.10.11', 'C0101/111010/2010', 'Иванова Афродита Сергеевна','01.10.1987','111010','Белосельский Ибрагим Денисович','25.04.1984','654321','In house(28.09.11)','10','3','синий','4','3','1','1','0','0');";
+//
+//System.out.println(sql1);
+
+
+
     }
 
     private static HashMap<String, String> mapedInput(){

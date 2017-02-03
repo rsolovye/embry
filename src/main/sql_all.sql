@@ -188,6 +188,8 @@ INSERT INTO pojo_keysets VALUES
 INSERT INTO pojo_keysets VALUES
 ('486cab69-e832-4639-a1f6-11099471e9ef', 'EMBRYO_TRANSFER', 'guid,etDay,etTime,etDpf,etCount,etDoctor,etNurse,etEmbryologist,catheter,catheter_hard,catheter_replacement,mucus,blood,etRepeat,visible,no_ultra_sound,surogate_mother');
 
+
+
 UPDATE pojo_keysets SET keyset='guid,time_1,time_2,time_3,concentration,volume,viscosity,morphology,ab_native,c_native,d_native,method,ab_postprep,c_postprep,d_postprep,concentration_postprep,add_to_700,add_to_1000,embryologist,sperm_note'
  WHERE guid='620b1289-c8cc-4b6f-94c5-d31c9a199f6a'; 'guid,time_1,time_2,time_3,concentration,volume,viscosity,morphology,ab_native,c_native,d_native,method,ab_postprep,c_postprep,d_postprep,concentration_postprep,add_to_700,add_to_1000,embryologist,sperm_note');
 String sql="INSERT INTO FERTILIZATION VALUES('61c7628a-2551-4ce5-b134-efd00289d72a', 'ИКСИ', 'Хандога А.О.', '14:10', 'Мурза Г.В.', '', '');";
@@ -199,6 +201,21 @@ String sql="INSERT INTO FERTILIZATION VALUES('61c7628a-2551-4ce5-b134-efd00289d7
  witness_2 STRING
  );
 
+CREATE TABLE VitrifiedEmbryo (
+    guid        STRING NOT NULL,
+    strawNumber STRING NOT NULL,
+    embryoNumber STRING NOT NULL,
+    cryoDpf     STRING,
+    cryoStage   STRING,
+    cryoNotes   STRING,
+    cryoEmbryologist  STRING,
+    defrostDate  STRING,
+    defrostEmbryoQuality STRING,
+    defrostMedia STRING,
+    defrostEmbryologist STRING,
+    defrostSurvival STRING,
+PRIMARY KEY(GUID, strawNumber, embryoNumber)
+);
 CREATE TABLE VitrifiedEmbryo (
     guid        STRING NOT NULL,
     strawNumber STRING NOT NULL,
@@ -334,23 +351,56 @@ fertilized STRING,
 transfered STRING,
 vitrified,pregnancy  STRING
 );
+String sql = "INSERT INTO VITRFICATION VALUES\n"+
+                                "('61c7628a-2551-4ce5-b134-efd00289d72a'," +
+                                "'10.10.11'," +
+                                "'C0101/111010/2010'," +
+                                "'Иванова Афродита Сергеевна'," +
+                                "'01.10.1987'," +
+                                "'111010'," +
+                                "'Белосельский Ибрагим Денисович'"  +
+                                "'654321'"+
+                                "'In house(28.09.11),'" +
+                                "'10',"+
+                                "'3'"+
+                                "'синий'" +
+                                "'4'," +
+                                "'3'," +
+                                "'1'," +
+                                "'1'," +
+                                "'0'," +
+                                "'0');";
 
 CREATE TABLE VITRIFICATION(
-guid STRING PRIMARY KEY NOT NULL,
-vitDate STRING,
-fName STRING,
-fDOB STRING,
-vitVRT STRING,
-fCode STRING,
-mName STRING,
-mDOB STRING,
-media_date STRING,
-dewar STRING,
-canister STRING,
-color STRING,
-embryo_count STRING,
-straw_count,sections_count  STRING
-);
+      guid STRING PRIMARY KEY NOT NULL,
+      vitDate STRING,
+      vitVRT STRING,
+
+      fName STRING,
+      fDOB STRING,
+      fCode STRING,
+      mName STRING,
+      mDOB STRING,
+      mCode String,
+
+      vitMedia STRING,
+      dewar STRING,
+      canister STRING,
+      sectionColor STRING,
+
+      embryoCount STRING,
+      strawCount STRING,
+      sectionCount STRING,
+
+      isOms String,
+      isPostponed STRING,
+      fromAnotherClinic STRING
+  );
+
+
+String sql = "INSERT INTO pojo_keysets VALUES\n"+
+"('" + UUID.randomUUID().toString() + "', 'VITRIFICATION', 'guid,vitDate,vitVRT,fName,fDOB,fCode,mName,mDOB,mCode,vitMedia,dewar,canister,sectionColor,embryoCount,strawCount,sectionCount,isOms,isPostponedET,fromAnotherClinic');";
+
 
 CREATE TABLE MALE_SOURCE(
  guid STRING,

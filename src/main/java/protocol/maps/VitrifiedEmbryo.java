@@ -41,8 +41,8 @@ public class VitrifiedEmbryo {
         return defrostDate.get();
     }
 
-    public String getdefrostEmbryoQuality() {
-        return defrostEmbryoQuality.get();
+    public String getDefrostEmbryo() {
+        return defrostEmbryo.get();
     }
 
     public String getDefrostEmbryologist() {
@@ -51,6 +51,9 @@ public class VitrifiedEmbryo {
 
     public String getDefrostSurvival() {
         return defrostSurvival.get();
+    }
+    public String getDefrostMedia() {
+        return defrostMedia.get();
     }
 
     private final SimpleStringProperty guid;
@@ -62,9 +65,10 @@ public class VitrifiedEmbryo {
     private final SimpleStringProperty cryoEmbryologist;
 
     private final SimpleStringProperty defrostDate;
-    private final SimpleStringProperty defrostEmbryoQuality;
+    private final SimpleStringProperty defrostEmbryo;
     private final SimpleStringProperty defrostEmbryologist;
     private final SimpleStringProperty defrostSurvival;
+    private final SimpleStringProperty defrostMedia;
 
     private VitrifiedEmbryo(VitrifiedEmbryoBuilder b){
           guid = b.guid;
@@ -75,7 +79,8 @@ public class VitrifiedEmbryo {
           cryoNotes=b.cryoNotes;
           cryoEmbryologist=b.cryoEmbryologist;
           defrostDate=b.defrostDate;
-          defrostEmbryoQuality=b.defrostEmbryoQuality;
+          defrostEmbryo=b.defrostEmbryoQuality;
+          defrostMedia = b.defrostMedia;
           defrostEmbryologist=b.defrostEmbryologist;
           defrostSurvival=b.defrostSurvival;
     }
@@ -93,6 +98,7 @@ public class VitrifiedEmbryo {
         private  SimpleStringProperty defrostEmbryoQuality;
         private  SimpleStringProperty defrostEmbryologist;
         private  SimpleStringProperty defrostSurvival;
+        private  SimpleStringProperty defrostMedia;
 
         public VitrifiedEmbryoBuilder(String guid, String strawNumber, String embryoNumber){
             this.guid = new SimpleStringProperty(guid);
@@ -108,11 +114,11 @@ public class VitrifiedEmbryo {
         public VitrifiedEmbryoBuilder defrostEmbryoQuality(String s){this.defrostEmbryoQuality = new SimpleStringProperty(s); return this;}
         public VitrifiedEmbryoBuilder defrostEmbryologist(String s){this.defrostEmbryologist = new SimpleStringProperty(s); return this;}
         public VitrifiedEmbryoBuilder defrostSurvival(String s){this.defrostSurvival = new SimpleStringProperty(s); return this;}
-
+        public VitrifiedEmbryoBuilder defrostMedia(String s){this.defrostMedia = new SimpleStringProperty(s); return this;}
 
         public VitrifiedEmbryo build(){
             VitrifiedEmbryo ve = new VitrifiedEmbryo(this);
-            System.out.println("I AM BUILTTTTT " + cryoDpf);
+            //System.out.println("I AM BUILTTTTT " + defrostEmbryoQuality);
             return ve;
         }
     }

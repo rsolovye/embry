@@ -14,7 +14,7 @@ public class App extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Application.launch(App.class, (java.lang.String[])null);
+        Application.launch(App.class, "bla"); //(java.lang.String[])null
     }
 
     @Override
@@ -22,6 +22,7 @@ public class App extends Application {
         try {
             SplitPane page =  FXMLLoader.load(App.class.getResource("vitrificationfx.fxml"));
             Scene scene = new Scene(page);
+
             primaryStage.setScene(scene);
             primaryStage.setTitle("FXML Vitrification");
             primaryStage.show();

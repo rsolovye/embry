@@ -9,4 +9,9 @@ public class VitrificationMap extends Protocol {
     public VitrificationMap(HashMap<String, String> map) {
         super(map);
     }
+
+    public void print(){
+        for (String k :this.keySet())
+            System.out.println(k + "=" + this.get(k));
+    }
 }

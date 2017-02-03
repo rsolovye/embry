@@ -94,28 +94,6 @@ public class SQLiteTasksBackUP extends Application {
         stage.show();
     }
 
-//    private void fetchNamesFromDatabaseToListView(
-//            final Button triggerButton,
-//            final ProgressIndicator databaseActivityIndicator,
-//            final ListView<String> listView) {
-//        final FetchNamesTask fetchNamesTask = new FetchNamesTask();
-//
-//        triggerButton.disableProperty().bind(
-//                fetchNamesTask.runningProperty()
-//        );
-//        databaseActivityIndicator.visibleProperty().bind(
-//                fetchNamesTask.runningProperty()
-//        );
-//        databaseActivityIndicator.progressProperty().bind(
-//                fetchNamesTask.progressProperty()
-//        );
-//
-//        fetchNamesTask.setOnSucceeded(t ->
-//                listView.setItems(fetchNamesTask.getValue())
-//        );
-//
-//        databaseExecutor.submit(fetchNamesTask);
-//    }
 private void fetchNamesFromDatabaseToListView(
         final Button triggerButton,
         final ProgressIndicator databaseActivityIndicator,

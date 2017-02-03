@@ -1,27 +1,25 @@
 package controllers;
 
 import gwtest.MasterMapper;
-import gwtest.Registry;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import lists.GUI_Lists;
 import models.MasterModel;
-import models.VitrificationTable;
 import protocol.maps.Protocol;
 import protocol.maps.VitrificationMap;
 import protocol.maps.VitrifiedEmbryo;
 import views.MasterView;
 
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.UUID;
 
 /**
  * Created by bobsol on 19.01.17.
  */
-public class MasterController implements Initializable {
+public class VitrificationController implements Initializable {
     private MasterView masterView;
     private MasterModel masterModel;
 
@@ -35,7 +33,7 @@ public class MasterController implements Initializable {
     @FXML TextField vitVRT;
     @FXML TextField dewar;
     @FXML TextField canister;
-    @FXML ComboBox sectionColor;
+    @FXML ComboBox<String> sectionColor;
     @FXML ListView<String> doctors;
     @FXML TextField vitMedia;
     @FXML TextField sectionCount;
@@ -58,7 +56,7 @@ public class MasterController implements Initializable {
     @FXML  TableColumn<VitrifiedEmbryo, String>  defrostSurvival;
 
 
-    public MasterController() {
+    public VitrificationController() {
         //this.masterView = masterView;
         //this.masterModel = masterModel;
 
@@ -97,11 +95,8 @@ public class MasterController implements Initializable {
                 isPostponed.setSelected(map.get("isPostponed").compareTo("1")==0);
                 fromAnotherClinic.setSelected(map.get("fromAnotherClinic").compareTo("1")==0);
             }
-
         }
 
-        GUI_Lists g = new GUI_Lists();
-        doctors.setItems(g.getDoctors());
 
         strawNumberCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("strawNumber"));
         embryoNumberCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("embryoNumber"));
