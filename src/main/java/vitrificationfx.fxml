@@ -217,6 +217,7 @@
                <styleClass>
                   <String fx:value="label" />
                   <String fx:value="table-column" />
+                  <String fx:value="table-row-cell" />
                   <String fx:value="table-cell" />
                </styleClass>
             </TableView>

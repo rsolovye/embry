@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3ac870d-7b3b-41bc-8033-9d8999416730" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/controllers/ControllerUtils.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/lists/GUI_Lists.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/embry-test.db" afterPath="$PROJECT_DIR$/embry-test.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/App.java" afterPath="$PROJECT_DIR$/src/main/java/App.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/MasterController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/MasterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/VitrificationController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/VitrificationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gwtest/DefaultValues.java" afterPath="$PROJECT_DIR$/src/main/java/gwtest/DefaultValues.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gwtest/TestGW.java" afterPath="$PROJECT_DIR$/src/main/java/gwtest/TestGW.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tv_columnheader.css" afterPath="$PROJECT_DIR$/src/main/java/tv_columnheader.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/vitrificationfx.fxml" afterPath="$PROJECT_DIR$/src/main/java/vitrificationfx.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/sql_all.sql" afterPath="$PROJECT_DIR$/src/main/sql_all.sql" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,11 +47,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="VitrificationController.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="VitrificationController.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/controllers/VitrificationController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="340">
-                  <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+                <state relative-caret-position="-1034">
+                  <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="tv_columnheader.css" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/tv_columnheader.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -228,7 +230,6 @@
         <option value="$PROJECT_DIR$/src/main/java/experiment/SQLiteTasks.java" />
         <option value="$PROJECT_DIR$/src/main/java/vitrificationfx.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/TestMain.java" />
-        <option value="$PROJECT_DIR$/src/main/java/tv_columnheader.css" />
         <option value="$PROJECT_DIR$/src/main/java/gwtest/MasterMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/protocol/maps/VitrificationMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/protocol/maps/VitrifiedEmbryo.java" />
@@ -244,6 +245,7 @@
         <option value="$PROJECT_DIR$/src/main/sql_all.sql" />
         <option value="$PROJECT_DIR$/src/main/java/gwtest/TestGW.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/VitrificationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tv_columnheader.css" />
       </list>
     </option>
   </component>
@@ -862,7 +864,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486137265897</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="2123">
+      <created>1486216164167</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1486216164167</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1150,21 +1159,14 @@
         <state relative-caret-position="452">
           <caret line="61" column="45" lean-forward="false" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
           <folding>
-            <marker date="1486209182386" expanded="true" signature="14276:14684" ph="..." />
-            <marker date="1486209182386" expanded="true" signature="14375:14452" ph="..." />
-            <marker date="1486209182386" expanded="true" signature="14480:14659" ph="..." />
+            <marker date="1486219514613" expanded="true" signature="14276:14739" ph="..." />
+            <marker date="1486219514613" expanded="true" signature="14375:14452" ph="..." />
+            <marker date="1486219514613" expanded="true" signature="14480:14714" ph="..." />
           </folding>
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tv_columnheader.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gwtest/MasterMapper.java">
@@ -1328,8 +1330,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/VitrificationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+        <state relative-caret-position="-1034">
+          <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tv_columnheader.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>

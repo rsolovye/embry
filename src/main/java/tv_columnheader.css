@@ -9,3 +9,7 @@
    -fx-font-size: 12pt;
  -fx-alignment: CENTER;
   }:
+
+.table-row-cell:empty:odd, .table-row-cell:empty:even {
+    -fx-background-color: transparent;
+}
