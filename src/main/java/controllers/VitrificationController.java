@@ -1,5 +1,6 @@
 package controllers;
 
+import gwtest.DefaultValues;
 import gwtest.MasterMapper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,7 +35,7 @@ public class VitrificationController implements Initializable {
     @FXML TextField dewar;
     @FXML TextField canister;
     @FXML ComboBox<String> sectionColor;
-    @FXML ListView<String> doctors;
+    @FXML ComboBox<String> doctors;
     @FXML TextField vitMedia;
     @FXML TextField sectionCount;
     @FXML TextField strawCount;
@@ -59,15 +60,13 @@ public class VitrificationController implements Initializable {
     public VitrificationController() {
         //this.masterView = masterView;
         //this.masterModel = masterModel;
-
-
-        //masterView.setDeaultValuesMap(masterModel.getDefaultControlValuesMap());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
         ArrayList<Protocol> listP = MasterMapper.findByGuid(UUID.fromString("61c7628a-2551-4ce5-b134-efd00289d72a"));
-
+        doctors.setItems(DefaultValues.getObservableList("DOCTORS"));
+        sectionColor.setItems(DefaultValues.getObservableList("SECTION_COLOR"));
         for (Protocol protocol : listP) {
             if (protocol.getClass().getSimpleName().equalsIgnoreCase("VitrificationMap")) {
                 VitrificationMap map = (VitrificationMap) protocol;
@@ -94,6 +93,9 @@ public class VitrificationController implements Initializable {
                 isOms.setSelected(map.get("isOms").compareTo("1")==0);
                 isPostponed.setSelected(map.get("isPostponed").compareTo("1")==0);
                 fromAnotherClinic.setSelected(map.get("fromAnotherClinic").compareTo("1")==0);
+                doctors.getSelectionModel().select(map.get("doctor"));
+                sectionColor.getSelectionModel().select(map.get("sectionColor"));
+                System.out.println(map.get("doctor"));
             }
         }
 

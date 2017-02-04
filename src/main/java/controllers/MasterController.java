@@ -1,15 +1,13 @@
 package controllers;
 
+import gwtest.DefaultValues;
 import gwtest.MasterMapper;
-import gwtest.Registry;
-import javafx.collections.ObservableList;
+import gwtest.SQLRegistry;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import lists.GUI_Lists;
 import models.MasterModel;
-import models.VitrificationTable;
 import protocol.maps.Protocol;
 import protocol.maps.VitrificationMap;
 import protocol.maps.VitrifiedEmbryo;
@@ -68,6 +66,9 @@ public class MasterController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        SQLRegistry.initialize();
+        DefaultValues.initialize();
+
         ArrayList<Protocol> listP = MasterMapper.findByGuid(UUID.fromString("61c7628a-2551-4ce5-b134-efd00289d72a"));
 
         for (Protocol protocol : listP) {
@@ -100,8 +101,8 @@ public class MasterController implements Initializable {
 
         }
 
-        GUI_Lists g = new GUI_Lists();
-        doctors.setItems(g.getDoctors());
+
+        doctors.setItems(DefaultValues.getObservableList("DOCTORS"));
 
         strawNumberCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("strawNumber"));
         embryoNumberCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("embryoNumber"));

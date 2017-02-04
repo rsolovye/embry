@@ -1,5 +1,8 @@
 package gwtest;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,14 +10,15 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by bobsol on 28.01.17.
  */
 public class DefaultValues {
     private static HashMap<String, ArrayList<String>> mapValueLists = null;
-
-    private DefaultValues(){
+    private static DefaultValues defaultValues = new DefaultValues();
+        private DefaultValues(){
 
 
     }
@@ -38,7 +42,7 @@ public class DefaultValues {
             ResultSet rs = stmt.executeQuery(sql + ";");
 
             HashMap<String, String> default_value_query = new HashMap<>();
-            HashMap<String, ArrayList<String>> default_value_map = new HashMap<>();
+
 
             while (rs.next()) {
                 String key = rs.getString("table_name");
@@ -56,10 +60,11 @@ public class DefaultValues {
                 ResultSet rs2 = stmt.executeQuery(default_value_query.get(q) + ";");
 
                 ArrayList<String> list = new ArrayList<>();
-
+                System.out.print("\nCONTROL_VALUE LISTED :\n");
                 while (rs2.next()){
-                    list.add(rs2.getString("CONTROL_VALUE"));
-                    System.out.println("CONTROL_VALUE LISTED");
+                    String value = rs2.getString("CONTROL_VALUE");
+                    list.add(value);
+                    System.out.print(" " + value);
                 }
                 mapValueLists.put(q, list);
                 rs2.close();
@@ -76,6 +81,16 @@ public class DefaultValues {
             System.exit(0);
         }
 
+    }
+    public static ObservableList<String> getObservableList(String listName){
+        if (getValueListMap() == null) {
+            initialize();
+        }
+
+        ObservableList<String> observableList = FXCollections.observableArrayList();
+        observableList.setAll(mapValueLists.get(listName));
+        System.out.println("ObservableList<String> for list : " + listName + " has size=" + observableList.size());
+        return observableList;
     }
 
     public static ArrayList<String> getDefaultList(String listName){

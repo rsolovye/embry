@@ -43,6 +43,8 @@ String sql4 = "INSERT INTO default_lists \n" +
         "( '" + UUID.randomUUID().toString() + "'" + ", 'CATHETERS', 'SELECT CONTROL_VALUE FROM CATHETERS;')," +
 
         "( '" + UUID.randomUUID().toString() + "'" + ", 'SPERM_PREPARATION_REASONS', 'SELECT CONTROL_VALUE FROM SPERM_PREPARATION_REASONS;');";
+tring sql4 = "INSERT INTO default_lists \n" +
+        "VALUES( '" + UUID.randomUUID().toString() + "'" + ", 'SECTION_COLOR', 'SELECT CONTROL_VALUE FROM SECTION_COLOR;'),"
 
             String sql5c = "CREATE TABLE DOCTORS(\n" +
                         "ID TEXT PRIMARY KEY NOT NULL, \n" +
@@ -396,6 +398,35 @@ CREATE TABLE VITRIFICATION(
       isPostponed STRING,
       fromAnotherClinic STRING
   );
+
+  CREATE TABLE SECTION_COLOR(
+  ID STRING PRIMARY KEY NOT NULL,
+  CONTROL_VALUE STRING UNIQUE NOT NULL
+  );
+
+  String sql = "INSERT INTO SECTION_COLOR VALUES\n" +
+  "('" + UUID.randomUUID().toString + "'," +  "'Белый')," +
+  "('" + UUID.randomUUID().toString + "'," +  "'Черный')," +
+  "('" + UUID.randomUUID().toString + "'," +  "'Синий')," +
+  "('" + UUID.randomUUID().toString + "'," +  "'Красный')," +
+  "('" + UUID.randomUUID().toString + "'," +  "'Т-Оранжевый')," +
+  "('" + UUID.randomUUID().toString + "'," +  "'Оранжевый')," +
+  "('" + UUID.randomUUID().toString + "'," +  "'Желтый')," +
+  "('" + UUID.randomUUID().toString + "'," +  "'Сиреневый')," +
+  "('" + UUID.randomUUID().toString + "'," +  "'Салатовый')," +
+  "('" + UUID.randomUUID().toString + "'," +  "'Серый')," +
+  "('" + UUID.randomUUID().toString + "'," +  "'Розовый')," +
+  "('" + UUID.randomUUID().toString + "'," +  "'Бирюзовый');";
+
+
+
+
+
+
+
+
+
+
 
 
 String sql = "INSERT INTO pojo_keysets VALUES\n"+

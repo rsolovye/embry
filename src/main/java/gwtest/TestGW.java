@@ -1,9 +1,5 @@
 package gwtest;
 
-import lists.GUI_Lists;
-import protocol.maps.Protocol;
-
-import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -112,9 +108,26 @@ public class TestGW {
 //                "('61c7628a-2551-4ce5-b134-efd00289d72a', '10.10.11', 'C0101/111010/2010', 'Иванова Афродита Сергеевна','01.10.1987','111010','Белосельский Ибрагим Денисович','25.04.1984','654321','In house(28.09.11)','10','3','синий','4','3','1','1','0','0');";
 //
 //System.out.println(sql1);
+//        String sql = "INSERT INTO SECTION_COLOR VALUES\n" +
+//                "('" + UUID.randomUUID().toString() + "'," +  "'Белый')," +
+//                "('" + UUID.randomUUID().toString() + "'," +  "'Черный')," +
+//                "('" + UUID.randomUUID().toString() + "'," +  "'Синий')," +
+//                "('" + UUID.randomUUID().toString() + "'," +  "'Красный')," +
+//                "('" + UUID.randomUUID().toString() + "'," +  "'Т-Оранжевый')," +
+//                "('" + UUID.randomUUID().toString() + "'," +  "'Оранжевый')," +
+//                "('" + UUID.randomUUID().toString() + "'," +  "'Желтый')," +
+//                "('" + UUID.randomUUID().toString() + "'," +  "'Сиреневый')," +
+//                "('" + UUID.randomUUID().toString() + "'," +  "'Салатовый')," +
+//                "('" + UUID.randomUUID().toString() + "'," +  "'Серый')," +
+//                "('" + UUID.randomUUID().toString() + "'," +  "'Розовый')," +
+//                "('" + UUID.randomUUID().toString() + "'," +  "'Бирюзовый');";
+        String sql4 = "UPDATE VITRIFICATION SET doctor='Геркулов Д.А.' WHERE guid='61c7628a-2551-4ce5-b134-efd00289d72a';";
+        String sql5 = "UPDATE VITRIFICATION SET sectionColor='Синий' WHERE guid='61c7628a-2551-4ce5-b134-efd00289d72a';";
 
 
-
+//        "INSERT INTO default_lists \n" +
+//                "VALUES('" + UUID.randomUUID().toString() + "'" + ", 'SECTION_COLOR', 'SELECT CONTROL_VALUE FROM SECTION_COLOR;');";
+insertSQL(sql5);
     }
 
     private static HashMap<String, String> mapedInput(){
