@@ -10,6 +10,6 @@
  -fx-alignment: CENTER;
   }:
 
-.table-row-cell:empty:odd, .table-row-cell:empty:even {
+.table-view .table-row-cell:empty:odd, .table-row-cell:empty:even {
     -fx-background-color: transparent;
 }

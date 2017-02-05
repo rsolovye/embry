@@ -64,8 +64,17 @@ public class VitrifiedEmbryo {
     private final SimpleStringProperty cryoNotes;
     private final SimpleStringProperty cryoEmbryologist;
 
+    public void setDefrostDate(String defrostDate) {
+        this.defrostDate.set(defrostDate);
+    }
+
     private final SimpleStringProperty defrostDate;
     private final SimpleStringProperty defrostEmbryo;
+
+    public void setDefrostEmbryologist(String defrostEmbryologist) {
+        this.defrostEmbryologist.set(defrostEmbryologist);
+    }
+
     private final SimpleStringProperty defrostEmbryologist;
     private final SimpleStringProperty defrostSurvival;
     private final SimpleStringProperty defrostMedia;

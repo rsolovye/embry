@@ -2,10 +2,18 @@ package controllers;
 
 import gwtest.DefaultValues;
 import gwtest.MasterMapper;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.embed.swt.FXCanvas;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.Callback;
 import models.MasterModel;
 import protocol.maps.Protocol;
 import protocol.maps.VitrificationMap;
@@ -53,7 +61,7 @@ public class VitrificationController implements Initializable {
     @FXML  TableColumn<VitrifiedEmbryo, String>  defrostDate;
     @FXML  TableColumn<VitrifiedEmbryo, String>  defrostEmbryo;
     @FXML  TableColumn<VitrifiedEmbryo, String>  defrostMedia;
-    @FXML  TableColumn<VitrifiedEmbryo, String>  defrostEmbryologist;
+    @FXML  TableColumn<VitrifiedEmbryo, Typ>  defrostEmbryologist;
     @FXML  TableColumn<VitrifiedEmbryo, String>  defrostSurvival;
 
 
@@ -107,12 +115,42 @@ public class VitrificationController implements Initializable {
         cryoNotesCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("cryoNotes"));
         cryoEmbryologistCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("cryoEmbryologist"));
 
-
         defrostDate.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostDate"));
+
+        defrostDate.setCellFactory(TextFieldTableCell.forTableColumn());
+
+
+
+        Callback<TableColumn<VitrifiedEmbryo, String>, TableCell<VitrifiedEmbryo, String>> cellFactory
+                = (TableColumn<VitrifiedEmbryo, String> param) -> new EditingCell();
+
+        Callback<TableColumn<VitrifiedEmbryo, String>, TableCell<VitrifiedEmbryo, Typ>> comboBoxCellFactory
+                = (TableColumn<VitrifiedEmbryo, String> param) -> new ComboBoxEditingCell();
+        defrostEmbryologist.setCellValueFactory(cellData -> cellData.getValue().(new PropertyValueFactory<VitrifiedEmbryo, Typ>("defrostEmbryologist"));
+
+        defrostDate.setCellFactory(cellFactory);
+        defrostEmbryologist.setOnEditCommit(
+                (TableColumn.CellEditEvent<VitrifiedEmbryo, Typ> t) -> {
+                    ((VitrifiedEmbryo) t.getTableView().getItems()
+                            .get(t.getTablePosition().getRow()))
+                            .setDefrostEmbryologist(t.getNewValue().getTyp());
+                    });
+
+
+
+
+
+        defrostEmbryologist.setCellFactory(comboBoxCellFactory);
+        defrostDate.setOnEditCommit(
+                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> {
+                    ((VitrifiedEmbryo) t.getTableView().getItems()
+                            .get(t.getTablePosition().getRow()))
+                            .setDefrostDate((t.getNewValue()));
+
+                } );
         defrostEmbryo.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostEmbryo"));
         defrostMedia.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostMedia"));
-        defrostEmbryologist.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostEmbryologist"));
-        defrostSurvival.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostSurvival"));
+          defrostSurvival.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostSurvival"));
 
         vitrificationTableView.setItems(new VitrifiedEmbryoService().getVitrifiedEmbryosList());
     }
@@ -130,4 +168,185 @@ public class VitrificationController implements Initializable {
 
     }
 
+    class EditingCell extends TableCell<VitrifiedEmbryo, String> {
+
+        private TextField textField;
+
+        private EditingCell() {
+        }
+
+        @Override
+        public void startEdit() {
+            if (!isEmpty()) {
+                super.startEdit();
+                createTextField();
+                setText(null);
+                setGraphic(textField);
+                textField.selectAll();
+            }
+        }
+
+        @Override
+        public void cancelEdit() {
+            super.cancelEdit();
+
+            setText((String) getItem());
+            setGraphic(null);
+        }
+
+        @Override
+        public void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (empty) {
+                setText(item);
+                setGraphic(null);
+            } else {
+                if (isEditing()) {
+                    if (textField != null) {
+                        textField.setText(getString());
+//                        setGraphic(null);
+                    }
+                    setText(null);
+                    setGraphic(textField);
+                } else {
+                    setText(getString());
+                    setGraphic(null);
+                }
+            }
+        }
+
+        private void createTextField() {
+            textField = new TextField(getString());
+            textField.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
+            textField.setOnAction((e) -> commitEdit(textField.getText()));
+            textField.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+                if (!newValue) {
+                    System.out.println("Commiting " + textField.getText());
+                    commitEdit(textField.getText());
+                }
+            });
+        }
+
+        private String getString() {
+            return getItem() == null ? "" : getItem();
+        }
+    }
+
+    class ComboBoxEditingCell extends TableCell<VitrifiedEmbryo, String> {
+
+        private ComboBox<Typ> comboBox;
+
+        private ComboBoxEditingCell() {
+        }
+
+        @Override
+        public void startEdit() {
+            if (!isEmpty()) {
+                super.startEdit();
+                createComboBox();
+                setText(null);
+                setGraphic(comboBox);
+            }
+        }
+
+        @Override
+        public void cancelEdit() {
+            super.cancelEdit();
+
+            setText(getTyp().getTyp());
+            setGraphic(null);
+        }
+
+        @Override
+        public void updateItem(Typ item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (empty) {
+                setText(null);
+                setGraphic(null);
+            } else {
+                if (isEditing()) {
+                    if (comboBox != null) {
+                        comboBox.setValue(getTyp());
+                    }
+                    setText(getTyp().getTyp());
+                    setGraphic(comboBox);
+                } else {
+                    setText(getTyp().getTyp());
+                    setGraphic(null);
+                }
+            }
+        }
+
+        private void createComboBox() {
+           ObservableList<Typ> embTyp = FXCollections.observableArrayList();
+            for (String str: DefaultValues.getObservableList("EMBRYOLOGIST")){
+               embTyp.add(new Typ(str));
+            }
+
+            comboBox = new ComboBox<Typ>(embTyp);
+            comboBoxConverter(comboBox);
+            comboBox.valueProperty().set(getTyp());
+            comboBox.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
+            comboBox.setOnAction((e) -> {
+                System.out.println("Committed: " + comboBox.getSelectionModel().getSelectedItem());
+                commitEdit(comboBox.getSelectionModel().getSelectedItem());
+            });
+//            comboBox.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+//                if (!newValue) {
+//                    commitEdit(comboBox.getSelectionModel().getSelectedItem());
+//                }
+//            });
+        }
+
+        private void comboBoxConverter(ComboBox<Typ> comboBox) {
+            // Define rendering of the list of values in ComboBox drop down.
+            comboBox.setCellFactory((c) -> {
+                return new ListCell<Typ>() {
+                    @Override
+                    protected void updateItem(Typ item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (item == null || empty) {
+                            setText(null);
+                        } else {
+                            setText(item.getTyp());
+                        }
+                    }
+                };
+            });
+        }
+
+        private Typ getTyp() {
+            return getItem() == null ? new Typ("") : getItem();
+        }
+    }
+
+    public static class Typ {
+
+        private final SimpleStringProperty typ;
+
+        public Typ(String typ) {
+            this.typ = new SimpleStringProperty(typ);
+        }
+
+        public String getTyp() {
+            return this.typ.get();
+        }
+
+        public StringProperty typProperty() {
+            return this.typ;
+        }
+
+        public void setTyp(String typ) {
+            this.typ.set(typ);
+        }
+
+        @Override
+        public String toString() {
+            return typ.get();
+        }
+
+    }
 }
