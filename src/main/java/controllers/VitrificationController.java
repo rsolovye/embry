@@ -2,15 +2,18 @@ package controllers;
 
 import gwtest.DefaultValues;
 import gwtest.MasterMapper;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swt.FXCanvas;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
@@ -61,24 +64,27 @@ public class VitrificationController implements Initializable {
     @FXML  TableColumn<VitrifiedEmbryo, String>  defrostDate;
     @FXML  TableColumn<VitrifiedEmbryo, String>  defrostEmbryo;
     @FXML  TableColumn<VitrifiedEmbryo, String>  defrostMedia;
-    @FXML  TableColumn<VitrifiedEmbryo, Typ>  defrostEmbryologist;
+    @FXML  TableColumn<VitrifiedEmbryo, String>  defrostEmbryologist;
     @FXML  TableColumn<VitrifiedEmbryo, String>  defrostSurvival;
-
+@FXML Button saveCryoButton;
 
     public VitrificationController() {
         //this.masterView = masterView;
         //this.masterModel = masterModel;
+
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
+
         ArrayList<Protocol> listP = MasterMapper.findByGuid(UUID.fromString("61c7628a-2551-4ce5-b134-efd00289d72a"));
         doctors.setItems(DefaultValues.getObservableList("DOCTORS"));
         sectionColor.setItems(DefaultValues.getObservableList("SECTION_COLOR"));
+
         for (Protocol protocol : listP) {
             if (protocol.getClass().getSimpleName().equalsIgnoreCase("VitrificationMap")) {
                 VitrificationMap map = (VitrificationMap) protocol;
-                map.print();
 
                 vitDate.setText(map.get("vitDate"));
                 vitVRT.setText(map.get("vitVRT"));
@@ -92,8 +98,7 @@ public class VitrificationController implements Initializable {
                 mCode.setText(map.get("mCode"));
                 dewar.setText(map.get("dewar"));
                 canister.setText(map.get("canister"));
-                //'Doc
-                //'sectionColor.setText(map.get("color"));;
+
                 vitMedia.setText(map.get("vitMedia"));
                 sectionCount.setText(map.get("sectionCount"));
                 strawCount.setText(map.get("strawCount"));
@@ -103,70 +108,70 @@ public class VitrificationController implements Initializable {
                 fromAnotherClinic.setSelected(map.get("fromAnotherClinic").compareTo("1")==0);
                 doctors.getSelectionModel().select(map.get("doctor"));
                 sectionColor.getSelectionModel().select(map.get("sectionColor"));
-                System.out.println(map.get("doctor"));
+
             }
         }
 
 
-        strawNumberCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("strawNumber"));
-        embryoNumberCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("embryoNumber"));
-        cryoDpfCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("cryoDpf"));
-        cryoStageCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("cryoStage"));
-        cryoNotesCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("cryoNotes"));
-        cryoEmbryologistCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("cryoEmbryologist"));
+        strawNumberCol.setCellValueFactory(new PropertyValueFactory<>("strawNumber"));
+        embryoNumberCol.setCellValueFactory(new PropertyValueFactory<>("embryoNumber"));
+        cryoDpfCol.setCellValueFactory(new PropertyValueFactory<>("cryoDpf"));
+        cryoStageCol.setCellValueFactory(new PropertyValueFactory<>("cryoStage"));
+        cryoNotesCol.setCellValueFactory(new PropertyValueFactory<>("cryoNotes"));
 
-        defrostDate.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostDate"));
-
-        defrostDate.setCellFactory(TextFieldTableCell.forTableColumn());
 
 
 
         Callback<TableColumn<VitrifiedEmbryo, String>, TableCell<VitrifiedEmbryo, String>> cellFactory
                 = (TableColumn<VitrifiedEmbryo, String> param) -> new EditingCell();
 
-        Callback<TableColumn<VitrifiedEmbryo, String>, TableCell<VitrifiedEmbryo, Typ>> comboBoxCellFactory
+        Callback<TableColumn<VitrifiedEmbryo, String>, TableCell<VitrifiedEmbryo, String>> comboBoxCellFactory
                 = (TableColumn<VitrifiedEmbryo, String> param) -> new ComboBoxEditingCell();
-        defrostEmbryologist.setCellValueFactory(cellData -> cellData.getValue().(new PropertyValueFactory<VitrifiedEmbryo, Typ>("defrostEmbryologist"));
 
-        defrostDate.setCellFactory(cellFactory);
+        defrostDate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostDate()));
+        defrostDate.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        defrostEmbryo.setCellFactory(cellFactory);
+        defrostEmbryo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostEmbryo()));
+        defrostEmbryo.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+                .get(t.getTablePosition().getRow()))
+                .setDefrostEmbryo((t.getNewValue())));
+
+        defrostEmbryologist.setCellValueFactory(cellData -> cellData.getValue().getDefrostEmbryologistProperty());
         defrostEmbryologist.setOnEditCommit(
-                (TableColumn.CellEditEvent<VitrifiedEmbryo, Typ> t) -> {
-                    ((VitrifiedEmbryo) t.getTableView().getItems()
-                            .get(t.getTablePosition().getRow()))
-                            .setDefrostEmbryologist(t.getNewValue().getTyp());
-                    });
-
-
-
-
-
+                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+                        .get(t.getTablePosition().getRow()))
+                        .setDefrostEmbryologist(t.getNewValue()));
         defrostEmbryologist.setCellFactory(comboBoxCellFactory);
-        defrostDate.setOnEditCommit(
-                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> {
-                    ((VitrifiedEmbryo) t.getTableView().getItems()
-                            .get(t.getTablePosition().getRow()))
-                            .setDefrostDate((t.getNewValue()));
 
-                } );
-        defrostEmbryo.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostEmbryo"));
-        defrostMedia.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostMedia"));
-          defrostSurvival.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostSurvival"));
+        defrostDate.setOnEditCommit(
+                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+                        .get(t.getTablePosition().getRow()))
+                        .setDefrostDate((t.getNewValue())));
+
+        defrostMedia.setCellFactory(cellFactory);
+        defrostMedia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostMedia()));
+        defrostMedia.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+                .get(t.getTablePosition().getRow()))
+                .setDefrostMedia((t.getNewValue())));
+
+        defrostSurvival.setCellFactory(cellFactory);
+        defrostSurvival.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostSurvival()));
+        defrostSurvival.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+                .get(t.getTablePosition().getRow()))
+                .setDefrostSurvival((t.getNewValue())));
+
+        cryoEmbryologistCol.setCellValueFactory(
+                cellData -> new SimpleStringProperty(cellData.getValue().getCryoEmbryologist()));
+        cryoEmbryologistCol.setCellFactory(ComboBoxTableCell.forTableColumn(DefaultValues.getObservableList("EMBRYOLOGISTS")));
+        cryoEmbryologistCol.setOnEditCommit(
+                t -> ( t.getTableView().getItems().get(t.getTablePosition().getRow())).setCryoEmbryologist(t.getNewValue())
+        );
+
 
         vitrificationTableView.setItems(new VitrifiedEmbryoService().getVitrifiedEmbryosList());
     }
 
-
-
-    public void getDefaultControlValuesMap(){
-
-        for (String d:  masterModel.getDefaultControlValuesMap().keySet() )
-        {
-
-                System.out.print(d + " - " + masterModel.getDefaultControlValuesMap().get(d));
-
-        }
-
-    }
 
     class EditingCell extends TableCell<VitrifiedEmbryo, String> {
 
@@ -235,7 +240,8 @@ public class VitrificationController implements Initializable {
 
     class ComboBoxEditingCell extends TableCell<VitrifiedEmbryo, String> {
 
-        private ComboBox<Typ> comboBox;
+        private ComboBox<String> comboBox;
+
 
         private ComboBoxEditingCell() {
         }
@@ -254,12 +260,12 @@ public class VitrificationController implements Initializable {
         public void cancelEdit() {
             super.cancelEdit();
 
-            setText(getTyp().getTyp());
+            setText(getString());
             setGraphic(null);
         }
 
         @Override
-        public void updateItem(Typ item, boolean empty) {
+        public void updateItem(String item, boolean empty) {
             super.updateItem(item, empty);
 
             if (empty) {
@@ -268,26 +274,26 @@ public class VitrificationController implements Initializable {
             } else {
                 if (isEditing()) {
                     if (comboBox != null) {
-                        comboBox.setValue(getTyp());
+                        comboBox.setValue(getString());
                     }
-                    setText(getTyp().getTyp());
+                    setText(item);
                     setGraphic(comboBox);
                 } else {
-                    setText(getTyp().getTyp());
+                    setText(getString());
                     setGraphic(null);
                 }
             }
         }
 
         private void createComboBox() {
-           ObservableList<Typ> embTyp = FXCollections.observableArrayList();
-            for (String str: DefaultValues.getObservableList("EMBRYOLOGIST")){
-               embTyp.add(new Typ(str));
+           ObservableList<String> embCombo = FXCollections.observableArrayList();
+            for (String str: DefaultValues.getObservableList("EMBRYOLOGISTS")){
+               embCombo.add(str);
             }
 
-            comboBox = new ComboBox<Typ>(embTyp);
+            comboBox = new ComboBox<>(embCombo);
             comboBoxConverter(comboBox);
-            comboBox.valueProperty().set(getTyp());
+            comboBox.valueProperty().set(getString());
             comboBox.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
             comboBox.setOnAction((e) -> {
                 System.out.println("Committed: " + comboBox.getSelectionModel().getSelectedItem());
@@ -300,53 +306,43 @@ public class VitrificationController implements Initializable {
 //            });
         }
 
-        private void comboBoxConverter(ComboBox<Typ> comboBox) {
+        private void comboBoxConverter(ComboBox<String> comboBox) {
             // Define rendering of the list of values in ComboBox drop down.
             comboBox.setCellFactory((c) -> {
-                return new ListCell<Typ>() {
+                return new ListCell<String>() {
                     @Override
-                    protected void updateItem(Typ item, boolean empty) {
+                    protected void updateItem(String item, boolean empty) {
                         super.updateItem(item, empty);
 
                         if (item == null || empty) {
                             setText(null);
                         } else {
-                            setText(item.getTyp());
+                            setText(item);
                         }
                     }
                 };
             });
         }
 
-        private Typ getTyp() {
-            return getItem() == null ? new Typ("") : getItem();
+        private String getString() {
+            return getItem() == null ? new String("") : getItem();
         }
     }
 
-    public static class Typ {
 
-        private final SimpleStringProperty typ;
 
-        public Typ(String typ) {
-            this.typ = new SimpleStringProperty(typ);
-        }
 
-        public String getTyp() {
-            return this.typ.get();
-        }
 
-        public StringProperty typProperty() {
-            return this.typ;
-        }
 
-        public void setTyp(String typ) {
-            this.typ.set(typ);
-        }
 
-        @Override
-        public String toString() {
-            return typ.get();
-        }
 
-    }
+
+
+
+
+
+
+
+
+
 }

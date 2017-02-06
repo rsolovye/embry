@@ -68,7 +68,7 @@ public class MasterController implements Initializable {
     public void initialize(URL url, ResourceBundle rb){
         SQLRegistry.initialize();
         DefaultValues.initialize();
-
+//TODO MOVE TO MODEL
         ArrayList<Protocol> listP = MasterMapper.findByGuid(UUID.fromString("61c7628a-2551-4ce5-b134-efd00289d72a"));
 
         for (Protocol protocol : listP) {
@@ -88,8 +88,6 @@ public class MasterController implements Initializable {
                 mCode.setText(map.get("mCode"));
                 dewar.setText(map.get("dewar"));
                 canister.setText(map.get("canister"));
-                //'Doc
-                //'sectionColor.setText(map.get("color"));;
                 vitMedia.setText(map.get("vitMedia"));
                 sectionCount.setText(map.get("sectionCount"));
                 strawCount.setText(map.get("strawCount"));
@@ -104,19 +102,19 @@ public class MasterController implements Initializable {
 
         doctors.setItems(DefaultValues.getObservableList("DOCTORS"));
 
-        strawNumberCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("strawNumber"));
-        embryoNumberCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("embryoNumber"));
-        cryoDpfCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("cryoDpf"));
-        cryoStageCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("cryoStage"));
-        cryoNotesCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("cryoNotes"));
-        cryoEmbryologistCol.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("cryoEmbryologist"));
+        strawNumberCol.setCellValueFactory(new PropertyValueFactory<>("strawNumber"));
+        embryoNumberCol.setCellValueFactory(new PropertyValueFactory<>("embryoNumber"));
+        cryoDpfCol.setCellValueFactory(new PropertyValueFactory<>("cryoDpf"));
+        cryoStageCol.setCellValueFactory(new PropertyValueFactory< >("cryoStage"));
+        cryoNotesCol.setCellValueFactory(new PropertyValueFactory<>("cryoNotes"));
+        cryoEmbryologistCol.setCellValueFactory(new PropertyValueFactory<>("cryoEmbryologist"));
 
 
-        defrostDate.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostDate"));
-        defrostEmbryo.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostEmbryo"));
-        defrostMedia.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostMedia"));
-        defrostEmbryologist.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostEmbryologist"));
-        defrostSurvival.setCellValueFactory(new PropertyValueFactory<VitrifiedEmbryo, String>("defrostSurvival"));
+        defrostDate.setCellValueFactory(new PropertyValueFactory<>("defrostDate"));
+        defrostEmbryo.setCellValueFactory(new PropertyValueFactory<>("defrostEmbryo"));
+        defrostMedia.setCellValueFactory(new PropertyValueFactory<>("defrostMedia"));
+        defrostEmbryologist.setCellValueFactory(new PropertyValueFactory<>("defrostEmbryologist"));
+        defrostSurvival.setCellValueFactory(new PropertyValueFactory<>("defrostSurvival"));
 
         vitrificationTableView.setItems(new VitrifiedEmbryoService().getVitrifiedEmbryosList());
     }

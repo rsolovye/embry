@@ -1,7 +1,6 @@
 package protocol.maps;
 
 import javafx.beans.property.SimpleStringProperty;
-import services.Visitable;
 
 /**
  * Created by micro on 02.02.2017.
@@ -59,6 +58,47 @@ public class VitrifiedEmbryo {
     private final SimpleStringProperty guid;
     private final SimpleStringProperty strawNumber;
     private final SimpleStringProperty embryoNumber;
+
+    public void setGuid(String guid) {
+        this.guid.set(guid);
+    }
+
+    public void setStrawNumber(String strawNumber) {
+        this.strawNumber.set(strawNumber);
+    }
+
+    public void setEmbryoNumber(String embryoNumber) {
+        this.embryoNumber.set(embryoNumber);
+    }
+
+    public void setCryoDpf(String cryoDpf) {
+        this.cryoDpf.set(cryoDpf);
+    }
+
+    public void setCryoStage(String cryoStage) {
+        this.cryoStage.set(cryoStage);
+    }
+
+    public void setCryoNotes(String cryoNotes) {
+        this.cryoNotes.set(cryoNotes);
+    }
+
+    public void setCryoEmbryologist(String cryoEmbryologist) {
+        this.cryoEmbryologist.set(cryoEmbryologist);
+    }
+
+    public void setDefrostEmbryo(String defrostEmbryo) {
+        this.defrostEmbryo.set(defrostEmbryo);
+    }
+
+    public void setDefrostSurvival(String defrostSurvival) {
+        this.defrostSurvival.set(defrostSurvival);
+    }
+
+    public void setDefrostMedia(String defrostMedia) {
+        this.defrostMedia.set(defrostMedia);
+    }
+
     private final SimpleStringProperty cryoDpf;
     private final SimpleStringProperty cryoStage;
     private final SimpleStringProperty cryoNotes;
@@ -73,6 +113,10 @@ public class VitrifiedEmbryo {
 
     public void setDefrostEmbryologist(String defrostEmbryologist) {
         this.defrostEmbryologist.set(defrostEmbryologist);
+    }
+public SimpleStringProperty getDefrostEmbryologistProperty(){
+        return this.defrostEmbryologist;
+
     }
 
     private final SimpleStringProperty defrostEmbryologist;
