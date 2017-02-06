@@ -17,6 +17,8 @@ import java.util.List;
  */
 public class DefaultValues {
     private static HashMap<String, ArrayList<String>> mapValueLists = null;
+    private static HashMap<String, String> mapControlTable = null;
+
     private static DefaultValues defaultValues = new DefaultValues();
         private DefaultValues(){
 
@@ -67,9 +69,23 @@ public class DefaultValues {
                     System.out.print(" " + value);
                 }
                 mapValueLists.put(q, list);
+
                 rs2.close();
                 stmt.close();
+
             }
+                stmt = c.createStatement();
+                ResultSet rs3 = stmt.executeQuery("SELECT * FROM control_list_map;");
+            mapControlTable = new HashMap();
+           // System.out.print("\nCONTROL_VALUE LISTED :\n");
+            while (rs3.next()){
+                String key = rs3.getString("CONTROL_NAME");
+                String value = rs3.getString("TABLE_NAME");
+                mapControlTable.put(key, value);
+            }
+
+            rs3.close();
+            stmt.close();
 
             c.commit();
             c.close();
@@ -93,6 +109,16 @@ public class DefaultValues {
         return observableList;
     }
 
+    public static ObservableList<String> getObsservableListForThisControl(String controlName){
+        if (getValueListMap() == null) {
+            initialize();
+        }
+
+        ObservableList<String> observableList = FXCollections.observableArrayList();
+        observableList.setAll(mapValueLists.get(mapControlTable.get(controlName)));
+        System.out.println("ObservableList<String> for controlName : " + controlName + " has size=" + observableList.size());
+        return observableList;
+    }
     public static ArrayList<String> getDefaultList(String listName){
         if (getValueListMap() == null) {
                 initialize();

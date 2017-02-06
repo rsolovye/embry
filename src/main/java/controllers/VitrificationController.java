@@ -1,26 +1,29 @@
 package controllers;
 
+
 import gwtest.DefaultValues;
 import gwtest.MasterMapper;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swt.FXCanvas;
-import javafx.event.EventHandler;
+
+import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 import models.MasterModel;
 import protocol.maps.Protocol;
-import protocol.maps.VitrificationMap;
 import protocol.maps.VitrifiedEmbryo;
+import services.ValueSetter;
 import views.MasterView;
 
 import java.net.URL;
@@ -43,10 +46,10 @@ public class VitrificationController implements Initializable {
     @FXML TextField mDOB;
     @FXML TextField vitDate;
     @FXML TextField vitVRT;
-    @FXML TextField dewar;
+   // @FXML TextField dewar;
     @FXML TextField canister;
     @FXML ComboBox<String> sectionColor;
-    @FXML ComboBox<String> doctors;
+    @FXML ComboBox<String> doctor;
     @FXML TextField vitMedia;
     @FXML TextField sectionCount;
     @FXML TextField strawCount;
@@ -66,7 +69,9 @@ public class VitrificationController implements Initializable {
     @FXML  TableColumn<VitrifiedEmbryo, String>  defrostMedia;
     @FXML  TableColumn<VitrifiedEmbryo, String>  defrostEmbryologist;
     @FXML  TableColumn<VitrifiedEmbryo, String>  defrostSurvival;
-@FXML Button saveCryoButton;
+    @FXML Button saveCryoButton;
+    @FXML AnchorPane vitrificationInfoPane;
+@FXML AnchorPane tableViewPane;
 
     public VitrificationController() {
         //this.masterView = masterView;
@@ -77,40 +82,12 @@ public class VitrificationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
+//TODO MOVE TO MODEL
 
         ArrayList<Protocol> listP = MasterMapper.findByGuid(UUID.fromString("61c7628a-2551-4ce5-b134-efd00289d72a"));
-        doctors.setItems(DefaultValues.getObservableList("DOCTORS"));
-        sectionColor.setItems(DefaultValues.getObservableList("SECTION_COLOR"));
+        ValueSetter.setValues(vitrificationInfoPane, "VitrificationMap", "61c7628a-2551-4ce5-b134-efd00289d72a");
+      //  ValueSetter.setValues(tableViewPane, "VitrificationMap", "61c7628a-2551-4ce5-b134-efd00289d72a");
 
-        for (Protocol protocol : listP) {
-            if (protocol.getClass().getSimpleName().equalsIgnoreCase("VitrificationMap")) {
-                VitrificationMap map = (VitrificationMap) protocol;
-
-                vitDate.setText(map.get("vitDate"));
-                vitVRT.setText(map.get("vitVRT"));
-
-                fName.setText(map.get("fName"));
-                fDOB.setText(map.get("fDOB"));
-                fCode.setText(map.get("fCode"));
-                mName.setText(map.get("mName"));
-                mDOB.setText(map.get("mDOB"));
-
-                mCode.setText(map.get("mCode"));
-                dewar.setText(map.get("dewar"));
-                canister.setText(map.get("canister"));
-
-                vitMedia.setText(map.get("vitMedia"));
-                sectionCount.setText(map.get("sectionCount"));
-                strawCount.setText(map.get("strawCount"));
-                embryoCount.setText(map.get("embryoCount"));
-                isOms.setSelected(map.get("isOms").compareTo("1")==0);
-                isPostponed.setSelected(map.get("isPostponed").compareTo("1")==0);
-                fromAnotherClinic.setSelected(map.get("fromAnotherClinic").compareTo("1")==0);
-                doctors.getSelectionModel().select(map.get("doctor"));
-                sectionColor.getSelectionModel().select(map.get("sectionColor"));
-
-            }
-        }
 
 
         strawNumberCol.setCellValueFactory(new PropertyValueFactory<>("strawNumber"));
@@ -131,8 +108,9 @@ public class VitrificationController implements Initializable {
         defrostDate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostDate()));
         defrostDate.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        defrostEmbryo.setCellFactory(cellFactory);
+        defrostEmbryo.setCellFactory(TextFieldTableCell.forTableColumn());
         defrostEmbryo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostEmbryo()));
+
         defrostEmbryo.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
                 .get(t.getTablePosition().getRow()))
                 .setDefrostEmbryo((t.getNewValue())));
@@ -144,10 +122,15 @@ public class VitrificationController implements Initializable {
                         .setDefrostEmbryologist(t.getNewValue()));
         defrostEmbryologist.setCellFactory(comboBoxCellFactory);
 
+//        defrostDate.setOnEditCommit(
+//                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+//                        .get(t.getTablePosition().getRow()))
+//                        .setDefrostDate((t.getNewValue())));
+
         defrostDate.setOnEditCommit(
                 (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
                         .get(t.getTablePosition().getRow()))
-                        .setDefrostDate((t.getNewValue())));
+                        .set(defrostDate.getId(), new SimpleStringProperty(t.getNewValue())));
 
         defrostMedia.setCellFactory(cellFactory);
         defrostMedia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostMedia()));
@@ -172,6 +155,9 @@ public class VitrificationController implements Initializable {
         vitrificationTableView.setItems(new VitrifiedEmbryoService().getVitrifiedEmbryosList());
     }
 
+    private void saveInput(ActionEvent e){
+        System.out.println(e.getSource());
+    }
 
     class EditingCell extends TableCell<VitrifiedEmbryo, String> {
 
@@ -328,10 +314,53 @@ public class VitrificationController implements Initializable {
             return getItem() == null ? new String("") : getItem();
         }
     }
+//        doctor.setItems(DefaultValues.getObservableList("DOCTORS"));
+    //      sectionColor.setItems(DefaultValues.getObservableList("SECTION_COLOR"));
 
+//        for (Protocol protocol : listP) {
+//            if (protocol.getClass().getSimpleName().equalsIgnoreCase("VitrificationMap")) {
+//                VitrificationMap map = (VitrificationMap) protocol;
+//
+//                for (javafx.scene.Node n: vitrificationInfoPane.getChildren()){
+//                    System.out.println(n.getId() + " - " + n.getClass().getSimpleName());
+//                    String type =  n.getClass().getSimpleName();
+//                    if (type.compareTo("TextField")  == 0)
+//                        ((TextField) n).setText(map.get(n.getId()));
+//                    if (type.compareTo("CheckBox")  == 0)
+//                        ((CheckBox) n).setSelected(map.get(n.getId()).compareTo("1") == 0);
+//                    if (type.compareTo("ComboBox")  == 0)
+//                        ((ComboBox) n).getSelectionModel().select(map.get(n.getId()));
+//                    if (type.compareTo("ListView")  == 0)
+//                        ((ListView) n).getSelectionModel().select(map.get(n.getId()));
+//                }
+//
+//                vitDate.setText(map.get("vitDate"));
+//                vitVRT.setText(map.get("vitVRT"));
+//
+//                fName.setText(map.get("fName"));
+//                fDOB.setText(map.get("fDOB"));
+//                fCode.setText(map.get("fCode"));
+//                mName.setText(map.get("mName"));
+//                mDOB.setText(map.get("mDOB"));
+//
+//                mCode.setText(map.get("mCode"));
+//                dewar.setText(map.get("dewar"));
+//                canister.setText(map.get("canister"));
+//
+//                vitMedia.setText(map.get("vitMedia"));
+//                sectionCount.setText(map.get("sectionCount"));
+//                strawCount.setText(map.get("strawCount"));
+//                embryoCount.setText(map.get("embryoCount"));
+//
+//                isOms.setSelected(map.get("isOms").compareTo("1")==0);
+//                isPostponed.setSelected(map.get("isPostponed").compareTo("1")==0);
+//                fromAnotherClinic.setSelected(map.get("fromAnotherClinic").compareTo("1")==0);
+//
+//                doctors.getSelectionModel().select(map.get("doctor"));
+//                sectionColor.getSelectionModel().select(map.get("sectionColor"));
 
-
-
+//            }
+//        }
 
 
 

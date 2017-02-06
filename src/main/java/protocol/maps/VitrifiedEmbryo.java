@@ -2,6 +2,8 @@ package protocol.maps;
 
 import javafx.beans.property.SimpleStringProperty;
 
+import java.util.HashMap;
+
 /**
  * Created by micro on 02.02.2017.
  */
@@ -122,7 +124,7 @@ public SimpleStringProperty getDefrostEmbryologistProperty(){
     private final SimpleStringProperty defrostEmbryologist;
     private final SimpleStringProperty defrostSurvival;
     private final SimpleStringProperty defrostMedia;
-
+    private HashMap<String, SimpleStringProperty> map = new HashMap<>();
     private VitrifiedEmbryo(VitrifiedEmbryoBuilder b){
           guid = b.guid;
           strawNumber = b.strawNumber;
@@ -136,8 +138,25 @@ public SimpleStringProperty getDefrostEmbryologistProperty(){
           defrostMedia = b.defrostMedia;
           defrostEmbryologist=b.defrostEmbryologist;
           defrostSurvival=b.defrostSurvival;
+        map.put("guid", b.guid);
+        map.put("strawNumber", b.strawNumber);
+        map.put("embryoNumber", b.embryoNumber);
+        map.put("cryoDpf",b.cryoDpf);
+        map.put("cryoStage", b.cryoStage);
+        map.put("cryoNotes", b.cryoNotes);
+        map.put("cryoEmbryologist", b.cryoEmbryologist);
+        map.put("defrostDate", b.defrostDate);
+        map.put("defrostEmbryo", b.defrostEmbryoQuality);
+        map.put("defrostMedia", b.defrostMedia);
+        map.put("defrostEmbryologist", b.defrostEmbryologist);
+        map.put("defrostSurvival", b.defrostSurvival);
     }
-
+public SimpleStringProperty get(String columnName){
+        return map.get(columnName);
+}
+public void set(String columnName, SimpleStringProperty value){
+    map.put(columnName, value);
+}
     public static class  VitrifiedEmbryoBuilder{
         private final SimpleStringProperty guid;
         private final SimpleStringProperty strawNumber;
@@ -171,7 +190,6 @@ public SimpleStringProperty getDefrostEmbryologistProperty(){
 
         public VitrifiedEmbryo build(){
             VitrifiedEmbryo ve = new VitrifiedEmbryo(this);
-            //System.out.println("I AM BUILTTTTT " + defrostEmbryoQuality);
             return ve;
         }
     }

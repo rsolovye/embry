@@ -237,6 +237,14 @@ INSERT INTO VitrifiedEmbryo VALUES
 ('61c7628a-2551-4ce5-b134-efd00289d72a', '1', '1', '5', 'BL5AB', '', 'Хандога А.О.', '', '', '', '');,
 
 )
+CREATE TABLE control_list_map(
+ID STRING PRIMARY KEY NOT NULL,
+CONTROL_NAME STRING UNIQUE NOT NULL,
+TABLE_NAME STRING NOT NULL
+);
+
+String sql = "INSERT INTO control_list_map VALUES('" + UUID.randomUUID().toString() + "', "doctor", "DOCTORS");";
+
    String sql =       "CREATE TABLE VITRIFICATION_TABLE(
           "guid STRING NOT NULL," +
          "strawCol STRING NOT NULL" +
