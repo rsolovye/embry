@@ -86,15 +86,15 @@ public class VitrificationController implements Initializable {
 
         ArrayList<Protocol> listP = MasterMapper.findByGuid(UUID.fromString("61c7628a-2551-4ce5-b134-efd00289d72a"));
         ValueSetter.setValues(vitrificationInfoPane, "VitrificationMap", "61c7628a-2551-4ce5-b134-efd00289d72a");
-      //  ValueSetter.setValues(tableViewPane, "VitrificationMap", "61c7628a-2551-4ce5-b134-efd00289d72a");
+        ValueSetter.setValues(vitrificationTableView, "VitrificationMap", "61c7628a-2551-4ce5-b134-efd00289d72a");
 
 
 
-        strawNumberCol.setCellValueFactory(new PropertyValueFactory<>("strawNumber"));
-        embryoNumberCol.setCellValueFactory(new PropertyValueFactory<>("embryoNumber"));
-        cryoDpfCol.setCellValueFactory(new PropertyValueFactory<>("cryoDpf"));
-        cryoStageCol.setCellValueFactory(new PropertyValueFactory<>("cryoStage"));
-        cryoNotesCol.setCellValueFactory(new PropertyValueFactory<>("cryoNotes"));
+//        strawNumberCol.setCellValueFactory(new PropertyValueFactory<>("strawNumber"));
+//        embryoNumberCol.setCellValueFactory(new PropertyValueFactory<>("embryoNumber"));
+//        cryoDpfCol.setCellValueFactory(new PropertyValueFactory<>("cryoDpf"));
+//        cryoStageCol.setCellValueFactory(new PropertyValueFactory<>("cryoStage"));
+//        cryoNotesCol.setCellValueFactory(new PropertyValueFactory<>("cryoNotes"));
 
 
 
@@ -105,51 +105,51 @@ public class VitrificationController implements Initializable {
         Callback<TableColumn<VitrifiedEmbryo, String>, TableCell<VitrifiedEmbryo, String>> comboBoxCellFactory
                 = (TableColumn<VitrifiedEmbryo, String> param) -> new ComboBoxEditingCell();
 
-        defrostDate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostDate()));
-        defrostDate.setCellFactory(TextFieldTableCell.forTableColumn());
+      //  defrostDate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostDate()));
+       // defrostDate.setCellFactory(TextFieldTableCell.forTableColumn());
 
-        defrostEmbryo.setCellFactory(TextFieldTableCell.forTableColumn());
-        defrostEmbryo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostEmbryo()));
-
-        defrostEmbryo.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
-                .get(t.getTablePosition().getRow()))
-                .setDefrostEmbryo((t.getNewValue())));
-
-        defrostEmbryologist.setCellValueFactory(cellData -> cellData.getValue().getDefrostEmbryologistProperty());
-        defrostEmbryologist.setOnEditCommit(
-                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
-                        .get(t.getTablePosition().getRow()))
-                        .setDefrostEmbryologist(t.getNewValue()));
-        defrostEmbryologist.setCellFactory(comboBoxCellFactory);
+//        defrostEmbryo.setCellFactory(TextFieldTableCell.forTableColumn());
+//        defrostEmbryo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostEmbryo()));
+//
+//        defrostEmbryo.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+//                .get(t.getTablePosition().getRow()))
+//                .setDefrostEmbryo((t.getNewValue())));
+//
+//        defrostEmbryologist.setCellValueFactory(cellData -> cellData.getValue().getDefrostEmbryologistProperty());
+//        defrostEmbryologist.setOnEditCommit(
+//                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+//                        .get(t.getTablePosition().getRow()))
+//                        .setDefrostEmbryologist(t.getNewValue()));
+//        defrostEmbryologist.setCellFactory(comboBoxCellFactory);
 
 //        defrostDate.setOnEditCommit(
 //                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
 //                        .get(t.getTablePosition().getRow()))
-//                        .setDefrostDate((t.getNewValue())));
+////                        .setDefrostDate((t.getNewValue())));
+//
+//        defrostDate.setOnEditCommit(
+//                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+//                        .get(t.getTablePosition().getRow()))
+//                        .set(defrostDate.getId(), new SimpleStringProperty(t.getNewValue())));
+//
+//        defrostMedia.setCellFactory(cellFactory);
+//        defrostMedia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostMedia()));
+//        defrostMedia.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+//                .get(t.getTablePosition().getRow()))
+//                .setDefrostMedia((t.getNewValue())));
+//
+//        defrostSurvival.setCellFactory(cellFactory);
+//        defrostSurvival.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostSurvival()));
+//        defrostSurvival.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+//                .get(t.getTablePosition().getRow()))
+//                .setDefrostSurvival((t.getNewValue())));
 
-        defrostDate.setOnEditCommit(
-                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
-                        .get(t.getTablePosition().getRow()))
-                        .set(defrostDate.getId(), new SimpleStringProperty(t.getNewValue())));
-
-        defrostMedia.setCellFactory(cellFactory);
-        defrostMedia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostMedia()));
-        defrostMedia.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
-                .get(t.getTablePosition().getRow()))
-                .setDefrostMedia((t.getNewValue())));
-
-        defrostSurvival.setCellFactory(cellFactory);
-        defrostSurvival.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostSurvival()));
-        defrostSurvival.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
-                .get(t.getTablePosition().getRow()))
-                .setDefrostSurvival((t.getNewValue())));
-
-        cryoEmbryologistCol.setCellValueFactory(
-                cellData -> new SimpleStringProperty(cellData.getValue().getCryoEmbryologist()));
-        cryoEmbryologistCol.setCellFactory(ComboBoxTableCell.forTableColumn(DefaultValues.getObservableList("EMBRYOLOGISTS")));
-        cryoEmbryologistCol.setOnEditCommit(
-                t -> ( t.getTableView().getItems().get(t.getTablePosition().getRow())).setCryoEmbryologist(t.getNewValue())
-        );
+//        cryoEmbryologistCol.setCellValueFactory(
+//                cellData -> new SimpleStringProperty(cellData.getValue().getCryoEmbryologist()));
+//        cryoEmbryologistCol.setCellFactory(ComboBoxTableCell.forTableColumn(DefaultValues.getObservableList("EMBRYOLOGISTS")));
+//        cryoEmbryologistCol.setOnEditCommit(
+//                t -> ( t.getTableView().getItems().get(t.getTablePosition().getRow())).setCryoEmbryologist(t.getNewValue())
+//        );
 
 
         vitrificationTableView.setItems(new VitrifiedEmbryoService().getVitrifiedEmbryosList());

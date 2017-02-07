@@ -122,12 +122,13 @@ public class TestGW {
 //                "('" + UUID.randomUUID().toString() + "'," +  "'Розовый')," +
 //                "('" + UUID.randomUUID().toString() + "'," +  "'Бирюзовый');";
        // String sql4 = "UPDATE VITRIFICATION SET doctor='Геркулов Д.А.' WHERE guid='61c7628a-2551-4ce5-b134-efd00289d72a';";
-       // String sql5 = "UPDATE VITRIFICATION SET sectionColor='Синий' WHERE guid='61c7628a-2551-4ce5-b134-efd00289d72a';";
+        //qString sql5 = "UPDATE VITRIFICATION SET sectionColor='Синий' WHERE guid='61c7628a-2551-4ce5-b134-efd00289d72a';";
         String sql = "INSERT INTO control_list_map VALUES('" + UUID.randomUUID().toString() + "', 'sectionColor', 'SECTION_COLOR');";
 
 //        "INSERT INTO default_lists \n" +
 //                "VALUES('" + UUID.randomUUID().toString() + "'" + ", 'SECTION_COLOR', 'SELECT CONTROL_VALUE FROM SECTION_COLOR;');";
 insertSQL(sql);
+
     }
 
     private static HashMap<String, String> mapedInput(){

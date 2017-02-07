@@ -75,12 +75,14 @@ public class DefaultValues {
 
             }
                 stmt = c.createStatement();
-                ResultSet rs3 = stmt.executeQuery("SELECT * FROM control_list_map;");
+                    ResultSet rs3 = stmt.executeQuery("SELECT * FROM control_list_map;");
             mapControlTable = new HashMap();
            // System.out.print("\nCONTROL_VALUE LISTED :\n");
             while (rs3.next()){
                 String key = rs3.getString("CONTROL_NAME");
                 String value = rs3.getString("TABLE_NAME");
+                System.out.println("control_list_map : " + key + " - " +  value );
+
                 mapControlTable.put(key, value);
             }
 

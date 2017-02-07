@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3ac870d-7b3b-41bc-8033-9d8999416730" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/services/ValueSetter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/embry-test.db" afterPath="$PROJECT_DIR$/embry-test.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/VitrificationController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/VitrificationController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gwtest/DefaultValues.java" afterPath="$PROJECT_DIR$/src/main/java/gwtest/DefaultValues.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/gwtest/TestGW.java" afterPath="$PROJECT_DIR$/src/main/java/gwtest/TestGW.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/protocol/maps/VitrifiedEmbryo.java" afterPath="$PROJECT_DIR$/src/main/java/protocol/maps/VitrifiedEmbryo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/vitrificationfx.fxml" afterPath="$PROJECT_DIR$/src/main/java/vitrificationfx.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/sql_all.sql" afterPath="$PROJECT_DIR$/src/main/sql_all.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/services/ValueSetter.java" afterPath="$PROJECT_DIR$/src/main/java/services/ValueSetter.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,6 +24,28 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="ValueSetter.java" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/main/java/services/ValueSetter.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="238">
+                    <caret line="104" column="100" lean-forward="false" selection-start-line="104" selection-start-column="82" selection-end-line="104" selection-end-column="100" />
+                    <folding>
+                      <element signature="imports" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="embry" />
@@ -35,22 +55,10 @@
       <file leaf-file-name="VitrificationController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controllers/VitrificationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="88" column="8" lean-forward="false" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="8" />
+            <state relative-caret-position="165">
+              <caret line="97" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultValues.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gwtest/DefaultValues.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="117" column="83" lean-forward="true" selection-start-line="117" selection-start-column="83" selection-end-line="117" selection-end-column="83" />
-              <folding>
-                <marker date="1486383726358" expanded="true" signature="2373:2404" ph=" SELECT statement (CONTROL_LIST_MAP)" />
               </folding>
             </state>
           </provider>
@@ -59,8 +67,8 @@
       <file leaf-file-name="ValueSetter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/services/ValueSetter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="487">
+              <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,12 +76,26 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="VitrifiedEmbryoService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/VitrifiedEmbryoService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-              <folding />
+            <state relative-caret-position="0">
+              <caret line="13" column="7" lean-forward="false" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#375#376#0" expanded="false" />
+                <element signature="e#454#455#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,18 +103,8 @@
       <file leaf-file-name="VitrificationMap.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/protocol/maps/VitrificationMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="105">
               <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tv_columnheader.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/tv_columnheader.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -101,27 +113,13 @@
       <file leaf-file-name="VitrifiedEmbryo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/protocol/maps/VitrifiedEmbryo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="157" column="31" lean-forward="true" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
+            <state relative-caret-position="15">
+              <caret line="155" column="5" lean-forward="true" selection-start-line="155" selection-start-column="5" selection-end-line="155" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1314#1315#0" expanded="true" />
-                <element signature="e#1349#1350#0" expanded="true" />
-                <element signature="e#4364#4365#0" expanded="true" />
-                <element signature="e#4402#4403#0" expanded="true" />
-                <element signature="e#4466#4467#0" expanded="true" />
-                <element signature="e#4500#4501#0" expanded="true" />
+                <element signature="e#4486#4487#0" expanded="true" />
+                <element signature="e#4528#4529#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SQLiteTasksBackUP.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/experiment/SQLiteTasksBackUP.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="33" column="0" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="33" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -129,8 +127,8 @@
       <file leaf-file-name="sql_all.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/sql_all.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="238" column="1" lean-forward="true" selection-start-line="238" selection-start-column="1" selection-end-line="243" selection-end-column="2" />
+            <state relative-caret-position="273">
+              <caret line="247" column="1" lean-forward="false" selection-start-line="244" selection-start-column="0" selection-end-line="247" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -139,8 +137,8 @@
       <file leaf-file-name="TestGW.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/gwtest/TestGW.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="132" column="56" lean-forward="true" selection-start-line="132" selection-start-column="56" selection-end-line="132" selection-end-column="56" />
+            <state relative-caret-position="163">
+              <caret line="125" column="129" lean-forward="false" selection-start-line="125" selection-start-column="129" selection-end-line="125" selection-end-column="129" />
               <folding />
             </state>
           </provider>
@@ -167,6 +165,8 @@
       <find>defau</find>
       <find>Up</find>
       <find>into vitri</find>
+      <find>VitrifiedEmbryo</find>
+      <find>VitrifiedEmbryo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -215,7 +215,6 @@
         <option value="$PROJECT_DIR$/src/main/java/TestMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/gwtest/MasterMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/protocol/maps/VitrificationMap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/VitrifiedEmbryoService.java" />
         <option value="$PROJECT_DIR$/src/main/java/lists/GUIlists.java" />
         <option value="$PROJECT_DIR$/src/main/java/lists/DbThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/lists/GUI_Lists.java" />
@@ -226,9 +225,10 @@
         <option value="$PROJECT_DIR$/src/main/java/experiment/SQLiteTasksBackUP.java" />
         <option value="$PROJECT_DIR$/src/main/java/vitrificationfx.fxml" />
         <option value="$PROJECT_DIR$/src/main/sql_all.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/gwtest/TestGW.java" />
         <option value="$PROJECT_DIR$/src/main/java/gwtest/DefaultValues.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gwtest/TestGW.java" />
         <option value="$PROJECT_DIR$/src/main/java/protocol/maps/VitrifiedEmbryo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/VitrifiedEmbryoService.java" />
         <option value="$PROJECT_DIR$/src/main/java/services/ValueSetter.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/VitrificationController.java" />
       </list>
@@ -238,10 +238,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-1" />
+    <option name="y" value="30" />
+    <option name="width" value="1026" />
+    <option name="height" value="739" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -262,7 +262,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -404,6 +403,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -699,27 +699,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="OdpsJavaConfigurationType" factoryName="MaxCompute Java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <odpsJavaType />
-      <mainClassName />
-      <odpsProjectName />
-      <tableName />
-      <tableColumns />
-      <tablePartition />
-      <method />
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -896,46 +875,46 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-1" y="30" width="1026" height="739" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="MaxCompute Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24796748" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="MaxCompute Project Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3995657" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24538545" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24386503" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29312977" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32681867" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-74" y="943" width="933" height="455" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2929448" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32668713" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-74" y="943" width="933" height="455" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15729167" sideWeight="0.80370945" order="7" side_tool="false" content_ui="combo" />
-      <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28411406" sideWeight="0.78958786" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Running Info" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24796748" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Running Result" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24236253" sideWeight="0.19629057" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1598778" sideWeight="0.21041214" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3995657" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="MaxCompute Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="MaxCompute Project Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="2316" y="196" width="1736" height="856" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Running Info" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Running Result" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -957,8 +936,14 @@
           <properties field="masterView" class="views.ProtocolHeaderView" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/VitrificationController.java</url>
+          <line>122</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -967,13 +952,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/protocol/old/pojos/ProtocolHeader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/protocol/old/pojos/CultivationTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -1027,13 +1005,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="14" column="74" lean-forward="false" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gwtest/MasterGateway.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="53" column="37" lean-forward="false" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1144,16 +1115,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/help" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_102/javafx-src.zip!/javafx/scene/control/ListView.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/VitrifiedEmbryoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="43" column="72" lean-forward="true" selection-start-line="41" selection-start-column="7" selection-end-line="43" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/lists/DbThread.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/lists/GUI_Lists.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/ControllerUtils.java">
@@ -1184,75 +1145,7 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="-255">
           <caret line="6" column="32" lean-forward="false" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-          <folding>
-            <marker date="1486392050477" expanded="true" signature="2077:12375" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="3554:7735" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="3586:7703" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="3653:7670" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="3691:7512" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="3821:4027" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="3868:3988" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="4064:7473" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="4108:7435" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="4151:5280" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="4201:5064" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="4304:4544" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="4363:4493" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="4769:5013" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="4828:4958" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="5117:5236" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="5323:6213" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="5373:5997" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="5702:5946" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="5761:5891" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="6050:6169" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="6256:7390" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="6306:7174" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="6412:6654" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="6471:6603" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="6878:7123" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="6937:7068" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="7227:7346" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="7549:7638" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="7946:8039" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="8177:8325" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="8205:8298" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="8802:9829" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="8834:9803" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="8992:9166" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="9033:9130" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="9640:9734" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="9945:10093" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="9973:10066" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="10209:10357" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="10237:10330" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="10725:10873" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="10753:10846" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="10981:11129" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="11009:11102" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="11246:11394" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="11274:11367" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="11944:12092" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="11972:12065" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="12200:12348" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="12228:12321" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="12487:12857" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="12513:12831" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="12647:12804" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="12675:12777" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="12929:13777" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="12955:13632" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="12999:13605" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="13031:13579" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="13665:13751" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="14638:16747" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="14638:16734" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="14674:16713" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="14698:16184" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="16208:16285" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="16313:16543" ph="..." />
-            <marker date="1486392050477" expanded="true" signature="16579:16688" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
@@ -1261,7 +1154,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/experiment/SQLiteTasksBackUP.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="0">
           <caret line="33" column="0" lean-forward="false" selection-start-line="32" selection-start-column="19" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
@@ -1269,74 +1162,96 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/tv_columnheader.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="0">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/sql_all.sql">
+    <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="238" column="1" lean-forward="true" selection-start-line="238" selection-start-column="1" selection-end-line="243" selection-end-column="2" />
+        <state relative-caret-position="0">
+          <caret line="13" column="7" lean-forward="false" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#375#376#0" expanded="false" />
+            <element signature="e#454#455#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/embry-test.db">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gwtest/MasterGateway.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="53" column="37" lean-forward="false" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gwtest/TestGW.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="132" column="56" lean-forward="true" selection-start-line="132" selection-start-column="56" selection-end-line="132" selection-end-column="56" />
+        <state relative-caret-position="163">
+          <caret line="125" column="129" lean-forward="false" selection-start-line="125" selection-start-column="129" selection-end-line="125" selection-end-column="129" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/sql_all.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="247" column="1" lean-forward="false" selection-start-line="244" selection-start-column="0" selection-end-line="247" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/protocol/maps/VitrificationMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="105">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/protocol/maps/VitrifiedEmbryo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="157" column="31" lean-forward="true" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1314#1315#0" expanded="true" />
-            <element signature="e#1349#1350#0" expanded="true" />
-            <element signature="e#4364#4365#0" expanded="true" />
-            <element signature="e#4402#4403#0" expanded="true" />
-            <element signature="e#4466#4467#0" expanded="true" />
-            <element signature="e#4500#4501#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gwtest/DefaultValues.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="117" column="83" lean-forward="true" selection-start-line="117" selection-start-column="83" selection-end-line="117" selection-end-column="83" />
+        <state relative-caret-position="684">
+          <caret line="114" column="40" lean-forward="false" selection-start-line="114" selection-start-column="40" selection-end-line="114" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/VitrifiedEmbryoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/protocol/maps/VitrifiedEmbryo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="155" column="5" lean-forward="true" selection-start-line="155" selection-start-column="5" selection-end-line="155" selection-end-column="5" />
           <folding>
-            <marker date="1486383726358" expanded="true" signature="2373:2404" ph=" SELECT statement (CONTROL_LIST_MAP)" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#4486#4487#0" expanded="true" />
+            <element signature="e#4528#4529#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/services/ValueSetter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="487">
+          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1345,8 +1260,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/VitrificationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="88" column="8" lean-forward="false" selection-start-line="88" selection-start-column="8" selection-end-line="88" selection-end-column="8" />
+        <state relative-caret-position="165">
+          <caret line="97" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
