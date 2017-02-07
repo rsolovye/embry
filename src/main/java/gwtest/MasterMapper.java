@@ -1,11 +1,9 @@
 package gwtest;
 
 import protocol.maps.Protocol;
+import sun.rmi.transport.proxy.RMIMasterSocketFactory;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by bobsol on 29.01.17.
@@ -22,6 +20,7 @@ public class MasterMapper {
             if (roi.getMap().size() > 0)
                 protocols.add(ProtocolFactory.get(roi.className, roi.getMap()));
         }
+
         return protocols;
     }
 
@@ -61,5 +60,34 @@ public class MasterMapper {
             MasterGateway.insert(row);
         }
 
+    }
+
+    public static void saveToDB(HashMap<String, String> inputMap, String protocolName){
+        RowObject ro = new RowObject(protocolName, inputMap);
+        print_saveToDB(inputMap, protocolName, ro);
+
+    }
+
+    private static void print_saveToDB(HashMap<String, String> inputMap, String protocolName, RowObject ro){
+        System.out.println("\n" + "MasterMapper.saveToDB | protocolName: " + protocolName);
+        System.out.println("               KEY  "+ spacer("", 30) +  "  INPUT_MAP " + spacer("", 35) + "ROW_OBJECT\n" +
+                "--------------------------------------------------------------------------------------------------------");
+
+        for (String k: inputMap.keySet()) {
+
+            System.out.println("---->       " + k + spacer(k, 20) +"<<<     '" + inputMap.get(k) +
+                                "'" + spacer(ro.get(k), 40) +   "'" + ro.get(k) + "'.");
+        }
+
+
+    }
+
+    public static String spacer(String s, int max){
+        String space = " ";
+        if (s==null) s = "";
+        int keyCol = max - s.length();
+        for (int i = 0; i < keyCol; i ++)
+            space = space +  " ";
+        return space;
     }
 }

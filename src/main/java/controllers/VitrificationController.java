@@ -3,6 +3,8 @@ package controllers;
 
 import gwtest.DefaultValues;
 import gwtest.MasterMapper;
+import gwtest.RowObject;
+import gwtest.RowObjects;
 import javafx.beans.property.SimpleStringProperty;
 
 import javafx.beans.value.ObservableValue;
@@ -14,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,6 +31,7 @@ import views.MasterView;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
@@ -38,126 +42,118 @@ public class VitrificationController implements Initializable {
     private MasterView masterView;
     private MasterModel masterModel;
 
-    @FXML TextField fName;
-    @FXML TextField fDOB;
-    @FXML TextField fCode;
-    @FXML TextField mCode;
-    @FXML TextField mName;
-    @FXML TextField mDOB;
-    @FXML TextField vitDate;
-    @FXML TextField vitVRT;
-   // @FXML TextField dewar;
-    @FXML TextField canister;
-    @FXML ComboBox<String> sectionColor;
-    @FXML ComboBox<String> doctor;
-    @FXML TextField vitMedia;
-    @FXML TextField sectionCount;
-    @FXML TextField strawCount;
-    @FXML TextField embryoCount;
-    @FXML CheckBox isOms;
-    @FXML CheckBox isPostponed;
-    @FXML CheckBox fromAnotherClinic;
-    @FXML  TableView<VitrifiedEmbryo> vitrificationTableView;
-    @FXML  TableColumn<VitrifiedEmbryo, String>  strawNumberCol;
-    @FXML  TableColumn<VitrifiedEmbryo, String>  embryoNumberCol;
-    @FXML  TableColumn<VitrifiedEmbryo, String>  cryoDpfCol;
-    @FXML  TableColumn<VitrifiedEmbryo, String>  cryoStageCol;
-    @FXML  TableColumn<VitrifiedEmbryo, String>  cryoNotesCol;
-    @FXML  TableColumn<VitrifiedEmbryo, String>  cryoEmbryologistCol;
-    @FXML  TableColumn<VitrifiedEmbryo, String>  defrostDate;
-    @FXML  TableColumn<VitrifiedEmbryo, String>  defrostEmbryo;
-    @FXML  TableColumn<VitrifiedEmbryo, String>  defrostMedia;
-    @FXML  TableColumn<VitrifiedEmbryo, String>  defrostEmbryologist;
-    @FXML  TableColumn<VitrifiedEmbryo, String>  defrostSurvival;
-    @FXML Button saveCryoButton;
-    @FXML AnchorPane vitrificationInfoPane;
-@FXML AnchorPane tableViewPane;
-
+    @FXML
+    TextField fName;
+    @FXML
+    TextField fDOB;
+    @FXML
+    TextField fCode;
+    @FXML
+    TextField mCode;
+    @FXML
+    TextField mName;
+    @FXML
+    TextField mDOB;
+    @FXML
+    TextField vitDate;
+    @FXML
+    TextField vitVRT;
+    // @FXML TextField dewar;
+    @FXML
+    TextField canister;
+    @FXML
+    ComboBox<String> sectionColor;
+    @FXML
+    ComboBox<String> doctor;
+    @FXML
+    TextField vitMedia;
+    @FXML
+    TextField sectionCount;
+    @FXML
+    TextField strawCount;
+    @FXML
+    TextField embryoCount;
+    @FXML
+    CheckBox isOms;
+    @FXML
+    CheckBox isPostponed;
+    @FXML
+    CheckBox fromAnotherClinic;
+    @FXML
+    TableView<VitrifiedEmbryo> vitrificationTableView;
+    @FXML
+    TableColumn<VitrifiedEmbryo, String> strawNumber;
+    @FXML
+    TableColumn<VitrifiedEmbryo, String> embryoNumber;
+    @FXML
+    TableColumn<VitrifiedEmbryo, String> cryoDpf;
+    @FXML
+    TableColumn<VitrifiedEmbryo, String> cryoStage;
+    @FXML
+    TableColumn<VitrifiedEmbryo, String> cryoNotes;
+    @FXML
+    TableColumn<VitrifiedEmbryo, String> cryoEmbryologist;
+    @FXML
+    TableColumn<VitrifiedEmbryo, String> defrostDate;
+    @FXML
+    TableColumn<VitrifiedEmbryo, String> defrostEmbryo;
+    @FXML
+    TableColumn<VitrifiedEmbryo, String> defrostMedia;
+    @FXML
+    TableColumn<VitrifiedEmbryo, String> defrostEmbryologist;
+    @FXML
+    TableColumn<VitrifiedEmbryo, String> defrostSurvival;
+    @FXML
+    AnchorPane vitrificationInfoPane;
+    @FXML
+    AnchorPane tableViewPane;
+    private String guid = "";
+@FXML Button saveCryoButton;
     public VitrificationController() {
         //this.masterView = masterView;
         //this.masterModel = masterModel;
 
+    }
+
+    public VitrificationController(String guid) {
+        //this.masterView = masterView;
+        //this.masterModel = masterModel;
+        this.guid = guid;
 
     }
 
+    public void setGuid(String guid){ this.guid=guid;}
+
     @Override
-    public void initialize(URL url, ResourceBundle rb){
-//TODO MOVE TO MODEL
+    public void initialize(URL url, ResourceBundle rb) {
 
-        ArrayList<Protocol> listP = MasterMapper.findByGuid(UUID.fromString("61c7628a-2551-4ce5-b134-efd00289d72a"));
-        ValueSetter.setValues(vitrificationInfoPane, "VitrificationMap", "61c7628a-2551-4ce5-b134-efd00289d72a");
-        ValueSetter.setValues(vitrificationTableView, "VitrificationMap", "61c7628a-2551-4ce5-b134-efd00289d72a");
+        if (guid.length() == 0)
+            guid = "61c7628a-2551-4ce5-b134-efd00289d72a";
 
-
-
-//        strawNumberCol.setCellValueFactory(new PropertyValueFactory<>("strawNumber"));
-//        embryoNumberCol.setCellValueFactory(new PropertyValueFactory<>("embryoNumber"));
-//        cryoDpfCol.setCellValueFactory(new PropertyValueFactory<>("cryoDpf"));
-//        cryoStageCol.setCellValueFactory(new PropertyValueFactory<>("cryoStage"));
-//        cryoNotesCol.setCellValueFactory(new PropertyValueFactory<>("cryoNotes"));
-
-
-
+        ValueSetter.setValues(vitrificationInfoPane, "VitrificationMap", guid);
+        ValueSetter.setValues(vitrificationTableView, "VitrificationMap", guid);
 
         Callback<TableColumn<VitrifiedEmbryo, String>, TableCell<VitrifiedEmbryo, String>> cellFactory
                 = (TableColumn<VitrifiedEmbryo, String> param) -> new EditingCell();
-
-        Callback<TableColumn<VitrifiedEmbryo, String>, TableCell<VitrifiedEmbryo, String>> comboBoxCellFactory
-                = (TableColumn<VitrifiedEmbryo, String> param) -> new ComboBoxEditingCell();
-
-      //  defrostDate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostDate()));
-       // defrostDate.setCellFactory(TextFieldTableCell.forTableColumn());
-
-//        defrostEmbryo.setCellFactory(TextFieldTableCell.forTableColumn());
-//        defrostEmbryo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostEmbryo()));
-//
-//        defrostEmbryo.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
-//                .get(t.getTablePosition().getRow()))
-//                .setDefrostEmbryo((t.getNewValue())));
-//
-//        defrostEmbryologist.setCellValueFactory(cellData -> cellData.getValue().getDefrostEmbryologistProperty());
-//        defrostEmbryologist.setOnEditCommit(
-//                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
-//                        .get(t.getTablePosition().getRow()))
-//                        .setDefrostEmbryologist(t.getNewValue()));
-//        defrostEmbryologist.setCellFactory(comboBoxCellFactory);
-
-//        defrostDate.setOnEditCommit(
-//                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
-//                        .get(t.getTablePosition().getRow()))
-////                        .setDefrostDate((t.getNewValue())));
-//
-//        defrostDate.setOnEditCommit(
-//                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
-//                        .get(t.getTablePosition().getRow()))
-//                        .set(defrostDate.getId(), new SimpleStringProperty(t.getNewValue())));
-//
-//        defrostMedia.setCellFactory(cellFactory);
-//        defrostMedia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostMedia()));
-//        defrostMedia.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
-//                .get(t.getTablePosition().getRow()))
-//                .setDefrostMedia((t.getNewValue())));
-//
-//        defrostSurvival.setCellFactory(cellFactory);
-//        defrostSurvival.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostSurvival()));
-//        defrostSurvival.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
-//                .get(t.getTablePosition().getRow()))
-//                .setDefrostSurvival((t.getNewValue())));
-
-//        cryoEmbryologistCol.setCellValueFactory(
-//                cellData -> new SimpleStringProperty(cellData.getValue().getCryoEmbryologist()));
-//        cryoEmbryologistCol.setCellFactory(ComboBoxTableCell.forTableColumn(DefaultValues.getObservableList("EMBRYOLOGISTS")));
-//        cryoEmbryologistCol.setOnEditCommit(
-//                t -> ( t.getTableView().getItems().get(t.getTablePosition().getRow())).setCryoEmbryologist(t.getNewValue())
-//        );
-
-
+        saveCryoButton.setOnAction((e) -> saveInput());
         vitrificationTableView.setItems(new VitrifiedEmbryoService().getVitrifiedEmbryosList());
     }
+    @FXML
+ private void saveInput() {
+        if (guid.length() == 0)
+            setGuid("61c7628a-2551-4ce5-b134-efd00289d72b");
 
-    private void saveInput(ActionEvent e){
-        System.out.println(e.getSource());
-    }
+        HashMap<String, String> inputMap = new HashMap<>();
+
+        inputMap.put("guid", guid);
+
+        ValueSetter.mapInput(vitrificationInfoPane,
+                        "VitrificationMap",
+                                        inputMap);
+
+        MasterMapper.saveToDB(inputMap, "VITRIFICATION");
+
+}
 
     class EditingCell extends TableCell<VitrifiedEmbryo, String> {
 
@@ -224,96 +220,7 @@ public class VitrificationController implements Initializable {
         }
     }
 
-    class ComboBoxEditingCell extends TableCell<VitrifiedEmbryo, String> {
-
-        private ComboBox<String> comboBox;
-
-
-        private ComboBoxEditingCell() {
-        }
-
-        @Override
-        public void startEdit() {
-            if (!isEmpty()) {
-                super.startEdit();
-                createComboBox();
-                setText(null);
-                setGraphic(comboBox);
-            }
-        }
-
-        @Override
-        public void cancelEdit() {
-            super.cancelEdit();
-
-            setText(getString());
-            setGraphic(null);
-        }
-
-        @Override
-        public void updateItem(String item, boolean empty) {
-            super.updateItem(item, empty);
-
-            if (empty) {
-                setText(null);
-                setGraphic(null);
-            } else {
-                if (isEditing()) {
-                    if (comboBox != null) {
-                        comboBox.setValue(getString());
-                    }
-                    setText(item);
-                    setGraphic(comboBox);
-                } else {
-                    setText(getString());
-                    setGraphic(null);
-                }
-            }
-        }
-
-        private void createComboBox() {
-           ObservableList<String> embCombo = FXCollections.observableArrayList();
-            for (String str: DefaultValues.getObservableList("EMBRYOLOGISTS")){
-               embCombo.add(str);
-            }
-
-            comboBox = new ComboBox<>(embCombo);
-            comboBoxConverter(comboBox);
-            comboBox.valueProperty().set(getString());
-            comboBox.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
-            comboBox.setOnAction((e) -> {
-                System.out.println("Committed: " + comboBox.getSelectionModel().getSelectedItem());
-                commitEdit(comboBox.getSelectionModel().getSelectedItem());
-            });
-//            comboBox.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
-//                if (!newValue) {
-//                    commitEdit(comboBox.getSelectionModel().getSelectedItem());
-//                }
-//            });
-        }
-
-        private void comboBoxConverter(ComboBox<String> comboBox) {
-            // Define rendering of the list of values in ComboBox drop down.
-            comboBox.setCellFactory((c) -> {
-                return new ListCell<String>() {
-                    @Override
-                    protected void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-
-                        if (item == null || empty) {
-                            setText(null);
-                        } else {
-                            setText(item);
-                        }
-                    }
-                };
-            });
-        }
-
-        private String getString() {
-            return getItem() == null ? new String("") : getItem();
-        }
-    }
+}
 //        doctor.setItems(DefaultValues.getObservableList("DOCTORS"));
     //      sectionColor.setItems(DefaultValues.getObservableList("SECTION_COLOR"));
 
@@ -361,6 +268,51 @@ public class VitrificationController implements Initializable {
 
 //            }
 //        }
+    //  defrostDate.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostDate()));
+    // defrostDate.setCellFactory(TextFieldTableCell.forTableColumn());
+
+//        defrostEmbryo.setCellFactory(TextFieldTableCell.forTableColumn());
+//        defrostEmbryo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostEmbryo()));
+//
+//        defrostEmbryo.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+//                .get(t.getTablePosition().getRow()))
+//                .setDefrostEmbryo((t.getNewValue())));
+//
+//        defrostEmbryologist.setCellValueFactory(cellData -> cellData.getValue().getDefrostEmbryologistProperty());
+//        defrostEmbryologist.setOnEditCommit(
+//                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+//                        .get(t.getTablePosition().getRow()))
+//                        .setDefrostEmbryologist(t.getNewValue()));
+//        defrostEmbryologist.setCellFactory(comboBoxCellFactory);
+
+//        defrostDate.setOnEditCommit(
+//                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+//                        .get(t.getTablePosition().getRow()))
+////                        .setDefrostDate((t.getNewValue())));
+//
+//        defrostDate.setOnEditCommit(
+//                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+//                        .get(t.getTablePosition().getRow()))
+//                        .set(defrostDate.getId(), new SimpleStringProperty(t.getNewValue())));
+//
+//        defrostMedia.setCellFactory(cellFactory);
+//        defrostMedia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostMedia()));
+//        defrostMedia.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+//                .get(t.getTablePosition().getRow()))
+//                .setDefrostMedia((t.getNewValue())));
+//
+//        defrostSurvival.setCellFactory(cellFactory);
+//        defrostSurvival.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDefrostSurvival()));
+//        defrostSurvival.setOnEditCommit( (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> ( t.getTableView().getItems()
+//                .get(t.getTablePosition().getRow()))
+//                .setDefrostSurvival((t.getNewValue())));
+
+//        cryoEmbryologistCol.setCellValueFactory(
+//                cellData -> new SimpleStringProperty(cellData.getValue().getCryoEmbryologist()));
+//        cryoEmbryologistCol.setCellFactory(ComboBoxTableCell.forTableColumn(DefaultValues.getObservableList("EMBRYOLOGISTS")));
+//        cryoEmbryologistCol.setOnEditCommit(
+//                t -> ( t.getTableView().getItems().get(t.getTablePosition().getRow())).setCryoEmbryologist(t.getNewValue())
+//        );
 
 
 
@@ -374,4 +326,4 @@ public class VitrificationController implements Initializable {
 
 
 
-}
+

@@ -8,6 +8,8 @@ import java.util.ArrayList;
  */
 public class RowObjects  {
     private static ArrayList<RowObject> list = null;
+
+
     public static ArrayList<RowObject> getList(){
         if (list == null) {
             initialize();
@@ -22,6 +24,8 @@ public class RowObjects  {
         }
         for (RowObject o : list)
         {
+            System.out.println(o.getName() + " - " + objectName);
+
             if (o.getName().compareTo(objectName)==0) return o;
         }
         return null;
@@ -40,7 +44,8 @@ public class RowObjects  {
 
                 String className = DB.rs.getString("class_name");
                 String[] keys = DB.rs.getString("keyset").split(",");
-                System.out.print(className +" + " + keys.length);
+                System.out.println(className +" + " + keys.length);
+
                 list.add(new RowObject(className, keys));
             }
             DB.con.commit();

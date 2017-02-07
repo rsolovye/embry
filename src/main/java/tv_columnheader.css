@@ -1,8 +1,9 @@
 .table-view .column-header .label,
 .table-view .column-header .filler,
-.table-view .column-header-background .filler,
+.table-view .column-header-background .filler
  {
-   -fx-font-size: 8pt;
+   -fx-font-size: 10pt;
+   -fx-font-fill: black;
  }
 
 .table-view .table-cell {
@@ -10,6 +11,3 @@
  -fx-alignment: CENTER;
   }:
 
-.table-view .table-row-cell:empty:odd, .table-row-cell:empty:even {
-    -fx-background-color: transparent;
-}
