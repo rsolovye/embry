@@ -21,9 +21,9 @@
 <?import javafx.scene.shape.MeshView?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="vitrificartionMasterPane" dividerPositions="0.5254237288135594" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="533.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VitrificationController">
+<SplitPane fx:id="vitrificartionMasterPane" dividerPositions="0.5254237288135594" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="533.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VitrificationController">
   <items>
-      <GridPane alignment="CENTER" maxHeight="240.0" prefHeight="240.0" prefWidth="940.0" styleClass="root" stylesheets="@flatterfx.css">
+      <GridPane alignment="CENTER" maxHeight="240.0" prefHeight="240.0" prefWidth="940.0" styleClass="root">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="347.0" minWidth="10.0" prefWidth="149.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="721.0" minWidth="10.0" prefWidth="667.0" />
@@ -34,7 +34,7 @@
             <RowConstraints maxHeight="250.66666412353516" minHeight="10.0" prefHeight="212.5" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-          <AnchorPane fx:id="vitrificationInfoPane" maxHeight="225.0" maxWidth="660.0" prefHeight="225.0" prefWidth="605.0" stylesheets="@flatterfx.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+          <AnchorPane fx:id="vitrificationInfoPane" maxHeight="225.0" maxWidth="660.0" prefHeight="225.0" prefWidth="605.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <TextField fx:id="mName" layoutX="27.0" layoutY="125.0" prefHeight="25.0" prefWidth="252.0" />
                   <TextField fx:id="fName" layoutX="27.0" layoutY="83.0" prefHeight="26.0" prefWidth="252.0" />
@@ -54,6 +54,9 @@
                                  <VBox.margin>
                                     <Insets bottom="6.0" left="64.0" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
                               </Label>
                               <HBox prefHeight="44.0" prefWidth="213.0">
                                  <children>
@@ -63,6 +66,9 @@
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
                                           </Label>
                                           <TextField fx:id="sectionCount" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="37.0">
                                              <VBox.margin>
@@ -76,8 +82,11 @@
                                     </VBox>
                                     <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="66.0">
                                        <children>
-                                          <Label alignment="CENTER" prefHeight="17.0" prefWidth="63.0" text="соломин" textAlignment="CENTER" wrapText="true" />
-                                          <TextField fx:id="strawCount" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="37.0">
+                                          <Label alignment="CENTER" prefHeight="17.0" prefWidth="63.0" text="соломин" textAlignment="CENTER" wrapText="true">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font></Label>
+                                          <TextField fx:id="strawCount" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="37.0">
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
@@ -96,6 +105,9 @@
                                              <VBox.margin>
                                                 <Insets />
                                              </VBox.margin>
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
                                           </Label>
                                           <TextField fx:id="embryoCount" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="37.0">
                                              <VBox.margin>
@@ -116,7 +128,10 @@
                         </VBox>
                      </children>
                   </AnchorPane>
-                  <Label layoutX="25.0" layoutY="166.0" prefHeight="17.0" prefWidth="35.0" text="Дюар" />
+                  <Label layoutX="25.0" layoutY="166.0" prefHeight="17.0" prefWidth="35.0" text="Дюар">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
                   <Label layoutX="30.0" layoutY="14.0" text="Дата Крио" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -127,9 +142,18 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label layoutX="288.0" layoutY="165.0" prefHeight="19.0" prefWidth="183.0" text="Среда для криоконсервации" textAlignment="CENTER" wrapText="true" />
-                  <Label layoutX="143.0" layoutY="166.0" text="Цвет секции" textAlignment="CENTER" wrapText="true" />
-                  <Label layoutX="75.0" layoutY="166.0" text="Канистра" />
+                  <Label layoutX="290.0" layoutY="165.0" prefHeight="19.0" prefWidth="183.0" text="Среда для криоконсервации" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label layoutX="143.0" layoutY="166.0" text="Цвет секции" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label layoutX="75.0" layoutY="166.0" prefHeight="17.0" prefWidth="57.0" text="Канистра">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
                   <VBox fx:id="checkBoxesPane" alignment="CENTER_LEFT" layoutX="505.0" layoutY="37.0" prefHeight="93.0" prefWidth="163.0">
                      <children>
                         <CheckBox fx:id="isOms" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" style="-fx-text-fill: ;" text="ОМС">
@@ -140,12 +164,21 @@
                               <String fx:value="root" />
                               <String fx:value="label" />
                            </styleClass>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </CheckBox>
-                        <CheckBox fx:id="isPostponed" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" styleClass="root" stylesheets="@flatterfx.css" text="Отсроченый" textAlignment="CENTER" wrapText="true" />
-                        <CheckBox fx:id="fromAnotherClinic" alignment="BOTTOM_LEFT" graphicTextGap="0.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" styleClass="root" stylesheets="@flatterfx.css" text="Из другой клиники" wrapText="true">
+                        <CheckBox fx:id="isPostponed" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" styleClass="root" text="Отсроченый" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></CheckBox>
+                        <CheckBox fx:id="fromAnotherClinic" alignment="BOTTOM_LEFT" graphicTextGap="0.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" styleClass="root" text="Из другой клиники" wrapText="true">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                         </CheckBox>
                      </children>
                   </VBox>
@@ -176,19 +209,23 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="doctor" layoutX="293.0" layoutY="29.0" prefHeight="25.0" prefWidth="159.0" stylesheets="@flatterfx.css" />
+                  <ComboBox fx:id="doctor" layoutX="293.0" layoutY="29.0" prefHeight="25.0" prefWidth="159.0" style="-fx-text-weight: 800;" />
                   <Line endX="270.0" layoutX="157.0" layoutY="65.0" startX="-100.0" strokeDashOffset="8.0" strokeWidth="0.2" />
                   <Line endX="270.0" layoutX="157.0" layoutY="159.0" startX="-100.0" strokeDashOffset="8.0" strokeWidth="0.2" />
                   <MeshView layoutX="80.0" layoutY="41.0" />
-                  <Label layoutX="357.0" layoutY="110.0" text="Дата рождения" textAlignment="CENTER" wrapText="true" />
                   <Label layoutX="295.0" layoutY="14.0" text="Врач" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="356.0" layoutY="110.0" text="Дата рождения" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="41.0" prefWidth="696.0" GridPane.columnIndex="1">
+            <AnchorPane prefHeight="41.0" prefWidth="696.0" style="-fx-background-color: dark; -fx-text-fill: white;" GridPane.columnIndex="1">
                <children>
                   <Label layoutX="186.0" prefHeight="29.0" prefWidth="395.0" text="Криоконсервация эмбрионов" textAlignment="CENTER">
                      <font>
@@ -211,9 +248,18 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button fx:id="saveCryoButton" alignment="CENTER" mnemonicParsing="false" onAction="#saveInput" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: rgb(237.0, 68.0, 37.0);" styleClass="label" stylesheets="@flatterfx.css" text="Сохранить" textAlignment="JUSTIFY" />
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: rgb(237.0, 68.0, 37.0);" styleClass="label" text="Отменить" textAlignment="CENTER" GridPane.rowIndex="4" />
-                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: rgb(237.0, 68.0, 37.0);" styleClass="label" text="Найти" textAlignment="CENTER" GridPane.rowIndex="2" />
+                        <Button fx:id="saveCryoButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#saveInput" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: rgb(47.0, 52.0, 57.0); -fx-text-weight: 800;" styleClass="label" text="Сохранить" textAlignment="JUSTIFY" textFill="#d7d5d5">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: rgb(47.0, 52.0, 57.0);" styleClass="label" text="Отменить" textAlignment="CENTER" textFill="#f8f7f7" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: rgb(47.0, 52.0, 57.0);" styleClass="label" text="Найти" textAlignment="CENTER" textFill="#e8e8e8" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
                         <TextField prefHeight="25.0" prefWidth="131.0" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
@@ -226,11 +272,11 @@
       </GridPane>
     <AnchorPane fx:id="tableViewPane" minHeight="0.0" minWidth="0.0" prefHeight="256.0" prefWidth="958.0" style="-fx-background-color: -dark;" stylesheets="@flatterfx.css">
          <children>
-            <TableView fx:id="vitrificationTableView" editable="true" prefHeight="285.0" prefWidth="958.0" style="-fx-border-width: 0;" styleClass="column-header-background" stylesheets="@columnheader.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="vitrificationTableView" editable="true" layoutX="-8.0" prefHeight="285.0" prefWidth="974.0" style="-fx-border-width: 0;" stylesheets="@columnheader.css">
               <columns>
-                <TableColumn fx:id="strawNumber" prefWidth="62.0" resizable="false" sortable="false" text="       № &#10;cоломины " />
-                <TableColumn fx:id="embryoNumber" prefWidth="62.0" resizable="false" sortable="false" text="       № &#10;эмбриона" />
-                  <TableColumn fx:id="cryoDpf" prefWidth="62.0" resizable="false" sortable="false" text="   День &#10;развития" />
+                <TableColumn fx:id="strawNumber" prefWidth="67.00003051757812" resizable="false" sortable="false" text="       № &#10;cоломины " />
+                <TableColumn fx:id="embryoNumber" prefWidth="64.0" resizable="false" sortable="false" text="       № &#10;эмбриона" />
+                  <TableColumn fx:id="cryoDpf" prefWidth="55.0" resizable="false" sortable="false" text="   День &#10;развития" />
                   <TableColumn fx:id="cryoStage" prefWidth="100.0" resizable="false" text=" Качество&#10;эмбриона" />
                   <TableColumn fx:id="cryoNotes" minWidth="0.0" resizable="false" text="Примечения" />
                   <TableColumn fx:id="cryoEmbryologist" prefWidth="95.0" resizable="false" sortable="false" text="Подпись" />

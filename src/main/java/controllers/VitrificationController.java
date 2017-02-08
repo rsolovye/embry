@@ -1,39 +1,27 @@
 package controllers;
 
 
-import gwtest.DefaultValues;
 import gwtest.MasterMapper;
-import gwtest.RowObject;
-import gwtest.RowObjects;
-import javafx.beans.property.SimpleStringProperty;
-
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import javafx.event.ActionEvent;
-
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ComboBoxTableCell;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.util.Callback;
 import models.MasterModel;
-import protocol.maps.Protocol;
 import protocol.maps.VitrifiedEmbryo;
 import services.ValueSetter;
 import views.MasterView;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.UUID;
 
 /**
  * Created by bobsol on 19.01.17.
@@ -137,7 +125,131 @@ public class VitrificationController implements Initializable {
                 = (TableColumn<VitrifiedEmbryo, String> param) -> new EditingCell();
         saveCryoButton.setOnAction((e) -> saveInput());
         vitrificationTableView.setItems(new VitrifiedEmbryoService().getVitrifiedEmbryosList());
+
+
+
+        vitrificationTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        vitrificationTableView.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+
+                if( event.getCode() == KeyCode.ENTER) {
+//                  event.consume(); // don't consume the event or else the values won't be updated;
+                    return;
+                }
+
+                // switch to edit mode on keypress, but only if we aren't already in edit mode
+                if( vitrificationTableView.getEditingCell() == null) {
+                    if( event.getCode().isLetterKey() || event.getCode().isDigitKey()) {
+
+                        TablePosition focusedCellPosition = vitrificationTableView.getFocusModel().getFocusedCell();
+                        vitrificationTableView.edit(focusedCellPosition.getRow(), focusedCellPosition.getTableColumn());
+
+                    }
+                }
+
+            }
+        });
+
+        vitrificationTableView.addEventFilter(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+
+                if( event.getCode() == KeyCode.ENTER) {
+
+
+                    // move focus & selection
+                    // we need to clear the current selection first or else the selection would be added to the current selection since we are in multi selection mode
+                    TablePosition pos = vitrificationTableView.getFocusModel().getFocusedCell();
+
+                    if (pos.getRow() == -1) {
+                        vitrificationTableView.getSelectionModel().select(0);
+                    }
+                    // add new row when we are at the last row
+                    else if (pos.getRow() == vitrificationTableView.getItems().size() -1) {
+                        addRow();
+                    }
+                    // select next row, but same column as the current selection
+                    else if (pos.getRow() < vitrificationTableView.getItems().size() -1) {
+                        vitrificationTableView.getSelectionModel().clearAndSelect( pos.getRow() + 1, pos.getTableColumn());
+                    }
+
+
+                }
+
+            }
+        });
+
+        // single cell selection mode
+        vitrificationTableView.getSelectionModel().setCellSelectionEnabled(true);
+
+        // add row index column as 1st column
+        // -------------------------------------
+
+
+
+
+        // buttons
+        // --------------------------------------------
+        FlowPane buttonBar = new FlowPane();
+
+        // add new row button
+        Button addButton = new Button( "Add");
+        addButton.setOnAction(e -> {
+            addRow();
+        });
+        addButton.setFocusTraversable(false);// don't let it get the focus or else the table would lose it when we click the button and we's have to request the focus on the table in the event handler
+
+        // remove selected rows button
+        Button removeButton = new Button( "Remove");
+        removeButton.setOnAction(e -> {
+            removeSelectedRows();
+        });
+        removeButton.setFocusTraversable(false);// don't let it get the focus or else the table would lose it when we click the button and we's have to request the focus on the table in the event handlervitrifica
+        buttonBar.getChildren().addAll( addButton, removeButton);
+
+
+
     }
+
+    /**
+     * Insert a new default row to the table, select a cell of it and scroll to it.
+     */
+    public void addRow() {
+
+        // get current position
+        TablePosition pos = vitrificationTableView.getFocusModel().getFocusedCell();
+
+        // clear current selection
+        vitrificationTableView.getSelectionModel().clearSelection();
+
+        // create new record and add it to the model
+        VitrifiedEmbryo vEmb  = new VitrifiedEmbryo.VitrifiedEmbryoBuilder(guid, "", "").build();
+
+        vitrificationTableView.getItems().add( vEmb);
+
+        // get last row
+        int row = vitrificationTableView.getItems().size() - 1;
+        vitrificationTableView.getSelectionModel().select( row, pos.getTableColumn());
+
+        // scroll to new row
+        vitrificationTableView.scrollTo( vEmb);
+
+    }
+
+    /**
+     * Remove all selected rows.
+     */
+    public void removeSelectedRows() {
+
+        vitrificationTableView.getItems().removeAll(vitrificationTableView.getSelectionModel().getSelectedItems());
+
+        // table selects by index, so we have to clear the selection or else items with that index would be selected
+        vitrificationTableView.getSelectionModel().clearSelection();
+
+
+    }
+
     @FXML
  private void saveInput() {
        //for testing only

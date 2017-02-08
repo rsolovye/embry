@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -120,6 +117,38 @@ public class DefaultValues {
         observableList.setAll(mapValueLists.get(mapControlTable.get(controlName)));
         System.out.println("ObservableList<String> for controlName : " + controlName + " has size=" + observableList.size());
         return observableList;
+    }
+
+    public static String[] getIdColumnsForProtocol(String protocolName){
+         {
+            String sql = "SELECT * FROM WHERE_COLUMNS WHERE protocolName='" + "';";
+
+            System.out.println(sql);
+            try {
+                if (DB.con.isClosed()) DB.init();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            DB.setResult(sql);
+            String resultsWithComma = "";
+             try {
+                 while (DB.rs.next())
+                 {
+                     resultsWithComma=DB.rs.getString("column_names)");
+
+                 }
+             } catch (SQLException e) {
+                 e.printStackTrace();
+             }
+
+             String[] result = resultsWithComma.split(",");
+
+             DB.commit();
+            DB.destroy();
+
+
+
     }
     public static ArrayList<String> getDefaultList(String listName){
         if (getValueListMap() == null) {

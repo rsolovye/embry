@@ -1,7 +1,7 @@
 .table-view .column-header .label {
    
 	-fx-background-color: -dark;
--fx-text-base-color: rgb(252.0, 240.0, 237.0);
+    -fx-text-base-color: rgb(252.0, 240.0, 237.0);
     -fx-text-fill: -fx-text-base-color;
 	
 	 -fx-font-family: 'Helvetica Neue';
@@ -11,3 +11,4 @@
 	
     
 }
+

@@ -2,6 +2,7 @@ package gwtest;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
 /**
@@ -71,10 +72,14 @@ public class MasterGateway {
 
     public synchronized static void insert(ArrayList<RowObject> protocolPackage) {
 
+
         for (RowObject rowObject : protocolPackage) {
             String sql = mapToInsertQuery(rowObject);
-            if (DB.con == null) DB.init();
-
+            try {
+                if (DB.con.isClosed()) DB.init();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
             DB.execute(sql);
             DB.commit();
             DB.destroy();
@@ -85,15 +90,43 @@ public class MasterGateway {
     }
 public synchronized static void update(ArrayList<RowObject> ar){
     for (RowObject rowObject : ar) {
-        String sql = mapToInsertQuery(rowObject);
-        if (DB.con == null) DB.init();
+        String sql = mapToUpdateQuery(rowObject);
+        System.out.println(sql);
+        try {
+            if (DB.con.isClosed()) DB.init();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         DB.execute(sql);
         DB.commit();
         DB.destroy();
 
     }
-}
+
+    public synchronized static void update(HashMap<String, String> map4where, ArrayList<RowObject> ar){
+
+        for (RowObject rowObject : ar) {
+            String sql = mapToUpdateQuery(rowObject);
+            System.out.println(sql);
+            try {
+                if (DB.con.isClosed()) DB.init();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            DB.execute(sql);
+            DB.commit();
+            DB.destroy();
+
+        }
+
+    }public static void update(HashMap<String, String> map4where, RowObject row){
+        ArrayList<RowObject> r = new ArrayList<>();
+        r.add(row);
+        update(r);
+    };
+
 
     public static void update(RowObject row){
         ArrayList<RowObject> r = new ArrayList<>();
@@ -106,7 +139,31 @@ public synchronized static void update(ArrayList<RowObject> ar){
         r.add(row);
         update(r);
     };
+    public static boolean recordExists(String guid, String protocolName){
+        ArrayList<RowObject> rowObjectList = RowObjects.getList();
+        boolean recordExists = false;
+        try {
+            if (DB.con.isClosed()) DB.init();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
+
+            DB.setResult("SELECT * FROM "+ protocolName + " WHERE GUID='"+ guid.toString() + "';");
+        try {
+            if (DB.rs.getFetchSize()  == 0) {
+                recordExists = true;
+                System.out.println("getfetchSize =" + DB.rs.getFetchSize() + "recordExists =" + recordExists );
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        DB.destroy();
+        return recordExists;
+
+    }
     private static String mapToInsertQuery(RowObject row){
         String sql = "INSERT INTO " + row.getName() + " \n(";
         String values = ") \nVALUES(";
@@ -123,10 +180,31 @@ public synchronized static void update(ArrayList<RowObject> ar){
 
 
     private static String mapToUpdateQuery(RowObject row){
-        String sql = "UPDATE PROTOCOL_HEADER \n SET ";
+        String sql = "UPDATE " + row.getName() + "\n SET ";
+
+        for (String r: row.getMap().keySet())
+        {//TODO
+            if (r.compareTo("guid") != 0)
+            {
+                sql = sql + r + "='" + row.getMap().get(r) + "', ";
+            }
+        }
+        for (String w: DefaultValues.getIdColumnsForProtocol(row.getName())
+        {
+
+        }
+        sql = sql.substring(0, sql.length()-2) + " WHERE guid='" + row.getMap().get("guid") + "';";
+
+
+        return sql;
+    }
+
+    private static String mapToUpdateQuery(HashMap<String, String> map4where, RowObject row){
+        String sql = "UPDATE " + row.getName() + "\n SET ";
 
         for (String r: row.getMap().keySet())
         {
+
             if (r.compareTo("guid") != 0)
             {
                 sql = sql + r + "='" + row.getMap().get(r) + "', ";

@@ -64,6 +64,12 @@ public class MasterMapper {
 
     public static void saveToDB(HashMap<String, String> inputMap, String protocolName){
         RowObject ro = new RowObject(protocolName, inputMap);
+        if (MasterGateway.recordExists(ro.get("guid"), protocolName))
+            MasterGateway.update(ro);
+        else
+            MasterGateway.insert(ro);
+
+
         print_saveToDB(inputMap, protocolName, ro);
 
     }
