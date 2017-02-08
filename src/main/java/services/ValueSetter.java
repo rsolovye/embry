@@ -108,7 +108,7 @@ System.out.println("GUID=" + guid);
 
         //String id = "61c7628a-2551-4ce5-b134-efd00289d72a"
         ObservableList<VitrifiedEmbryo> vEmbList = new VitrifiedEmbryoService().getVitrifiedEmbryosList();
-        ;
+
         UUID requestedGuid = UUID.fromString(guid);
 
         Callback<TableColumn<VitrifiedEmbryo, String>, TableCell<VitrifiedEmbryo, String>> comboBoxCellFactory

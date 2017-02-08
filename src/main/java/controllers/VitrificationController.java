@@ -140,6 +140,7 @@ public class VitrificationController implements Initializable {
     }
     @FXML
  private void saveInput() {
+       //for testing only
         if (guid.length() == 0)
             setGuid("61c7628a-2551-4ce5-b134-efd00289d72b");
 
@@ -152,6 +153,16 @@ public class VitrificationController implements Initializable {
                                         inputMap);
 
         MasterMapper.saveToDB(inputMap, "VITRIFICATION");
+
+        ObservableList<HashMap<String, String>> vitrificationTable = FXCollections.observableArrayList();
+
+        for (VitrifiedEmbryo n: vitrificationTableView.getItems())
+        {
+
+           System.out.println("vitrificationTableView.getItems() :" + n.get("cryoStage"));
+
+        }
+
 
 }
 

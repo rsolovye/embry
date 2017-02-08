@@ -10,124 +10,19 @@ import java.util.HashMap;
 public class VitrifiedEmbryo {
 
 
-    public String getGuid() {
-        return guid.get();
-    }
-
-    public String getStrawNumber() {
-        return strawNumber.get();
-    }
-
-    public String getEmbryoNumber() {
-        return embryoNumber.get();
-    }
-
-    public String getCryoDpf() {
-        return cryoDpf.get();
-    }
-
-    public String getCryoStage() {
-        return cryoStage.get();
-    }
-
-    public String getCryoNotes() {
-        return cryoNotes.get();
-    }
-
-    public String getCryoEmbryologist() {
-        return cryoEmbryologist.get();
-    }
-
-    public String getDefrostDate() {
-        return defrostDate.get();
-    }
-
-    public String getDefrostEmbryo() {
-        return defrostEmbryo.get();
-    }
-
-    public String getDefrostEmbryologist() {
-        return defrostEmbryologist.get();
-    }
-
-    public String getDefrostSurvival() {
-        return defrostSurvival.get();
-    }
-
-    public String getDefrostMedia() {
-        return defrostMedia.get();
-    }
-
     private final SimpleStringProperty guid;
     private final SimpleStringProperty strawNumber;
     private final SimpleStringProperty embryoNumber;
-
-    public void setGuid(String guid) {
-        this.guid.set(guid);
-    }
-
-    public void setStrawNumber(String strawNumber) {
-        this.strawNumber.set(strawNumber);
-    }
-
-    public void setEmbryoNumber(String embryoNumber) {
-        this.embryoNumber.set(embryoNumber);
-    }
-
-    public void setCryoDpf(String cryoDpf) {
-        this.cryoDpf.set(cryoDpf);
-    }
-
-    public void setCryoStage(String cryoStage) {
-        this.cryoStage.set(cryoStage);
-    }
-
-    public void setCryoNotes(String cryoNotes) {
-        this.cryoNotes.set(cryoNotes);
-    }
-
-    public void setCryoEmbryologist(String cryoEmbryologist) {
-        this.cryoEmbryologist.set(cryoEmbryologist);
-    }
-
-    public void setDefrostEmbryo(String defrostEmbryo) {
-        this.defrostEmbryo.set(defrostEmbryo);
-    }
-
-    public void setDefrostSurvival(String defrostSurvival) {
-        this.defrostSurvival.set(defrostSurvival);
-    }
-
-    public void setDefrostMedia(String defrostMedia) {
-        this.defrostMedia.set(defrostMedia);
-    }
-
     private final SimpleStringProperty cryoDpf;
     private final SimpleStringProperty cryoStage;
     private final SimpleStringProperty cryoNotes;
     private final SimpleStringProperty cryoEmbryologist;
-
-    public void setDefrostDate(String defrostDate) {
-        this.defrostDate.set(defrostDate);
-    }
-
     private final SimpleStringProperty defrostDate;
     private final SimpleStringProperty defrostEmbryo;
-
-    public void setDefrostEmbryologist(String defrostEmbryologist) {
-        this.defrostEmbryologist.set(defrostEmbryologist);
-    }
-
-    public SimpleStringProperty getDefrostEmbryologistProperty() {
-        return this.defrostEmbryologist;
-
-    }
-
     private final SimpleStringProperty defrostEmbryologist;
     private final SimpleStringProperty defrostSurvival;
     private final SimpleStringProperty defrostMedia;
     private HashMap<String, SimpleStringProperty> map = new HashMap<>();
-
     private VitrifiedEmbryo(VitrifiedEmbryoBuilder b) {
         guid = b.guid;
         strawNumber = b.strawNumber;
@@ -153,6 +48,107 @@ public class VitrifiedEmbryo {
         map.put("defrostMedia", b.defrostMedia);
         map.put("defrostEmbryologist", b.defrostEmbryologist);
         map.put("defrostSurvival", b.defrostSurvival);
+    }
+
+    public String getGuid() {
+        return guid.get();
+    }
+
+    public void setGuid(String guid) {
+        this.guid.set(guid);
+    }
+
+    public String getStrawNumber() {
+        return strawNumber.get();
+    }
+
+    public void setStrawNumber(String strawNumber) {
+        this.strawNumber.set(strawNumber);
+    }
+
+    public String getEmbryoNumber() {
+        return embryoNumber.get();
+    }
+
+    public void setEmbryoNumber(String embryoNumber) {
+        this.embryoNumber.set(embryoNumber);
+    }
+
+    public String getCryoDpf() {
+        return cryoDpf.get();
+    }
+
+    public void setCryoDpf(String cryoDpf) {
+        this.cryoDpf.set(cryoDpf);
+    }
+
+    public String getCryoStage() {
+        return cryoStage.get();
+    }
+
+    public void setCryoStage(String cryoStage) {
+        this.cryoStage.set(cryoStage);
+    }
+
+    public String getCryoNotes() {
+        return cryoNotes.get();
+    }
+
+    public void setCryoNotes(String cryoNotes) {
+        this.cryoNotes.set(cryoNotes);
+    }
+
+    public String getCryoEmbryologist() {
+        return cryoEmbryologist.get();
+    }
+
+    public void setCryoEmbryologist(String cryoEmbryologist) {
+        this.cryoEmbryologist.set(cryoEmbryologist);
+    }
+
+    public String getDefrostDate() {
+        return defrostDate.get();
+    }
+
+    public void setDefrostDate(String defrostDate) {
+        this.defrostDate.set(defrostDate);
+    }
+
+    public String getDefrostEmbryo() {
+        return defrostEmbryo.get();
+    }
+
+    public void setDefrostEmbryo(String defrostEmbryo) {
+        this.defrostEmbryo.set(defrostEmbryo);
+    }
+
+    public String getDefrostEmbryologist() {
+        return defrostEmbryologist.get();
+    }
+
+    public void setDefrostEmbryologist(String defrostEmbryologist) {
+        this.defrostEmbryologist.set(defrostEmbryologist);
+    }
+
+    public String getDefrostSurvival() {
+        return defrostSurvival.get();
+    }
+
+    public void setDefrostSurvival(String defrostSurvival) {
+        this.defrostSurvival.set(defrostSurvival);
+    }
+
+    public String getDefrostMedia() {
+        return defrostMedia.get();
+    }
+
+    public void setDefrostMedia(String defrostMedia) {
+        this.defrostMedia.set(defrostMedia);
+    }
+
+    public SimpleStringProperty getDefrostEmbryologistProperty() {
+        return this.defrostEmbryologist;
+
     }
 
     public SimpleStringProperty get(String columnName) {
