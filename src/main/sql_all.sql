@@ -212,26 +212,13 @@ CREATE TABLE VitrifiedEmbryo (
     cryoNotes   STRING,
     cryoEmbryologist  STRING,
     defrostDate  STRING,
-    defrostEmbryoQuality STRING,
+    defrostEmbryo STRING,
     defrostMedia STRING,
     defrostEmbryologist STRING,
     defrostSurvival STRING,
 PRIMARY KEY(GUID, strawNumber, embryoNumber)
 );
-CREATE TABLE VitrifiedEmbryo (
-    guid        STRING NOT NULL,
-    strawNumber STRING NOT NULL,
-    embryoNumber STRING NOT NULL,
-    cryoDpf     STRING,
-    cryoStage   STRING,
-    cryoNotes   STRING,
-    cryoEmbryologist  STRING,
-    defrostDate  STRING,
-    defrostEmbryoQuality STRING,
-    defrostEmbryologist STRING,
-    defrostSurvival STRING,
-PRIMARY KEY(GUID, strawNumber, embryoNumber)
-);
+
 
 INSERT INTO VitrifiedEmbryo VALUES
 ('61c7628a-2551-4ce5-b134-efd00289d72a', '1', '1', '5', 'BL5AB', '', 'Хандога А.О.', '', '', '', '');,
@@ -247,8 +234,8 @@ String sql = "INSERT INTO control_list_map VALUES('" + UUID.randomUUID().toStrin
 
    String sql =       "CREATE TABLE VITRIFICATION_TABLE(
           "guid STRING NOT NULL," +
-         "strawCol STRING NOT NULL" +
-         "embCol STRING NOT NULL"+
+         "strawNumber STRING NOT NULL" +
+         "embryo STRING NOT NULL"+
            "dpfCol STRING NOT NULL"+
            "devStage STRING NOT NULL" +
            "vitNotes  STRING NOT NULL" +

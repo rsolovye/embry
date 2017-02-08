@@ -91,7 +91,7 @@ public class VitrifiedEmbryoService {
                         .cryoNotes(rs.getString("cryoNotes"))
                         .cryoEmbryologist(rs.getString("cryoEmbryologist"))
                         .defrostDate(rs.getString("defrostDate"))
-                        .defrostEmbryoQuality(rs.getString("defrostEmbryoQuality"))
+                        .defrostEmbryo(rs.getString("defrostEmbryo"))
                         .defrostMedia(rs.getString("defrostMedia"))
                         .defrostEmbryologist(rs.getString("defrostEmbryologist"))
                         .defrostSurvival(rs.getString("defrostSurvival"))

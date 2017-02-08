@@ -96,6 +96,8 @@ public class VitrificationController implements Initializable {
     @FXML
     AnchorPane tableViewPane;
     private String guid = "";
+    private ValueSetter valueSetter = null;
+
 @FXML Button saveCryoButton;
     public VitrificationController() {
         //this.masterView = masterView;
@@ -114,19 +116,17 @@ public class VitrificationController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        valueSetter = new ValueSetter();
         if (guid.length() == 0)
             guid = "61c7628a-2551-4ce5-b134-efd00289d72a";
 
-        ValueSetter.setValues(vitrificationInfoPane, "VitrificationMap", guid);
-        ValueSetter.setValues(vitrificationTableView, "VitrificationMap", guid);
+        valueSetter.setValues(vitrificationInfoPane, "VitrificationMap", guid);
+        valueSetter.setValues(vitrificationTableView, "VitrificationMap", guid);
 
-        Callback<TableColumn<VitrifiedEmbryo, String>, TableCell<VitrifiedEmbryo, String>> cellFactory
-                = (TableColumn<VitrifiedEmbryo, String> param) -> new EditingCell();
+
         saveCryoButton.setOnAction((e) -> saveInput());
+
         vitrificationTableView.setItems(new VitrifiedEmbryoService().getVitrifiedEmbryosList());
-
-
 
         vitrificationTableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         vitrificationTableView.addEventFilter(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
@@ -157,7 +157,6 @@ public class VitrificationController implements Initializable {
 
                 if( event.getCode() == KeyCode.ENTER) {
 
-
                     // move focus & selection
                     // we need to clear the current selection first or else the selection would be added to the current selection since we are in multi selection mode
                     TablePosition pos = vitrificationTableView.getFocusModel().getFocusedCell();
@@ -173,24 +172,31 @@ public class VitrificationController implements Initializable {
                     else if (pos.getRow() < vitrificationTableView.getItems().size() -1) {
                         vitrificationTableView.getSelectionModel().clearAndSelect( pos.getRow() + 1, pos.getTableColumn());
                     }
-
-
                 }
 
+                if( event.getCode() == KeyCode.TAB) {
+
+                    // move focus & selection
+                    // we need to clear the current selection first or else the selection would be added to the current selection since we are in multi selection mode
+                    TablePosition pos = vitrificationTableView.getFocusModel().getFocusedCell();
+
+                    if (pos.getColumn() == -1) {
+                        vitrificationTableView.getSelectionModel().selectRightCell();
+                    }
+                    // add new row when we are at the last row
+                    else if (pos.getColumn() == vitrificationTableView.getColumns().size()-1) {
+                        vitrificationTableView.getSelectionModel().select(0, strawNumber);
+                    }
+                    // select next row, but same column as the current selection
+                    else if (pos.getColumn() < vitrificationTableView.getColumns().size() -1) {
+                        vitrificationTableView.getSelectionModel().selectRightCell();
+                    }
+                }
             }
         });
 
         // single cell selection mode
         vitrificationTableView.getSelectionModel().setCellSelectionEnabled(true);
-
-        // add row index column as 1st column
-        // -------------------------------------
-
-
-
-
-        // buttons
-        // --------------------------------------------
         FlowPane buttonBar = new FlowPane();
 
         // add new row button
@@ -260,88 +266,24 @@ public class VitrificationController implements Initializable {
 
         inputMap.put("guid", guid);
 
-        ValueSetter.mapInput(vitrificationInfoPane,
+        valueSetter.mapInput(vitrificationInfoPane,
                         "VitrificationMap",
                                         inputMap);
 
         MasterMapper.saveToDB(inputMap, "VITRIFICATION");
 
         ObservableList<HashMap<String, String>> vitrificationTable = FXCollections.observableArrayList();
-
+            System.out.println(vitrificationTableView.getItems().size());
         for (VitrifiedEmbryo n: vitrificationTableView.getItems())
         {
-
-           System.out.println("vitrificationTableView.getItems() :" + n.get("cryoStage"));
+           MasterMapper.remapAndSave(n.getMap(), "VITRIFIEDEMBRYO");
+           System.out.println("vitrificationTableView.getItems() :" + n.get("strawNumber") + " " + n.get("embryoNumber"));
 
         }
 
 
 }
 
-    class EditingCell extends TableCell<VitrifiedEmbryo, String> {
-
-        private TextField textField;
-
-        private EditingCell() {
-        }
-
-        @Override
-        public void startEdit() {
-            if (!isEmpty()) {
-                super.startEdit();
-                createTextField();
-                setText(null);
-                setGraphic(textField);
-                textField.selectAll();
-            }
-        }
-
-        @Override
-        public void cancelEdit() {
-            super.cancelEdit();
-
-            setText((String) getItem());
-            setGraphic(null);
-        }
-
-        @Override
-        public void updateItem(String item, boolean empty) {
-            super.updateItem(item, empty);
-
-            if (empty) {
-                setText(item);
-                setGraphic(null);
-            } else {
-                if (isEditing()) {
-                    if (textField != null) {
-                        textField.setText(getString());
-//                        setGraphic(null);
-                    }
-                    setText(null);
-                    setGraphic(textField);
-                } else {
-                    setText(getString());
-                    setGraphic(null);
-                }
-            }
-        }
-
-        private void createTextField() {
-            textField = new TextField(getString());
-            textField.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
-            textField.setOnAction((e) -> commitEdit(textField.getText()));
-            textField.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
-                if (!newValue) {
-                    System.out.println("Commiting " + textField.getText());
-                    commitEdit(textField.getText());
-                }
-            });
-        }
-
-        private String getString() {
-            return getItem() == null ? "" : getItem();
-        }
-    }
 
 }
 //        doctor.setItems(DefaultValues.getObservableList("DOCTORS"));

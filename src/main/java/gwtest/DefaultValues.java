@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static gwtest.SQLRegistry.getDefaultList;
+
 /**
  * Created by bobsol on 28.01.17.
  */
@@ -97,6 +99,12 @@ public class DefaultValues {
         }
 
     }
+    public static HashMap<String, ArrayList<String>> getValueListMap(){
+        if (mapValueLists == null) {
+            initialize();
+        }
+        return mapValueLists;
+    }
     public static ObservableList<String> getObservableList(String listName){
         if (getValueListMap() == null) {
             initialize();
@@ -118,9 +126,14 @@ public class DefaultValues {
         System.out.println("ObservableList<String> for controlName : " + controlName + " has size=" + observableList.size());
         return observableList;
     }
+    public static ArrayList<String> getDefaultList(String listName){
+        if (getValueListMap() == null) {
+            initialize();
+        }
+        return mapValueLists.get(listName);
+    }
+    public static String[] getIdColumnsForProtocol(String protocolName) {
 
-    public static String[] getIdColumnsForProtocol(String protocolName){
-         {
             String sql = "SELECT * FROM WHERE_COLUMNS WHERE protocolName='" + "';";
 
             System.out.println(sql);
@@ -132,43 +145,33 @@ public class DefaultValues {
 
             DB.setResult(sql);
             String resultsWithComma = "";
-             try {
-                 while (DB.rs.next())
-                 {
-                     resultsWithComma=DB.rs.getString("column_names)");
+            try {
+                while (DB.rs.next()) {
+                    resultsWithComma = DB.rs.getString("column_names)");
 
-                 }
-             } catch (SQLException e) {
-                 e.printStackTrace();
-             }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-             String[] result = resultsWithComma.split(",");
+            String[] result = resultsWithComma.split(",");
 
-             DB.commit();
+            DB.commit();
             DB.destroy();
 
-
-
+            return result;
     }
-    public static ArrayList<String> getDefaultList(String listName){
-        if (getValueListMap() == null) {
-                initialize();
-        }
 
-        return mapValueLists.get(listName);
-    }
-public static HashMap<String, ArrayList<String>> getValueListMap(){
+
+    public static void printMap() {
         if (mapValueLists == null) {
             initialize();
         }
-        return mapValueLists;
-    }
-    public static void printMap(){
-            if (mapValueLists == null) { initialize();}
-            for (String k: mapValueLists.keySet()){
-                for (String l: getDefaultList(k)){
-                    System.out.println(k + " : " + l);
-                }
+        for (String k : mapValueLists.keySet()) {
+            for (String l : getDefaultList(k)) {
+                System.out.println(k + " : " + l);
             }
+        }
     }
 }
+

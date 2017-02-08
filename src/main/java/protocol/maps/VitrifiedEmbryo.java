@@ -32,7 +32,7 @@ public class VitrifiedEmbryo {
         cryoNotes = b.cryoNotes;
         cryoEmbryologist = b.cryoEmbryologist;
         defrostDate = b.defrostDate;
-        defrostEmbryo = b.defrostEmbryoQuality;
+        defrostEmbryo = b.defrostEmbryo;
         defrostMedia = b.defrostMedia;
         defrostEmbryologist = b.defrostEmbryologist;
         defrostSurvival = b.defrostSurvival;
@@ -44,12 +44,14 @@ public class VitrifiedEmbryo {
         map.put("cryoNotes", b.cryoNotes);
         map.put("cryoEmbryologist", b.cryoEmbryologist);
         map.put("defrostDate", b.defrostDate);
-        map.put("defrostEmbryo", b.defrostEmbryoQuality);
+        map.put("defrostEmbryo", b.defrostEmbryo);
         map.put("defrostMedia", b.defrostMedia);
         map.put("defrostEmbryologist", b.defrostEmbryologist);
         map.put("defrostSurvival", b.defrostSurvival);
     }
-
+    public HashMap<String, SimpleStringProperty> getMap(){
+        return this.map;
+    }
     public String getGuid() {
         return guid.get();
     }
@@ -169,7 +171,7 @@ public class VitrifiedEmbryo {
         private SimpleStringProperty cryoEmbryologist;
 
         private SimpleStringProperty defrostDate;
-        private SimpleStringProperty defrostEmbryoQuality;
+        private SimpleStringProperty defrostEmbryo;
         private SimpleStringProperty defrostEmbryologist;
         private SimpleStringProperty defrostSurvival;
         private SimpleStringProperty defrostMedia;
@@ -205,8 +207,8 @@ public class VitrifiedEmbryo {
             return this;
         }
 
-        public VitrifiedEmbryoBuilder defrostEmbryoQuality(String s) {
-            this.defrostEmbryoQuality = new SimpleStringProperty(s);
+        public VitrifiedEmbryoBuilder defrostEmbryo(String s) {
+            this.defrostEmbryo = new SimpleStringProperty(s);
             return this;
         }
 

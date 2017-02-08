@@ -11,9 +11,7 @@ import java.util.UUID;
 public class MasterGateway {
 
     public synchronized static ArrayList<RowObject> findByGuid(UUID guid){
-
         ArrayList<RowObject> rowObjectList = RowObjects.getList();
-
         try {
             if (DB.con.isClosed()) DB.init();
         } catch (SQLException e) {
@@ -30,7 +28,6 @@ public class MasterGateway {
                         r.getMap().put(k, temp);
                     }
                 }
-             //DB.commit();
             }catch (SQLException e) {     e.printStackTrace();}
         }
             DB.destroy();
@@ -61,9 +58,7 @@ public class MasterGateway {
                     System.out.println("MGW findAll, tempRow.get(guid) :" + tempRow.get("guid"));
                     allRows.add(tempRow);
                     System.out.println("RowObjectList.size MAsterGateway.findAll(): " + allRows.size());
-
                 }
-                //DB.commit();
             }catch (SQLException e) {     e.printStackTrace();}
         }
         DB.destroy();
@@ -80,18 +75,17 @@ public class MasterGateway {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            System.out.println("\nMasterGateWay is trying to execute SQL-Statement \n'" + sql + "'.");
             DB.execute(sql);
             DB.commit();
             DB.destroy();
-
         }
-
-
     }
-public synchronized static void update(ArrayList<RowObject> ar){
+public synchronized static void update(ArrayList<RowObject> ar) {
     for (RowObject rowObject : ar) {
         String sql = mapToUpdateQuery(rowObject);
         System.out.println(sql);
+
         try {
             if (DB.con.isClosed()) DB.init();
         } catch (SQLException e) {
@@ -101,71 +95,24 @@ public synchronized static void update(ArrayList<RowObject> ar){
         DB.execute(sql);
         DB.commit();
         DB.destroy();
-
     }
-
-    public synchronized static void update(HashMap<String, String> map4where, ArrayList<RowObject> ar){
-
-        for (RowObject rowObject : ar) {
-            String sql = mapToUpdateQuery(rowObject);
-            System.out.println(sql);
-            try {
-                if (DB.con.isClosed()) DB.init();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            DB.execute(sql);
-            DB.commit();
-            DB.destroy();
-
-        }
-
-    }public static void update(HashMap<String, String> map4where, RowObject row){
-        ArrayList<RowObject> r = new ArrayList<>();
-        r.add(row);
-        update(r);
-    };
+}
 
 
     public static void update(RowObject row){
         ArrayList<RowObject> r = new ArrayList<>();
         r.add(row);
         update(r);
-    };
+    }
 
     public static void insert(RowObject row){
         ArrayList<RowObject> r = new ArrayList<>();
         r.add(row);
-        update(r);
-    };
-    public static boolean recordExists(String guid, String protocolName){
-        ArrayList<RowObject> rowObjectList = RowObjects.getList();
-        boolean recordExists = false;
-        try {
-            if (DB.con.isClosed()) DB.init();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-            DB.setResult("SELECT * FROM "+ protocolName + " WHERE GUID='"+ guid.toString() + "';");
-        try {
-            if (DB.rs.getFetchSize()  == 0) {
-                recordExists = true;
-                System.out.println("getfetchSize =" + DB.rs.getFetchSize() + "recordExists =" + recordExists );
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        DB.destroy();
-        return recordExists;
-
+        insert(r);
     }
+
     private static String mapToInsertQuery(RowObject row){
-        String sql = "INSERT INTO " + row.getName() + " \n(";
+        String sql = "INSERT OR REPLACE INTO " + row.getName() + " \n(";
         String values = ") \nVALUES(";
         for (String r: row.getMap().keySet())
         {
@@ -173,8 +120,6 @@ public synchronized static void update(ArrayList<RowObject> ar){
             values = values + "'" + row.get(r) + "', ";
         }
         sql = sql.substring(0, sql.length()-2) + values.substring(0, values.length()-2) + ");";
-
-
         return sql;
     }
 
@@ -189,13 +134,7 @@ public synchronized static void update(ArrayList<RowObject> ar){
                 sql = sql + r + "='" + row.getMap().get(r) + "', ";
             }
         }
-        for (String w: DefaultValues.getIdColumnsForProtocol(row.getName())
-        {
-
-        }
         sql = sql.substring(0, sql.length()-2) + " WHERE guid='" + row.getMap().get("guid") + "';";
-
-
         return sql;
     }
 

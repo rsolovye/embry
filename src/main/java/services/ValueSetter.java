@@ -1,6 +1,7 @@
 package services;
 
 import com.sun.rowset.internal.Row;
+import controllers.VitrificationController;
 import controllers.VitrifiedEmbryoService;
 import gwtest.DefaultValues;
 import gwtest.MasterMapper;
@@ -8,12 +9,15 @@ import gwtest.RowObject;
 import gwtest.RowObjects;
 import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 import protocol.maps.Protocol;
 import protocol.maps.VitrifiedEmbryo;
 
@@ -23,8 +27,10 @@ import java.util.UUID;
 
 public class ValueSetter {
 
+public ValueSetter(){
 
-    public static void setValues(Pane pane, String protocolType, String guid) {
+}
+    public  void setValues(Pane pane, String protocolType, String guid) {
 System.out.println("GUID=" + guid);
 
        // String guid = "61c7628a-2551-4ce5-b134-efd00289d72a"
@@ -39,7 +45,7 @@ System.out.println("GUID=" + guid);
                     System.out.println(pane.getId() + " - " + n.getId() + " - " + n.getClass().getSimpleName());
 
                     String type = n.getClass().getSimpleName();
-                    if (isPane(type)) {
+                    if (n instanceof Pane) {
                         setValues((Pane) n, protocolType, guid);
                     }
                     if (type.compareTo("TextField") == 0)
@@ -64,12 +70,12 @@ System.out.println("GUID=" + guid);
         }
     }
 
-    public static void  mapInput(Pane pane, String rowObjectType, HashMap<String, String> inputMap) {
+    public  void  mapInput(Pane pane, String rowObjectType, HashMap<String, String> inputMap) {
 
         for (javafx.scene.Node n : pane.getChildren()) {
             String className = n.getClass().getSimpleName();
 
-            if (isPane(className))
+            if (n instanceof Pane)
                 mapInput((Pane) n, rowObjectType, inputMap);
 
             if (className.compareTo("TextField") == 0)
@@ -104,7 +110,7 @@ System.out.println("GUID=" + guid);
         return res;
     }
 
-    public static void setValues(TableView<VitrifiedEmbryo> pane, String protocolType, String guid) {
+    public  void setValues(TableView<VitrifiedEmbryo> pane, String protocolType, String guid) {
 
         //String id = "61c7628a-2551-4ce5-b134-efd00289d72a"
         ObservableList<VitrifiedEmbryo> vEmbList = new VitrifiedEmbryoService().getVitrifiedEmbryosList();
@@ -113,9 +119,13 @@ System.out.println("GUID=" + guid);
 
         Callback<TableColumn<VitrifiedEmbryo, String>, TableCell<VitrifiedEmbryo, String>> comboBoxCellFactory
                 = (TableColumn<VitrifiedEmbryo, String> param) -> new ComboBoxEditingCell();
+
+
+        Callback<TableColumn<VitrifiedEmbryo, String>, TableCell<VitrifiedEmbryo, String>> cellFactory
+                = (TableColumn<VitrifiedEmbryo, String> param) -> new EditingCell();
         for (VitrifiedEmbryo vEmb : vEmbList) {
             boolean guidsAreEqual = (UUID.fromString(vEmb.getGuid()).compareTo(requestedGuid) == 0);
-            if (guidsAreEqual)//VitrificationMap map = (VitrificationMap) protocol;
+            if (guidsAreEqual)
             {
 
                 for (TableColumn<VitrifiedEmbryo, ?> n : pane.getColumns()) {
@@ -135,7 +145,7 @@ System.out.println("GUID=" + guid);
                         else
                      {
                          ((TableColumn<VitrifiedEmbryo, String>) n).setCellValueFactory(cellData -> cellData.getValue().get(n.getId()));
-                         ((TableColumn<VitrifiedEmbryo, String>) n).setCellFactory(TextFieldTableCell.forTableColumn());
+                         ((TableColumn<VitrifiedEmbryo, String>) n).setCellFactory(cellFactory);
                          ((TableColumn<VitrifiedEmbryo, String>) n).setOnEditCommit(
                                 (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> (t.getTableView().getItems()
                                         .get(t.getTablePosition().getRow()))
@@ -241,6 +251,137 @@ System.out.println("GUID=" + guid);
         }
     }
 
+
+    class EditingCell extends TableCell<VitrifiedEmbryo, String> {
+
+        private TextField textField;
+
+        private EditingCell() {
+        }
+
+        @Override
+        public void startEdit() {
+            if (!isEmpty()) {
+                super.startEdit();
+                createTextField();
+                setText(null);
+                setGraphic(textField);
+                textField.selectAll();
+            }
+        }
+
+        @Override
+        public void cancelEdit() {
+            super.cancelEdit();
+
+            setText((String) getItem());
+            setGraphic(null);
+        }
+
+        @Override
+        public void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (empty) {
+                setText(item);
+                setGraphic(null);
+            } else {
+                if (isEditing()) {
+                    if (textField != null) {
+                        textField.setText(getString());
+//                        setGraphic(null);
+                    }
+                    setText(null);
+                    setGraphic(textField);
+                } else {
+                    setText(getString());
+                    setGraphic(null);
+                }
+            }
+        }
+
+        private void createTextField() {
+            textField = new TextField(getString());
+            textField.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
+            textField.setOnAction((e) -> commitEdit(textField.getText()));
+            textField.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {
+                if (!newValue) {
+                    System.out.println("Commiting " + textField.getText());
+                    commitEdit(textField.getText());
+                }
+            });
+        }
+
+        private String getString() {
+            return getItem() == null ? "" : getItem();
+        }
+    }
+
+    class EditingCell_focus extends TableCell<VitrifiedEmbryo, String> {
+
+        private TextField textField;
+
+        public EditingCell_focus() {
+        }
+
+        @Override
+        public void startEdit() {
+            if (!isEmpty()) {
+                super.startEdit();
+                createTextField();
+                setText(null);
+                setGraphic(textField);
+                textField.selectAll();
+            }
+        }
+
+        @Override
+        public void cancelEdit() {
+            super.cancelEdit();
+
+            setText((String) getItem());
+            setGraphic(null);
+        }
+
+        @Override
+        public void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (empty) {
+                setText(null);
+                setGraphic(null);
+            } else {
+                if (isEditing()) {
+                    if (textField != null) {
+                        textField.setText(getString());
+                    }
+                    setText(null);
+                    setGraphic(textField);
+                } else {
+                    setText(getString());
+                    setGraphic(null);
+                }
+            }
+        }
+
+        private void createTextField() {
+            textField = new TextField(getString());
+            textField.setMinWidth(this.getWidth() - this.getGraphicTextGap()* 2);
+            textField.focusedProperty().addListener(new ChangeListener<Boolean>(){
+                @Override
+                public void changed(ObservableValue<? extends Boolean> arg0,
+                                    Boolean arg1, Boolean arg2) {
+                    if (!arg2) {
+                        commitEdit(textField.getText());
+                    }
+                }
+            });
+        }
+
+        private String getString() {
+            return getItem() == null ? "" : getItem().toString();
+        }
+    }
 
 }
 //                    if (type.compareTo("TableColumn") == 0)

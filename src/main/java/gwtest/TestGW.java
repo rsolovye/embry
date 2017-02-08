@@ -91,11 +91,11 @@ public class TestGW {
         //         "defrostMedia S
 //                "defrostSignature STRING," +
 //                "defrostSurvival STRING );";
-//        String s1ql = "INSERT INTO VitrifiedEmbryo VALUES\n" +
-//                "('61c7628a-2551-4ce5-b134-efd00289d72a', '1', '1', '5', 'BL3BA', '', 'Хандога А.О.', '10.10.14', 'BL3BB', 'ИНХАУЗ 08.10.15', 'Лямина И.В.', '+')," +
-//                "('61c7628a-2551-4ce5-b134-efd00289d72a', '1', '2', '5', 'BL3BA', '', 'Хандога А.О.',  '10.10.14', 'BL3BB', 'ИНХАУЗ 08.10.15', 'Лямина И.В.', '+')," +
-//                "('61c7628a-2551-4ce5-b134-efd00289d72a', '2', '3', '5', 'BL3BA', '', 'Хандога А.О.', '', '', '', '', '')," +
-//                "('61c7628a-2551-4ce5-b134-efd00289d72a', '2', '4', '5', 'BL3BA', '', 'Хандога А.О.', '', '', '', '', '');";
+        String s1ql = "INSERT INTO VitrifiedEmbryo VALUES\n" +
+                "('61c7628a-2551-4ce5-b134-efd00289d72a', '1', '1', '5', 'BL3BA', '', 'Хандога А.О.', '10.10.14', 'BL3BB', 'ИНХАУЗ 08.10.15', 'Лямина И.В.', '+')," +
+                "('61c7628a-2551-4ce5-b134-efd00289d72a', '1', '2', '5', 'BL3BA', '', 'Хандога А.О.',  '10.10.14', 'BL3BB', 'ИНХАУЗ 08.10.15', 'Лямина И.В.', '+')," +
+                "('61c7628a-2551-4ce5-b134-efd00289d72a', '2', '3', '5', 'BL3BA', '', 'Хандога А.О.', '', '', '', '', '')," +
+                "('61c7628a-2551-4ce5-b134-efd00289d72a', '2', '4', '5', 'BL3BA', '', 'Хандога А.О.', '', '', '', '', '');";
 
         //String sql = "INSERT INTO pojo_keysets VALUES\n"+
          //       "('" + UUID.randomUUID().toString() + "', 'VITRIFICATION', 'guid,vitDate,vitVRT,fName,fDOB,fCode,mName,mDOB,mCode,vitMedia,dewar,canister,sectionColor,embryoCount,strawCount,sectionCount,isOms,isPostponed,fromAnotherClinic');";
@@ -127,7 +127,7 @@ public class TestGW {
 
 //        "INSERT INTO default_lists \n" +
 //                "VALUES('" + UUID.randomUUID().toString() + "'" + ", 'SECTION_COLOR', 'SELECT CONTROL_VALUE FROM SECTION_COLOR;');";
-//insertSQL(sql);
+insertSQL(s1ql);
 
     }
 

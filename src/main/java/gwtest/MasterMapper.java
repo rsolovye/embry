@@ -1,5 +1,6 @@
 package gwtest;
 
+import javafx.beans.property.SimpleStringProperty;
 import protocol.maps.Protocol;
 import sun.rmi.transport.proxy.RMIMasterSocketFactory;
 
@@ -64,13 +65,26 @@ public class MasterMapper {
 
     public static void saveToDB(HashMap<String, String> inputMap, String protocolName){
         RowObject ro = new RowObject(protocolName, inputMap);
-        if (MasterGateway.recordExists(ro.get("guid"), protocolName))
-            MasterGateway.update(ro);
-        else
-            MasterGateway.insert(ro);
+//        if (MasterGateway.recordExists(ro.get("guid"), protocolName))
+//            MasterGateway.update(ro);
+//        else
+        MasterGateway.insert(ro);
 
 
         print_saveToDB(inputMap, protocolName, ro);
+
+    }
+
+    public static void remapAndSave(HashMap<String, SimpleStringProperty> inputMap, String protocolName){
+        HashMap<String, String> tempMap = new HashMap<>();
+        for (String k: inputMap.keySet())
+        {
+
+            tempMap.put(k, (inputMap.get(k).getValue() == null) ? "" : inputMap.get(k).getValue());
+
+        }
+        saveToDB(tempMap, protocolName);
+
 
     }
 
