@@ -3,6 +3,7 @@ package services;
 import com.sun.rowset.internal.Row;
 import controllers.VitrificationController;
 import controllers.VitrifiedEmbryoService;
+import etv.EditCell;
 import gwtest.DefaultValues;
 import gwtest.MasterMapper;
 import gwtest.RowObject;
@@ -123,6 +124,7 @@ System.out.println("GUID=" + guid);
 
         Callback<TableColumn<VitrifiedEmbryo, String>, TableCell<VitrifiedEmbryo, String>> cellFactory
                 = (TableColumn<VitrifiedEmbryo, String> param) -> new EditingCell();
+
         for (VitrifiedEmbryo vEmb : vEmbList) {
             boolean guidsAreEqual = (UUID.fromString(vEmb.getGuid()).compareTo(requestedGuid) == 0);
             if (guidsAreEqual)
@@ -145,11 +147,11 @@ System.out.println("GUID=" + guid);
                         else
                      {
                          ((TableColumn<VitrifiedEmbryo, String>) n).setCellValueFactory(cellData -> cellData.getValue().get(n.getId()));
-                         ((TableColumn<VitrifiedEmbryo, String>) n).setCellFactory(cellFactory);
-                         ((TableColumn<VitrifiedEmbryo, String>) n).setOnEditCommit(
-                                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> (t.getTableView().getItems()
-                                        .get(t.getTablePosition().getRow()))
-                                        .set(n.getId(), new SimpleStringProperty(t.getNewValue())));
+                         ((TableColumn<VitrifiedEmbryo, String>) n).setCellFactory(col -> EditCell.createStringEditCell());
+//                         ((TableColumn<VitrifiedEmbryo, String>) n).setOnEditCommit(
+//                                (TableColumn.CellEditEvent<VitrifiedEmbryo, String> t) -> (t.getTableView().getItems()
+//                                        .get(t.getTablePosition().getRow()))
+//                                        .set(n.getId(), new SimpleStringProperty(t.getNewValue())));
                     }   } catch (Exception e) {
                         e.printStackTrace();
                     }

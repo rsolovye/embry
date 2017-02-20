@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.MeshView?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="vitrificartionMasterPane" dividerPositions="0.5254237288135594" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="533.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VitrificationController">
+<SplitPane fx:id="vitrificartionMasterPane" dividerPositions="0.5254237288135594" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="533.0" prefWidth="969.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VitrificationControllerETV">
   <items>
       <GridPane alignment="CENTER" maxHeight="240.0" prefHeight="240.0" prefWidth="940.0" styleClass="root">
          <columnConstraints>
@@ -156,7 +156,7 @@
                      </font></Label>
                   <VBox fx:id="checkBoxesPane" alignment="CENTER_LEFT" layoutX="505.0" layoutY="37.0" prefHeight="93.0" prefWidth="163.0">
                      <children>
-                        <CheckBox fx:id="isOms" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" style="-fx-text-fill: ;" text="ОМС">
+                        <CheckBox fx:id="isOms" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" style="-fx-text-fill: rgb(47.0, 52.0, 57);" text="ОМС">
                            <VBox.margin>
                               <Insets bottom="15.0" />
                            </VBox.margin>
@@ -225,9 +225,9 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="41.0" prefWidth="696.0" style="-fx-background-color: dark; -fx-text-fill: white;" GridPane.columnIndex="1">
+            <AnchorPane prefHeight="41.0" prefWidth="696.0" style="-fx-background-color: rgb(47.0, 52.0, 57.0); -fx-text-fill: white;" GridPane.columnIndex="1">
                <children>
-                  <Label layoutX="186.0" prefHeight="29.0" prefWidth="395.0" text="Криоконсервация эмбрионов" textAlignment="CENTER">
+                  <Label layoutX="186.0" prefHeight="29.0" prefWidth="395.0" text="Криоконсервация эмбрионов" textAlignment="CENTER" textFill="#ebe5e5">
                      <font>
                         <Font name="PT Sans Caption Bold" size="21.0" />
                      </font>
@@ -272,10 +272,10 @@
       </GridPane>
     <AnchorPane fx:id="tableViewPane" minHeight="0.0" minWidth="0.0" prefHeight="256.0" prefWidth="958.0" style="-fx-background-color: -dark;" stylesheets="@flatterfx.css">
          <children>
-            <TableView fx:id="vitrificationTableView" editable="true" layoutX="-8.0" prefHeight="285.0" prefWidth="974.0" style="-fx-border-width: 0;" stylesheets="@columnheader.css">
+            <TableView fx:id="vitrificationTableView" editable="true" layoutX="9.0" layoutY="14.0" prefHeight="285.0" prefWidth="948.0" style="-fx-border-width: 0;" stylesheets="@columnheader.css">
               <columns>
-                <TableColumn fx:id="strawNumber" prefWidth="67.00003051757812" resizable="false" sortable="false" text="       № &#10;cоломины " />
-                <TableColumn fx:id="embryoNumber" prefWidth="64.0" resizable="false" sortable="false" text="       № &#10;эмбриона" />
+                <TableColumn fx:id="strawNumber" prefWidth="74.0" resizable="false" sortable="false" text="       № &#10;cоломины " />
+                <TableColumn fx:id="embryoNumber" prefWidth="58.0" resizable="false" sortable="false" text="       № &#10;эмбриона" />
                   <TableColumn fx:id="cryoDpf" prefWidth="55.0" resizable="false" sortable="false" text="   День &#10;развития" />
                   <TableColumn fx:id="cryoStage" prefWidth="100.0" resizable="false" text=" Качество&#10;эмбриона" />
                   <TableColumn fx:id="cryoNotes" minWidth="0.0" resizable="false" text="Примечения" />
