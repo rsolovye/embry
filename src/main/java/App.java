@@ -1,3 +1,4 @@
+import gwtest.TestGW;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,8 +20,10 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+
             SplitPane page =  FXMLLoader.load(App.class.getResource("vitrificationfx.fxml"));
             Scene scene = new Scene(page);
+
 
             primaryStage.setScene(scene);
             primaryStage.setTitle("FXML Vitrification");

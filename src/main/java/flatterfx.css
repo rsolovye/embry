@@ -105,11 +105,11 @@
 .text-area , .text-field {
     -fx-background-color: white;
     -fx-background-insets:  0.0;
-    -fx-background-radius: 2.0;
+    -fx-background-radius: 1.0;
     -fx-padding: 0.0;
     -fx-border-width: 0.0;
     -fx-prompt-text-fill: derive(-dark, 50.0%);
-    -fx-highlight-fill: rgb(94.0, 203.0, 234.0);
+ /*   -fx-highlight-fill: rgb(94.0, 203.0, 234.0);*/
 }
 
 .text-area .text, .text-field > * > .text {
@@ -132,8 +132,8 @@
 }
 
 .text-area:focused, .text-field:focused {
-    -fx-background-color: -dark, derive(rgb(94.0, 203.0, 234.0), 80.0%);
-    -fx-background-insets: 0.0, 0.2em;
+    -fx-background-color: rgb(250, 250,250); /*-dark, derive(rgb(94.0, 203.0, 234.0), 80.0%);*/
+   -fx-background-insets: 0.0, 0.1em;
     -fx-background-radius: 2.0;
     -fx-alignment: CENTER;
 }
@@ -241,7 +241,7 @@
 
 .combo-box-base:focused,
 .choice-box:focused{
-    -fx-background-color: derive(-flatter-red, 50.0%); 
+    -fx-background-color: derive(-dark, 50.0%);
 }
 
 .combo-box-base > .arrow-button > .arrow,

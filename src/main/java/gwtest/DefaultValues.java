@@ -56,16 +56,16 @@ public class DefaultValues {
             for (String q: default_value_query.keySet()) {
                 stmt = c.createStatement();
                 String sql2 = default_value_query.get(q);
-                System.out.println("'" + q + "' - '" + sql2 + "'");
+             //   System.out.println("'" + q + "' - '" + sql2 + "'");
 
                 ResultSet rs2 = stmt.executeQuery(default_value_query.get(q) + ";");
 
                 ArrayList<String> list = new ArrayList<>();
-                System.out.print("\nCONTROL_VALUE LISTED :\n");
+             //   System.out.print("\nCONTROL_VALUE LISTED :\n");
                 while (rs2.next()){
                     String value = rs2.getString("CONTROL_VALUE");
                     list.add(value);
-                    System.out.print(" " + value);
+                 //   System.out.print(" " + value);
                 }
                 mapValueLists.put(q, list);
 
@@ -80,7 +80,7 @@ public class DefaultValues {
             while (rs3.next()){
                 String key = rs3.getString("CONTROL_NAME");
                 String value = rs3.getString("TABLE_NAME");
-                System.out.println("control_list_map : " + key + " - " +  value );
+              //  System.out.println("control_list_map : " + key + " - " +  value );
 
                 mapControlTable.put(key, value);
             }
@@ -112,7 +112,7 @@ public class DefaultValues {
 
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.setAll(mapValueLists.get(listName));
-        System.out.println("ObservableList<String> for list : " + listName + " has size=" + observableList.size());
+        //System.out.println("ObservableList<String> for list : " + listName + " has size=" + observableList.size());
         return observableList;
     }
 
@@ -123,7 +123,7 @@ public class DefaultValues {
 
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.setAll(mapValueLists.get(mapControlTable.get(controlName)));
-        System.out.println("ObservableList<String> for controlName : " + controlName + " has size=" + observableList.size());
+       // System.out.println("ObservableList<String> for controlName : " + controlName + " has size=" + observableList.size());
         return observableList;
     }
     public static ArrayList<String> getDefaultList(String listName){

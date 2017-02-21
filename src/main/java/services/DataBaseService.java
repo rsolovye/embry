@@ -31,8 +31,8 @@ public class DataBaseService {
 
             ResultSet rs = stmt.executeQuery(sql);
 
-            System.out.println(getClass().getSimpleName() + " : " + sql);
-            System.out.print(rs.getFetchSize());
+           // System.out.println(getClass().getSimpleName() + " : " + sql);
+           // System.out.print(rs.getFetchSize());
             while (rs.next()) {
 
                 String result = rs.getString("TABLES");
@@ -42,7 +42,7 @@ public class DataBaseService {
             }
 
 
-            System.out.print(resultList.toArray().toString());
+         //   System.out.print(resultList.toArray().toString());
 
 
             stmt.close();

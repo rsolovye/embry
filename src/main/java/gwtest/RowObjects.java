@@ -14,7 +14,7 @@ public class RowObjects  {
         if (list == null) {
             initialize();
         }
-        System.out.print("RowObjects.getList list.size = " + list.size());
+       // System.out.print("RowObjects.getList list.size = " + list.size());
         return list;
     }
 
@@ -24,7 +24,7 @@ public class RowObjects  {
         }
         for (RowObject o : list)
         {
-            System.out.println(o.getName() + " - " + objectName);
+           // System.out.println(o.getName() + " - " + objectName);
 
             if (o.getName().compareTo(objectName)==0) return o;
         }
@@ -32,7 +32,7 @@ public class RowObjects  {
     }
 
     private static void initialize(){
-        System.out.print("RowObjects.initialize()");
+        //System.out.print("RowObjects.initialize()");
         DB.init();
         DB.setResult("SELECT * FROM pojo_keysets;");
 
@@ -44,7 +44,7 @@ public class RowObjects  {
 
                 String className = DB.rs.getString("class_name");
                 String[] keys = DB.rs.getString("keyset").split(",");
-                System.out.println(className +" + " + keys.length);
+               // System.out.println(className +" + " + keys.length);
 
                 list.add(new RowObject(className, keys));
             }

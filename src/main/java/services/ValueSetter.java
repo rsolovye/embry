@@ -1,24 +1,17 @@
 package services;
 
-import com.sun.rowset.internal.Row;
-import controllers.VitrificationController;
 import controllers.VitrifiedEmbryoService;
 import etv.EditCell;
 import gwtest.DefaultValues;
 import gwtest.MasterMapper;
-import gwtest.RowObject;
-import gwtest.RowObjects;
-import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
-import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 import protocol.maps.Protocol;
 import protocol.maps.VitrifiedEmbryo;
 
@@ -32,7 +25,7 @@ public ValueSetter(){
 
 }
     public  void setValues(Pane pane, String protocolType, String guid) {
-System.out.println("GUID=" + guid);
+      //  System.out.println("GUID=" + guid);
 
        // String guid = "61c7628a-2551-4ce5-b134-efd00289d72a"
         ArrayList<Protocol> listP = MasterMapper.findByGuid(UUID.fromString(guid));
@@ -43,7 +36,7 @@ System.out.println("GUID=" + guid);
 
                 for (javafx.scene.Node n : pane.getChildren()) {
                     String value = (protocol.get(n.getId()) == null) ? "" :  protocol.get(n.getId());
-                    System.out.println(pane.getId() + " - " + n.getId() + " - " + n.getClass().getSimpleName());
+                    //System.out.println(pane.getId() + " - " + n.getId() + " - " + n.getClass().getSimpleName());
 
                     String type = n.getClass().getSimpleName();
                     if (n instanceof Pane) {
@@ -53,7 +46,7 @@ System.out.println("GUID=" + guid);
                         ((TextField) n).setText(value);
 
                     if (type.compareTo("CheckBox") == 0) {
-                        System.out.println(n.getId() + " " + value);
+                    //    System.out.println(n.getId() + " " + value);
 
                         ((CheckBox) n).setSelected(value.compareTo("1") == 0);
                     }
@@ -100,16 +93,7 @@ System.out.println("GUID=" + guid);
         }
 }
 
-    private static boolean isPane(String className) {
-        String[] paneTypeNames = {"AnchorPane", "VBox", "HBox", "BorderPane", "GridPane", "FlowPane", "ScrollPane", "TabPane"};
-        boolean res = false;
-        for (String pT : paneTypeNames) {
-            if (pT.compareToIgnoreCase(className) == 0) {
-                res = true;
-            }
-        }
-        return res;
-    }
+
 
     public  void setValues(TableView<VitrifiedEmbryo> pane, String protocolType, String guid) {
 
@@ -132,7 +116,7 @@ System.out.println("GUID=" + guid);
 
                 for (TableColumn<VitrifiedEmbryo, ?> n : pane.getColumns()) {
                     try {
-                        System.out.println(n.getId() + " - " + n.toString());
+                       // System.out.println(n.getId() + " - " + n.toString());
 
 
                      if (n.getId().equalsIgnoreCase("cryoEmbryologist") || n.getId().equalsIgnoreCase("defrostEmbryologist"))
@@ -220,7 +204,7 @@ System.out.println("GUID=" + guid);
             comboBox.valueProperty().set(getString());
             comboBox.setMinWidth(this.getWidth() - this.getGraphicTextGap() * 2);
             comboBox.setOnAction((e) -> {
-                System.out.println("Committed: " + comboBox.getSelectionModel().getSelectedItem());
+               // System.out.println("Committed: " + comboBox.getSelectionModel().getSelectedItem());
                 commitEdit(comboBox.getSelectionModel().getSelectedItem());
             });
 //            comboBox.focusedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> {

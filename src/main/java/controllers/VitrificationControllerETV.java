@@ -3,6 +3,7 @@ package controllers;
 
 import etv.EditCell;
 import gwtest.MasterMapper;
+import gwtest.TestGW;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -99,24 +100,15 @@ public class VitrificationControllerETV implements Initializable {
     private ValueSetter valueSetter = null;
 
 @FXML Button saveCryoButton;
-    public VitrificationControllerETV() {
-        //this.masterView = masterView;
-        //this.masterModel = masterModel;
 
-    }
 
-    public VitrificationControllerETV(String guid) {
-        //this.masterView = masterView;
-        //this.masterModel = masterModel;
-        this.guid = guid;
-
-    }
 
     public void setGuid(String guid){ this.guid=guid;}
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        TestGW.insertSQL(sql);
         valueSetter = new ValueSetter();
         if (guid.length() == 0)
             guid = "61c7628a-2551-4ce5-b134-efd00289d72a";
@@ -206,7 +198,7 @@ public class VitrificationControllerETV implements Initializable {
     }
 
     @FXML
- private void saveInput() {
+ public void saveInput() {
         System.out.println("saveInput()");
        //for testing only
         if (guid.length() == 0)
@@ -223,11 +215,11 @@ public class VitrificationControllerETV implements Initializable {
         MasterMapper.saveToDB(inputMap, "VITRIFICATION");
 
         ObservableList<HashMap<String, String>> vitrificationTable = FXCollections.observableArrayList();
-            System.out.println(vitrificationTableView.getItems().size());
+           // System.out.println(vitrificationTableView.getItems().size());
         for (VitrifiedEmbryo n: vitrificationTableView.getItems())
         {
            MasterMapper.remapAndSave(n.getMap(), "VITRIFIEDEMBRYO");
-           System.out.println("vitrificationTableView.getItems() :" + n.get("strawNumber") + " " + n.get("embryoNumber"));
+         //  System.out.println("vitrificationTableView.getItems() :" + n.get("strawNumber") + " " + n.get("embryoNumber"));
 
         }
 

@@ -18,7 +18,7 @@ public class Protocol extends HashMap<String, String> {
       //  }
 
     public boolean isTypeOf(String protocolType){
-        System.out.println ("Protocol super() isTypeOf()" + getClass().getSimpleName() + " vs " + protocolType);
+       // System.out.println ("Protocol super() isTypeOf()" + getClass().getSimpleName() + " vs " + protocolType);
         return protocolType.equalsIgnoreCase(getClass().getSimpleName());
     };
 }

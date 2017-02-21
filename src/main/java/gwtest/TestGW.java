@@ -151,7 +151,7 @@ insertSQL(s1ql);
         return input;
 
     }
-    private static void insertSQL(String sql){
+    public static void insertSQL(String sql){
         Connection c = null;
         Statement stmt = null;
 

@@ -17,7 +17,7 @@ public class MasterMapper {
 
         for (RowObject roi : protocolAsLists) {
 
-            System.out.print("MasMapper " + roi.getKeySet().length);
+//            System.out.print("MasMapper " + roi.getKeySet().length);
             if (roi.getMap().size() > 0)
                 protocols.add(ProtocolFactory.get(roi.className, roi.getMap()));
         }

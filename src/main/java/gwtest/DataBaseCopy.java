@@ -20,7 +20,7 @@ public class DataBaseCopy {
                     String className = p.getName();
                     String rowGuid = rowMap.get("guid");
 
-                    System.out.println("mapDB()  " + className + " " + rowGuid + " " + rowMap.size());
+              //      System.out.println("mapDB()  " + className + " " + rowGuid + " " + rowMap.size());
 
                     ArrayList<Protocol> protocols = new ArrayList<>();
 
