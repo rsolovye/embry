@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.MeshView?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="vitrificartionMasterPane" dividerPositions="0.5254237288135594" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="533.0" prefWidth="969.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VitrificationControllerETV">
+<SplitPane fx:id="vitrificartionMasterPane" dividerPositions="0.5254237288135594" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="533.0" prefWidth="969.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.VitrificationControllerETV">
   <items>
       <GridPane alignment="CENTER" maxHeight="240.0" prefHeight="240.0" prefWidth="940.0" styleClass="root">
          <columnConstraints>
@@ -36,12 +36,15 @@
          <children>
           <AnchorPane fx:id="vitrificationInfoPane" maxHeight="225.0" maxWidth="660.0" prefHeight="225.0" prefWidth="605.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <TextField fx:id="mName" layoutX="27.0" layoutY="125.0" prefHeight="25.0" prefWidth="252.0" />
-                  <TextField fx:id="fName" layoutX="27.0" layoutY="83.0" prefHeight="26.0" prefWidth="252.0" />
-                  <TextField fx:id="mCode" layoutX="289.0" layoutY="125.0" prefHeight="26.0" prefWidth="57.0" />
-                  <TextField fx:id="fCode" layoutX="289.0" layoutY="83.0" prefHeight="26.0" prefWidth="57.0" />
-                  <TextField fx:id="vitDate" layoutX="30.0" layoutY="29.0" prefHeight="25.0" prefWidth="98.0" text="1233123" />
+                  <TextField fx:id="vitDate" layoutX="30.0" layoutY="29.0" prefHeight="25.0" prefWidth="98.0" />
                   <TextField fx:id="vitVRT" layoutX="149.0" layoutY="29.0" prefHeight="26.0" prefWidth="131.0" />
+                  <ComboBox fx:id="doctor" layoutX="293.0" layoutY="29.0" prefHeight="25.0" prefWidth="159.0" style="-fx-text-weight: 800;" />
+                  <TextField fx:id="fName" layoutX="27.0" layoutY="83.0" prefHeight="26.0" prefWidth="252.0" />
+                  <TextField fx:id="fCode" layoutX="289.0" layoutY="83.0" prefHeight="26.0" prefWidth="57.0" />
+                  <TextField fx:id="fDOB" layoutX="355.0" layoutY="83.0" prefHeight="26.0" prefWidth="100.0" />
+                  <TextField fx:id="mName" layoutX="27.0" layoutY="125.0" prefHeight="25.0" prefWidth="252.0" />
+                  <TextField fx:id="mCode" layoutX="289.0" layoutY="125.0" prefHeight="26.0" prefWidth="57.0" />
+                  <TextField fx:id="mDOB" layoutX="355.0" layoutY="125.0" prefHeight="26.0" prefWidth="100.0" />
                   <TextField fx:id="dewar" alignment="CENTER" layoutX="25.0" layoutY="183.0" prefHeight="17.0" prefWidth="37.0" />
                   <TextField fx:id="canister" alignment="CENTER" layoutX="84.0" layoutY="183.0" prefHeight="25.0" prefWidth="37.0" />
                   <ComboBox fx:id="sectionColor" layoutX="142.0" layoutY="183.0" prefHeight="25.0" prefWidth="131.0" />
@@ -85,7 +88,8 @@
                                           <Label alignment="CENTER" prefHeight="17.0" prefWidth="63.0" text="соломин" textAlignment="CENTER" wrapText="true">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
-                                             </font></Label>
+                                             </font>
+                                          </Label>
                                           <TextField fx:id="strawCount" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="37.0">
                                              <VBox.margin>
                                                 <Insets />
@@ -131,7 +135,8 @@
                   <Label layoutX="25.0" layoutY="166.0" prefHeight="17.0" prefWidth="35.0" text="Дюар">
                      <font>
                         <Font name="System Bold" size="12.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                   <Label layoutX="30.0" layoutY="14.0" text="Дата Крио" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -145,15 +150,18 @@
                   <Label layoutX="290.0" layoutY="165.0" prefHeight="19.0" prefWidth="183.0" text="Среда для криоконсервации" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="System Bold" size="12.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                   <Label layoutX="143.0" layoutY="166.0" text="Цвет секции" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="System Bold" size="12.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                   <Label layoutX="75.0" layoutY="166.0" prefHeight="17.0" prefWidth="57.0" text="Канистра">
                      <font>
                         <Font name="System Bold" size="12.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                   <VBox fx:id="checkBoxesPane" alignment="CENTER_LEFT" layoutX="505.0" layoutY="37.0" prefHeight="93.0" prefWidth="163.0">
                      <children>
                         <CheckBox fx:id="isOms" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" style="-fx-text-fill: rgb(47.0, 52.0, 57);" text="ОМС">
@@ -171,7 +179,8 @@
                         <CheckBox fx:id="isPostponed" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" styleClass="root" text="Отсроченый" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font name="System Bold" size="12.0" />
-                           </font></CheckBox>
+                           </font>
+                        </CheckBox>
                         <CheckBox fx:id="fromAnotherClinic" alignment="BOTTOM_LEFT" graphicTextGap="0.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" styleClass="root" text="Из другой клиники" wrapText="true">
                            <VBox.margin>
                               <Insets top="15.0" />
@@ -192,8 +201,6 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="mDOB" layoutX="355.0" layoutY="125.0" prefHeight="26.0" prefWidth="100.0" />
-                  <TextField fx:id="fDOB" layoutX="355.0" layoutY="83.0" prefHeight="26.0" prefWidth="100.0" />
                   <Label layoutX="292.0" layoutY="68.0" text="Код" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -209,7 +216,6 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="doctor" layoutX="293.0" layoutY="29.0" prefHeight="25.0" prefWidth="159.0" style="-fx-text-weight: 800;" />
                   <Line endX="270.0" layoutX="157.0" layoutY="65.0" startX="-100.0" strokeDashOffset="8.0" strokeWidth="0.2" />
                   <Line endX="270.0" layoutX="157.0" layoutY="159.0" startX="-100.0" strokeDashOffset="8.0" strokeWidth="0.2" />
                   <MeshView layoutX="80.0" layoutY="41.0" />
@@ -251,15 +257,18 @@
                         <Button fx:id="saveCryoButton" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#saveInput" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: rgb(47.0, 52.0, 57.0); -fx-text-weight: 800;" styleClass="label" text="Сохранить" textAlignment="JUSTIFY" textFill="#d7d5d5">
                            <font>
                               <Font name="System Bold" size="12.0" />
-                           </font></Button>
+                           </font>
+                        </Button>
                         <Button alignment="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" style="-fx-background-color: rgb(47.0, 52.0, 57.0);" styleClass="label" text="Отменить" textAlignment="CENTER" textFill="#f8f7f7" GridPane.rowIndex="4">
                            <font>
                               <Font name="System Bold" size="12.0" />
-                           </font></Button>
+                           </font>
+                        </Button>
                         <Button alignment="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: rgb(47.0, 52.0, 57.0);" styleClass="label" text="Найти" textAlignment="CENTER" textFill="#e8e8e8" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="12.0" />
-                           </font></Button>
+                           </font>
+                        </Button>
                         <TextField prefHeight="25.0" prefWidth="131.0" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>

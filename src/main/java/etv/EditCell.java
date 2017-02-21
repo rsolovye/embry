@@ -1,13 +1,8 @@
 package etv;
 
 import javafx.event.Event;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.StringConverter;
@@ -40,7 +35,7 @@ public class EditCell<S, T> extends TableCell<S, T> {
             commitEdit(this.converter.fromString(textField.getText()));
         });
         textField.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
-            if (! isNowFocused) {
+            if (! isNowFocused   && textField.getText() != null) {
                 commitEdit(this.converter.fromString(textField.getText()));
             }
         });
@@ -56,17 +51,52 @@ public class EditCell<S, T> extends TableCell<S, T> {
             } else if (event.getCode() == KeyCode.LEFT) {
                 getTableView().getSelectionModel().selectLeftCell();
                 event.consume();
-            } else if (event.getCode() == KeyCode.UP) {
+        } else if (event.getCode() == KeyCode.UP) {
                 getTableView().getSelectionModel().selectAboveCell();
                 event.consume();
             } else if (event.getCode() == KeyCode.DOWN) {
                 getTableView().getSelectionModel().selectBelowCell();
                 event.consume();
-            } else if (event.getCode() == KeyCode.TAB) {
-                getTableView().getSelectionModel().selectRightCell();
+            } else
+
+            if( event.getCode() == KeyCode.TAB) {
+
+                // move focus & selection
+                // we need to clear the current selection first or else the selection would be added to the current selection since we are in multi selection mode
+                TablePosition pos = getTableView().getFocusModel().getFocusedCell();
+
+                if (pos.getColumn() == -1) {
+                    getTableView().getSelectionModel().selectRightCell();
+
+                }
+                // add new row when we are at the last row
+                else if (pos.getColumn() == getTableView().getColumns().size()-1) {
+                    getTableView().getSelectionModel().select(pos.getRow() + 1, getTableView().getColumns().get(0));
+                }
+                // select next row, but same column as the current selection
+                else if (pos.getColumn() < getTableView().getColumns().size() -1) {
+                    getTableView().getSelectionModel().selectRightCell();
+                }
                 event.consume();
-            } else if (event.getCode() == KeyCode.ENTER) {
-                getTableView().getSelectionModel().selectBelowCell();
+            } else if (event.getCode() == KeyCode.ENTER)
+            {
+
+                // move focus & selection
+                // we need to clear the current selection first or else the selection would be added to the current selection since we are in multi selection mode
+                TablePosition pos = getTableView().getFocusModel().getFocusedCell();
+
+                if (pos.getRow() == -1) {
+                    getTableView().getSelectionModel().selectBelowCell();
+
+                }
+                // add new row when we are at the last row
+                else if (pos.getRow() == getTableView().getItems().size()-1) {
+                    getTableView().getSelectionModel().select(0, getTableView().getColumns().get(pos.getColumn() + 1));
+                }
+                // select next row, but same column as the current selection
+                else if (pos.getRow() < getTableView().getColumns().size() -1) {
+                    getTableView().getSelectionModel().selectBelowCell();
+                }
                 event.consume();
             }
 

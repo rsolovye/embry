@@ -135,6 +135,7 @@
     -fx-background-color: -dark, derive(rgb(94.0, 203.0, 234.0), 80.0%);
     -fx-background-insets: 0.0, 0.2em;
     -fx-background-radius: 2.0;
+    -fx-alignment: CENTER;
 }
 
 .scroll-bar:vertical > .track-background,
