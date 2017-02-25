@@ -107,8 +107,8 @@ public class VitrificationControllerETV implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        TestGW.insertSQL(sql);
+//TODO: READ DB FOR NEW VIT FROM EXCEL!
+        //TestGW.insertSQL(sql);
         valueSetter = new ValueSetter();
         if (guid.length() == 0)
             guid = "61c7628a-2551-4ce5-b134-efd00289d72a";
